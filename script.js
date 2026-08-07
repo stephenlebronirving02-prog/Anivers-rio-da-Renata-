@@ -853,9 +853,8 @@ if(startButton){
     que representa o início da história
 */
 
-
 const beginningDate =
-new Date("2026-01-01T00:00:00");
+new Date("2010-08-16T00:00:00");;
 
 
 
