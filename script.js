@@ -722,15 +722,23 @@ if(playButton){
     playButton.addEventListener("click",()=>{
 
 
-        music.play();
+    music.volume = 0.5;
 
 
-        fadeMusic();
+    music.play()
+    .then(()=>{
 
+        console.log("Música iniciada 🎵");
+
+    })
+    .catch(error=>{
+
+        console.log("Erro ao iniciar música:", error);
 
     });
 
 
+});
 }
 
 
