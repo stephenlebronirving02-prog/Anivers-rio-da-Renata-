@@ -582,3 +582,630 @@ body {
 
 
 }
+
+/* ========================================================= */
+/*              BARRA DE CARREGAMENTO                        */
+/* ========================================================= */
+
+
+.progress-area {
+
+    width:80%;
+
+    max-width:350px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+
+.progress-bar {
+
+
+    width:100%;
+
+
+    height:14px;
+
+
+    background:
+
+    rgba(255,255,255,.1);
+
+
+    border-radius:20px;
+
+
+    overflow:hidden;
+
+
+    border:
+
+    1px solid rgba(255,255,255,.2);
+
+
+    box-shadow:
+
+
+    inset 0 0 10px #000,
+
+
+    0 0 20px rgba(123,46,255,.5);
+
+
+}
+
+
+
+#progress-fill {
+
+
+    width:0%;
+
+
+    height:100%;
+
+
+    border-radius:20px;
+
+
+    background:
+
+
+    linear-gradient(
+
+    90deg,
+
+    #7B2EFF,
+
+    #2D8CFF
+
+    );
+
+
+    box-shadow:
+
+
+    0 0 20px #7B2EFF,
+
+
+    0 0 40px #2D8CFF;
+
+
+}
+
+
+
+#progress-percent {
+
+
+    font-size:18px;
+
+
+    font-weight:bold;
+
+
+    color:white;
+
+
+    text-shadow:
+
+    0 0 15px #7B2EFF;
+
+
+}
+
+
+
+
+/* ========================================================= */
+/*              TRANSIÇÃO CINEMATOGRÁFICA                    */
+/* ========================================================= */
+
+
+#cinematic-transition {
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    background:#050505;
+
+
+    z-index:100;
+
+
+    display:none;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+}
+
+
+
+.transition-glow {
+
+
+    width:250px;
+
+
+    height:250px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+    radial-gradient(
+
+    circle,
+
+    #7B2EFF,
+
+    transparent 70%
+
+    );
+
+
+    filter:blur(20px);
+
+
+    animation:
+
+    transitionPulse 2s infinite;
+
+
+
+}
+
+
+
+.transition-flash {
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background:white;
+
+
+    opacity:0;
+
+
+}
+
+
+
+@keyframes transitionPulse {
+
+
+    0%,100%{
+
+        transform:scale(1);
+
+        opacity:.5;
+
+    }
+
+
+    50%{
+
+        transform:scale(2);
+
+        opacity:1;
+
+    }
+
+
+}
+
+
+
+/* ========================================================= */
+/*                  LANDING PAGE                             */
+/* ========================================================= */
+
+
+#landing-page {
+
+
+    display:none;
+
+
+    min-height:100vh;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+/* ========================================================= */
+/*                     HERO                                  */
+/* ========================================================= */
+
+
+
+#hero {
+
+
+    min-height:100vh;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    position:relative;
+
+
+    text-align:center;
+
+
+}
+
+
+
+.hero-background {
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.hero-gradient {
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background:
+
+
+    radial-gradient(
+
+    circle at top,
+
+    rgba(123,46,255,.4),
+
+    transparent 40%
+
+    ),
+
+    radial-gradient(
+
+    circle at bottom,
+
+    rgba(45,140,255,.35),
+
+    transparent 45%
+
+    );
+
+
+}
+
+
+
+
+.hero-glow {
+
+
+    position:absolute;
+
+
+    width:300px;
+
+
+    height:300px;
+
+
+    background:#7B2EFF;
+
+
+    border-radius:50%;
+
+
+    filter:blur(150px);
+
+
+    top:40%;
+
+
+    left:50%;
+
+
+    transform:translate(-50%,-50%);
+
+
+
+}
+
+
+
+.hero-content {
+
+
+    position:relative;
+
+
+    z-index:5;
+
+
+    max-width:800px;
+
+
+    padding:20px;
+
+
+}
+
+
+
+/* ========================================================= */
+/*                    TEXTOS HERO                            */
+/* ========================================================= */
+
+
+
+.small-title {
+
+
+    font-size:22px;
+
+
+    color:#ddd;
+
+
+    opacity:0;
+
+
+    animation:
+
+    fadeUp 2s forwards;
+
+
+}
+
+
+
+#main-title {
+
+
+    font-size:
+
+    clamp(55px,10vw,100px);
+
+
+    margin-top:20px;
+
+
+    color:white;
+
+
+    text-shadow:
+
+
+    0 0 20px #7B2EFF,
+
+
+    0 0 50px #2D8CFF;
+
+
+    animation:
+
+
+    titleGlow 3s infinite alternate;
+
+
+
+}
+
+
+
+#second-title {
+
+
+    font-size:
+
+    clamp(30px,5vw,55px);
+
+
+    margin-top:15px;
+
+
+    color:#fff;
+
+
+}
+
+
+
+.hero-text {
+
+
+    margin-top:30px;
+
+
+    font-size:20px;
+
+
+    line-height:1.7;
+
+
+    color:#ddd;
+
+
+    opacity:.9;
+
+
+}
+
+
+
+/* ========================================================= */
+/*                     BOTÃO                                 */
+/* ========================================================= */
+
+
+
+#start-button {
+
+
+    margin-top:40px;
+
+
+    padding:18px 45px;
+
+
+    border:none;
+
+
+    border-radius:50px;
+
+
+    background:
+
+
+    linear-gradient(
+
+    90deg,
+
+    #7B2EFF,
+
+    #2D8CFF
+
+    );
+
+
+    color:white;
+
+
+    font-size:18px;
+
+
+    font-weight:bold;
+
+
+    cursor:pointer;
+
+
+    box-shadow:
+
+
+    0 0 20px #7B2EFF;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+#start-button:hover {
+
+
+    transform:scale(1.08);
+
+
+    box-shadow:
+
+
+    0 0 40px #2D8CFF;
+
+
+}
+
+
+
+
+@keyframes fadeUp {
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        translateY(40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        translateY(0);
+
+    }
+
+
+}
+
+
+
+@keyframes titleGlow {
+
+
+    from{
+
+        text-shadow:
+
+        0 0 20px #7B2EFF;
+
+    }
+
+
+    to{
+
+        text-shadow:
+
+        0 0 40px #2D8CFF;
+
+    }
+
+
+    }
