@@ -1345,7 +1345,6 @@ body {
 
 
 
-
 .photo-card img {
 
     width:100%;
@@ -1354,11 +1353,23 @@ body {
 
     object-fit:contain;
 
-    background:#050505;
+    padding:5px;
+
+    background:
+
+    linear-gradient(
+
+    135deg,
+
+    rgba(123,46,255,.3),
+
+    rgba(45,140,255,.3)
+
+    );
 
     border-radius:20px;
 
-}
+         }
 
 
 
