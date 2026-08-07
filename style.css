@@ -1,1 +1,584 @@
+/* ========================================================= */
+/*                  VARIÁVEIS DO PROJETO                    */
+/* ========================================================= */
 
+:root {
+
+    --roxo: #7B2EFF;
+    --azul: #2D8CFF;
+    --preto: #050505;
+    --branco: #ffffff;
+
+    --glass:
+    rgba(255,255,255,0.08);
+
+    --neon-roxo:
+    0 0 20px #7B2EFF,
+    0 0 40px #7B2EFF;
+
+    --neon-azul:
+    0 0 20px #2D8CFF,
+    0 0 40px #2D8CFF;
+
+}
+
+
+/* ========================================================= */
+/*                    RESET GLOBAL                           */
+/* ========================================================= */
+
+
+* {
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+
+html {
+
+    scroll-behavior:smooth;
+
+}
+
+
+body {
+
+    width:100%;
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    background:#050505;
+
+    color:white;
+
+    font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+}
+
+
+/* Remove seleção feia */
+
+::selection {
+
+    background:#7B2EFF;
+    color:white;
+
+}
+
+
+
+/* ========================================================= */
+/*                    FUNDO GLOBAL                           */
+/* ========================================================= */
+
+
+#background {
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-5;
+
+    background:#050505;
+
+}
+
+
+
+/* Aurora roxa */
+
+.gradient-purple {
+
+    position:absolute;
+
+    width:700px;
+
+    height:700px;
+
+    background:#7B2EFF;
+
+    filter:blur(150px);
+
+    opacity:.35;
+
+    top:-200px;
+
+    left:-200px;
+
+    animation:
+    purpleMove 12s infinite alternate ease-in-out;
+
+}
+
+
+
+/* Aurora azul */
+
+.gradient-blue {
+
+
+    position:absolute;
+
+    width:650px;
+
+    height:650px;
+
+
+    background:#2D8CFF;
+
+
+    filter:blur(150px);
+
+
+    opacity:.30;
+
+
+    bottom:-200px;
+
+
+    right:-200px;
+
+
+    animation:
+    blueMove 15s infinite alternate ease-in-out;
+
+
+}
+
+
+
+@keyframes purpleMove {
+
+
+    from {
+
+        transform:
+        translate(0,0);
+
+    }
+
+
+    to {
+
+        transform:
+        translate(180px,120px);
+
+    }
+
+
+}
+
+
+
+@keyframes blueMove {
+
+
+    from {
+
+        transform:
+        translate(0,0);
+
+    }
+
+
+    to {
+
+        transform:
+        translate(-150px,-100px);
+
+    }
+
+
+}
+
+
+
+
+
+/* ========================================================= */
+/*                 CÍRCULOS DE LUZ                           */
+/* ========================================================= */
+
+
+.blur-circle {
+
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(80px);
+
+    opacity:.25;
+
+
+}
+
+
+
+.blur-circle.one {
+
+
+    width:250px;
+
+    height:250px;
+
+    background:#7B2EFF;
+
+    top:30%;
+
+    left:10%;
+
+
+}
+
+
+
+.blur-circle.two {
+
+
+    width:200px;
+
+    height:200px;
+
+    background:#2D8CFF;
+
+    top:60%;
+
+    right:15%;
+
+
+}
+
+
+
+.blur-circle.three {
+
+
+    width:300px;
+
+    height:300px;
+
+    background:#7B2EFF;
+
+    bottom:-100px;
+
+    left:40%;
+
+
+}
+
+
+
+/* ========================================================= */
+/*              CAMADAS DE EFEITOS                           */
+/* ========================================================= */
+
+
+#hearts-layer,
+#words-layer {
+
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:20;
+
+
+}
+
+
+
+/* ========================================================= */
+/*                LOADING SCREEN                             */
+/* ========================================================= */
+
+
+#loading-screen {
+
+
+    width:100%;
+
+    height:100vh;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.loading-container {
+
+
+    width:100%;
+
+    max-width:500px;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+
+    gap:25px;
+
+
+    text-align:center;
+
+
+}
+
+
+
+/* ========================================================= */
+/*                     TEXTOS                                */
+/* ========================================================= */
+
+
+
+#loading-title {
+
+
+    font-size:clamp(28px,5vw,45px);
+
+
+    font-weight:700;
+
+
+    color:white;
+
+
+    text-shadow:
+
+    0 0 10px #7B2EFF,
+    0 0 25px #7B2EFF;
+
+
+    animation:
+
+    breathe 3s infinite ease-in-out;
+
+
+}
+
+
+
+#loading-subtitle {
+
+
+    font-size:18px;
+
+
+    color:#ddd;
+
+
+    opacity:.9;
+
+
+}
+
+
+
+@keyframes breathe {
+
+
+    0%,100%{
+
+        transform:scale(1);
+
+    }
+
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+
+}
+
+
+
+/* ========================================================= */
+/*                 CELULAR PREMIUM                           */
+/* ========================================================= */
+
+
+.phone {
+
+
+    position:relative;
+
+
+    width:260px;
+
+
+    height:520px;
+
+
+    background:#111;
+
+
+    border-radius:45px;
+
+
+    padding:12px;
+
+
+    box-shadow:
+
+
+    0 0 30px rgba(123,46,255,.5),
+
+    0 0 70px rgba(45,140,255,.3);
+
+
+    border:
+
+    3px solid rgba(255,255,255,.15);
+
+
+}
+
+
+
+.phone-screen {
+
+
+    width:100%;
+
+    height:100%;
+
+
+    border-radius:35px;
+
+
+    overflow:hidden;
+
+
+    background:black;
+
+
+    position:relative;
+
+
+}
+
+
+
+.phone-screen img {
+
+
+    width:100%;
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    transition:.8s;
+
+
+}
+
+
+
+/* Notch */
+
+.phone-notch {
+
+
+    position:absolute;
+
+
+    top:15px;
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+    width:90px;
+
+    height:25px;
+
+
+    background:#000;
+
+
+    border-radius:20px;
+
+
+    z-index:3;
+
+
+}
+
+
+
+/* Reflexo */
+
+.phone-reflection {
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    border-radius:45px;
+
+
+    background:
+
+    linear-gradient(
+
+    120deg,
+
+    rgba(255,255,255,.25),
+
+    transparent 35%
+
+    );
+
+
+    pointer-events:none;
+
+
+    z-index:5;
+
+
+}
