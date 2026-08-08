@@ -641,3 +641,809 @@ main{
         0 0 12px
         rgba(123,46,255,.8);
 }
+
+   /* =====================================================
+   FINAL DA ÁREA DE MEMÓRIAS
+===================================================== */
+
+.gallery-end{
+
+    min-height:85vh;
+
+    padding:
+        80px 24px
+        100px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+
+.gallery-heart{
+
+    font-size:65px;
+
+    margin-bottom:22px;
+
+    filter:
+        drop-shadow(
+            0 0 22px
+            rgba(123,46,255,.9)
+        );
+
+    animation:
+        heartPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+.gallery-end h2{
+
+    max-width:340px;
+
+    font-size:26px;
+
+    line-height:1.3;
+
+    margin-bottom:18px;
+
+    text-shadow:
+
+        0 0 12px
+        rgba(123,46,255,.8);
+}
+
+
+.gallery-end p{
+
+    max-width:330px;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+    color:
+        rgba(255,255,255,.68);
+}
+
+
+/* =====================================================
+   BOTÃO PARA A PRÓXIMA PÁGINA
+===================================================== */
+
+.next-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-top:35px;
+
+    padding:
+        16px
+        26px;
+
+    border-radius:50px;
+
+    border:1px solid
+        rgba(255,255,255,.18);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(123,46,255,.9),
+            rgba(45,140,255,.8)
+        );
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+    box-shadow:
+
+        0 12px 35px
+        rgba(0,0,0,.45),
+
+        0 0 25px
+        rgba(123,46,255,.35);
+
+    transition:
+
+        transform .25s ease,
+
+        box-shadow .25s ease;
+}
+
+
+.next-button:active{
+
+    transform:scale(.94);
+
+    box-shadow:
+
+        0 0 35px
+        rgba(123,46,255,.7);
+}
+
+
+/* =====================================================
+   CELULARES MENORES
+===================================================== */
+
+@media(max-height:700px){
+
+    .intro{
+
+        padding-top:30px;
+
+    }
+
+    .intro-heart{
+
+        font-size:45px;
+
+    }
+
+    .intro h1{
+
+        font-size:26px;
+
+    }
+
+    .memory{
+
+        padding-top:55px;
+
+    }
+
+    .photo-card{
+
+        height:390px;
+
+    }
+
+}
+
+
+/* =====================================================
+   ACESSIBILIDADE
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        transition-duration:.01ms !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     FUNDO ANIMADO
+===================================================== -->
+
+<div id="background">
+
+    <div class="light light-purple"></div>
+
+    <div class="light light-blue"></div>
+
+    <canvas id="particles"></canvas>
+
+</div>
+
+
+<!-- =====================================================
+     CAMADA DOS ELOGIOS E EMOJIS
+===================================================== -->
+
+<div id="falling"></div>
+
+
+<!-- =====================================================
+     CONTEÚDO PRINCIPAL
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     ABERTURA DA GALERIA
+===================================================== -->
+
+<section class="intro">
+
+    <div class="intro-heart">
+        ❤️
+    </div>
+
+
+    <h1>
+
+        Algumas memórias
+        merecem ser revividas...
+
+    </h1>
+
+
+    <p>
+
+        Antes de continuar a surpresa,
+        quero te levar por alguns momentos
+        que fazem tudo ficar ainda mais especial.
+
+    </p>
+
+
+    <div class="scroll-indicator">
+
+        <span>
+            Role para começar
+        </span>
+
+        <span class="scroll-arrow">
+            ↓
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMÓRIA 01
+===================================================== -->
+
+<section class="memory">
+
+    <span class="memory-number">
+        MEMÓRIA 01
+    </span>
+
+
+    <div class="photo-card">
+
+        <div class="photo-inner">
+
+            <img
+                src="Fotos/foto1.jpg"
+                alt="Memória 1"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="caption">
+
+        <h2>
+
+            Esses olhos são
+            simplesmente encantadores. ❤️
+
+        </h2>
+
+
+        <p>
+
+            É impossível olhar para você
+            e não reparar no brilho dos seus olhos.
+            Eles conseguem deixar sua beleza
+            ainda mais especial.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMÓRIA 02
+===================================================== -->
+
+<section class="memory">
+
+    <span class="memory-number">
+        MEMÓRIA 02
+    </span>
+
+
+    <div class="photo-card">
+
+        <div class="photo-inner">
+
+            <img
+                src="Fotos/foto2.jpg"
+                alt="Memória 2"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="caption">
+
+        <h2>
+
+            Seu sorriso é uma
+            das coisas mais lindas. 💜
+
+        </h2>
+
+
+        <p>
+
+            Tem alguma coisa no seu sorriso
+            que simplesmente muda o ambiente.
+            É daqueles sorrisos que a gente
+            olha e automaticamente sorri também.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMÓRIA 03
+===================================================== -->
+
+<section class="memory">
+
+    <span class="memory-number">
+        MEMÓRIA 03
+    </span>
+
+
+    <div class="photo-card">
+
+        <div class="photo-inner">
+
+            <img
+                src="Fotos/foto3.jpg"
+                alt="Memória 3"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="caption">
+
+        <h2>
+
+            Seu cabelo combina
+            perfeitamente com você. ✨
+
+        </h2>
+
+
+        <p>
+
+            O cabelo, o rosto, o olhar...
+            tudo parece combinar de um jeito
+            que deixa você ainda mais linda.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMÓRIA 04
+===================================================== -->
+
+<section class="memory">
+
+    <span class="memory-number">
+        MEMÓRIA 04
+    </span>
+
+
+    <div class="photo-card">
+
+        <div class="photo-inner">
+
+            <img
+                src="Fotos/foto4.jpg"
+                alt="Memória 4"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="caption">
+
+        <h2>
+
+            Você tem uma beleza
+            que chama atenção. 💙
+
+        </h2>
+
+
+        <p>
+
+            Não é apenas uma coisa.
+            É o conjunto do seu olhar,
+            do seu sorriso, do seu cabelo
+            e desse seu jeito único.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMÓRIA 05
+===================================================== -->
+
+<section class="memory">
+
+    <span class="memory-number">
+        MEMÓRIA 05
+    </span>
+
+
+    <div class="photo-card">
+
+        <div class="photo-inner">
+
+            <img
+                src="Fotos/foto5.jpg"
+                alt="Memória 5"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="caption">
+
+        <h2>
+
+            Seu olhar consegue
+            ser inesquecível. ❤️
+
+        </h2>
+
+
+        <p>
+
+            Existem olhares bonitos,
+            e existe o seu.
+            Um olhar que consegue transmitir
+            muito sem precisar dizer nada.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMÓRIA 06
+===================================================== -->
+
+<section class="memory">
+
+    <span class="memory-number">
+        MEMÓRIA 06
+    </span>
+
+
+    <div class="photo-card">
+
+        <div class="photo-inner">
+
+            <img
+                src="Fotos/foto6.jpg"
+                alt="Memória 6"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="caption">
+
+        <h2>
+
+            Que sorriso
+            maravilhoso. 🥰
+
+        </h2>
+
+
+        <p>
+
+            Seu sorriso tem aquele tipo
+            de beleza que não precisa de filtro,
+            porque sozinho já consegue
+            deixar tudo mais bonito.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMÓRIA 07
+===================================================== -->
+
+<section class="memory">
+
+    <span class="memory-number">
+        MEMÓRIA 07
+    </span>
+
+
+    <div class="photo-card">
+
+        <div class="photo-inner">
+
+            <img
+                src="Fotos/foto7.jpg"
+                alt="Memória 7"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="caption">
+
+        <h2>
+
+            Seu cabelo é
+            simplesmente perfeito. 💜
+
+        </h2>
+
+
+        <p>
+
+            Ele combina com seu rosto,
+            com seu estilo e principalmente
+            com essa beleza que é tão sua.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMÓRIA 08
+===================================================== -->
+
+<section class="memory">
+
+    <span class="memory-number">
+        MEMÓRIA 08
+    </span>
+
+
+    <div class="photo-card">
+
+        <div class="photo-inner">
+
+            <img
+                src="Fotos/foto8.jpg"
+                alt="Memória 8"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="caption">
+
+        <h2>
+
+            Até de longe
+            você consegue ser linda. ✨
+
+        </h2>
+
+
+        <p>
+
+            Seu jeito, seu sorriso,
+            seus cabelos e sua presença
+            fazem você se destacar
+            naturalmente.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMÓRIA 09
+===================================================== -->
+
+<section class="memory">
+
+    <span class="memory-number">
+        MEMÓRIA 09
+    </span>
+
+
+    <div class="photo-card">
+
+        <div class="photo-inner">
+
+            <img
+                src="Fotos/foto9.jpg"
+                alt="Memória 9"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="caption">
+
+        <h2>
+
+            Uma beleza que
+            fica na memória. 💕
+
+
+        </h2>
+
+
+        <p>
+
+            Seu rosto, seu olhar e principalmente
+            esse sorriso fazem qualquer fotografia
+            ficar ainda mais bonita.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMÓRIA 10
+===================================================== -->
+
+<section class="memory">
+
+    <span class="memory-number">
+        MEMÓRIA 10
+    </span>
+
+
+    <div class="photo-card">
+
+        <div class="photo-inner">
+
+            <img
+                src="Fotos/foto10.jpg"
+                alt="Memória 10"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="caption">
+
+        <h2>
+
+            Seu rosto é
+            simplesmente lindo. ❤️
+
+        </h2>
+
+
+        <p>
+
+            Cada detalhe combina perfeitamente:
+            seus olhos, seu sorriso,
+            seu cabelo e esse jeito
+            tão bonito de ser.
+
+        </p>
+
+
+        <div class="divider"></div>
+
+    </div>
+
+</section>
