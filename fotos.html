@@ -1,1 +1,643 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+>
+
+<meta name="theme-color" content="#050505">
+
+<title>Memórias da Renata ❤️</title>
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    background:#050505;
+    scroll-behavior:smooth;
+}
+
+body{
+
+    width:100%;
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    background:#050505;
+
+    color:#fff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =====================================================
+   FUNDO PRINCIPAL
+===================================================== */
+
+#background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(123,46,255,.20),
+            transparent 40%
+        ),
+
+        radial-gradient(
+            circle at 10% 85%,
+            rgba(45,140,255,.15),
+            transparent 35%
+        ),
+
+        #050505;
+}
+
+
+/* =====================================================
+   LUZES
+===================================================== */
+
+.light{
+
+    position:absolute;
+
+    width:240px;
+    height:240px;
+
+    border-radius:50%;
+
+    filter:blur(80px);
+
+    opacity:.25;
+
+    animation:
+        floatingLight 8s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+.light-purple{
+
+    background:#7B2EFF;
+
+    top:-100px;
+    left:-100px;
+}
+
+
+.light-blue{
+
+    background:#2D8CFF;
+
+    right:-110px;
+    bottom:5%;
+
+    animation-delay:-3s;
+}
+
+
+@keyframes floatingLight{
+
+    from{
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+    }
+
+    to{
+
+        transform:
+            translate(25px,-20px)
+            scale(1.08);
+
+    }
+
+}
+
+
+/* =====================================================
+   PARTÍCULAS
+===================================================== */
+
+#particles{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+}
+
+
+/* =====================================================
+   CAMADA DOS ELOGIOS
+===================================================== */
+
+#falling{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1;
+
+    overflow:hidden;
+
+    pointer-events:none;
+}
+
+
+.fall{
+
+    position:absolute;
+
+    top:-60px;
+
+    white-space:nowrap;
+
+    color:
+        rgba(255,255,255,.30);
+
+    font-weight:bold;
+
+    text-shadow:
+
+        0 0 8px
+        rgba(123,46,255,.8);
+
+    animation:
+        falling
+        linear
+        forwards;
+}
+
+
+@keyframes falling{
+
+    0%{
+
+        transform:
+            translateY(-60px)
+            rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:1;
+
+    }
+
+    85%{
+
+        opacity:.65;
+
+    }
+
+    100%{
+
+        transform:
+            translate(
+                var(--move),
+                110vh
+            )
+            rotate(var(--rotate));
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =====================================================
+   CONTEÚDO
+===================================================== */
+
+main{
+
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+}
+
+
+/* =====================================================
+   INTRODUÇÃO
+===================================================== */
+
+.intro{
+
+    min-height:100vh;
+
+    padding:
+        40px
+        22px
+        70px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+
+.intro-heart{
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(123,46,255,.9)
+        );
+
+    animation:
+        heartPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes heartPulse{
+
+    0%,100%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.12);
+
+    }
+
+}
+
+
+.intro h1{
+
+    max-width:340px;
+
+    font-size:30px;
+
+    line-height:1.15;
+
+    margin-bottom:18px;
+
+    text-shadow:
+
+        0 0 12px
+        rgba(123,46,255,.9),
+
+        0 0 30px
+        rgba(45,140,255,.3);
+}
+
+
+.intro p{
+
+    max-width:320px;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+    color:
+        rgba(255,255,255,.68);
+}
+
+
+/* =====================================================
+   INDICADOR DE ROLAGEM
+===================================================== */
+
+.scroll-indicator{
+
+    margin-top:40px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size:12px;
+}
+
+
+.scroll-arrow{
+
+    font-size:25px;
+
+    animation:
+        arrowMove
+        1.5s
+        infinite;
+}
+
+
+@keyframes arrowMove{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        transform:translateY(8px);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* =====================================================
+   SEÇÃO DE MEMÓRIA
+===================================================== */
+
+.memory{
+
+    min-height:100vh;
+
+    padding:
+        70px
+        18px
+        100px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+}
+
+
+/* =====================================================
+   IDENTIFICAÇÃO
+===================================================== */
+
+.memory-number{
+
+    margin-bottom:15px;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    color:
+        rgba(255,255,255,.45);
+}
+
+
+/* =====================================================
+   CARTÃO DA FOTO
+===================================================== */
+
+.photo-card{
+
+    position:relative;
+
+    width:min(88vw,360px);
+
+    height:min(110vw,440px);
+
+    padding:7px;
+
+    border-radius:26px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #7B2EFF,
+            #2D8CFF,
+            #7B2EFF
+        );
+
+    box-shadow:
+
+        0 20px 60px
+        rgba(0,0,0,.7),
+
+        0 0 35px
+        rgba(123,46,255,.28);
+
+    transform:
+        translateY(35px)
+        scale(.94);
+
+    opacity:0;
+
+    transition:
+
+        opacity .8s ease,
+
+        transform .8s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+.memory.visible .photo-card{
+
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =====================================================
+   ÁREA INTERNA DA FOTO
+===================================================== */
+
+.photo-inner{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#080808;
+}
+
+
+.photo-inner img{
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    background:#080808;
+
+    transition:
+        transform 1.2s ease;
+}
+
+
+.memory.visible
+.photo-inner img{
+
+    transform:scale(1.02);
+}
+
+
+/* =====================================================
+   LEGENDA
+===================================================== */
+
+.caption{
+
+    width:min(88vw,350px);
+
+    margin-top:28px;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:
+
+        opacity .8s ease .25s,
+
+        transform .8s ease .25s;
+}
+
+
+.memory.visible .caption{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+.caption h2{
+
+    font-size:21px;
+
+    line-height:1.3;
+
+    margin-bottom:12px;
+
+    text-shadow:
+
+        0 0 12px
+        rgba(123,46,255,.65);
+}
+
+
+.caption p{
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    color:
+        rgba(255,255,255,.68);
+}
+
+
+/* =====================================================
+   DIVISOR NEON
+===================================================== */
+
+.divider{
+
+    width:55px;
+
+    height:2px;
+
+    margin:25px auto 0;
+
+    border-radius:10px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #7B2EFF,
+            #2D8CFF
+        );
+
+    box-shadow:
+
+        0 0 12px
+        rgba(123,46,255,.8);
+}
