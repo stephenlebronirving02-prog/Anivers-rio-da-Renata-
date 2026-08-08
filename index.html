@@ -2,319 +2,1062 @@
 <html lang="pt-BR">
 
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width,initial-scale=1">
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
 
 <title>Feliz Aniversário, Renata ❤️</title>
 
+<meta name="theme-color" content="#050505">
+
+<meta name="description"
+      content="Uma surpresa especial para Renata.">
+
 <style>
 
+/* =====================================================
+   CONFIGURAÇÕES GERAIS
+===================================================== */
+
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
 }
 
 body{
-    height:100vh;
     overflow:hidden;
     background:#050505;
-    color:white;
-    font-family:Arial,sans-serif;
+    color:#fff;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
-/* FUNDO */
 
-.bg{
+/* =====================================================
+   FUNDO PRINCIPAL
+===================================================== */
+
+.background{
+
     position:fixed;
-    inset:0;
-    background:
-    radial-gradient(circle at 20% 20%,
-    rgba(123,46,255,.35),
-    transparent 35%),
-    radial-gradient(circle at 80% 80%,
-    rgba(45,140,255,.25),
-    transparent 35%),
-    #050505;
-}
 
-/* ELEMENTOS CAINDO */
-
-#fall{
-    position:fixed;
     inset:0;
+
     overflow:hidden;
-    pointer-events:none;
+
+    background:#050505;
+
+    z-index:0;
+
 }
 
-.fall{
+
+/* Luz roxa */
+
+.background::before{
+
+    content:"";
+
     position:absolute;
-    top:-40px;
-    animation:cair linear forwards;
-    opacity:.6;
-    text-shadow:0 0 10px #7B2EFF;
+
+    width:330px;
+    height:330px;
+
+    top:-130px;
+    left:-120px;
+
+    border-radius:50%;
+
+    background:#7B2EFF;
+
+    filter:blur(120px);
+
+    opacity:.32;
+
 }
 
-@keyframes cair{
-    to{
-        transform:
-        translateY(110vh)
-        rotate(180deg);
-        opacity:0;
-    }
+
+/* Luz azul */
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:330px;
+    height:330px;
+
+    right:-130px;
+    bottom:-130px;
+
+    border-radius:50%;
+
+    background:#2D8CFF;
+
+    filter:blur(120px);
+
+    opacity:.27;
+
 }
 
-/* CONTEÚDO */
 
-.main{
-    position:relative;
+/* =====================================================
+   LUZES EXTRAS
+===================================================== */
+
+.light{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(80px);
+
+    opacity:.16;
+
+}
+
+.light-purple{
+
+    width:180px;
+    height:180px;
+
+    left:10%;
+    bottom:20%;
+
+    background:#7B2EFF;
+
+}
+
+.light-blue{
+
+    width:200px;
+    height:200px;
+
+    right:5%;
+    top:20%;
+
+    background:#2D8CFF;
+
+}
+
+
+/* =====================================================
+   CAMADA DOS ELEMENTOS CAINDO
+===================================================== */
+
+#falling{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
     z-index:2;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+
 }
 
-/* CELULAR */
+
+/* Elemento */
+
+.falling-item{
+
+    position:absolute;
+
+    top:-60px;
+
+    white-space:nowrap;
+
+    color:rgba(255,255,255,.55);
+
+    text-shadow:
+        0 0 8px rgba(123,46,255,.8);
+
+    animation:
+        falling linear forwards;
+
+}
+
+
+/* Movimento */
+
+@keyframes falling{
+
+    0%{
+
+        transform:
+            translateY(-60px)
+            rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:.7;
+
+    }
+
+    85%{
+
+        opacity:.55;
+
+    }
+
+    100%{
+
+        transform:
+            translate(
+                var(--side),
+                110vh
+            )
+            rotate(var(--rotation));
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =====================================================
+   CONTEÚDO CENTRAL
+===================================================== */
+
+.loading-content{
+
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.loading-title{
+
+    margin-bottom:20px;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    letter-spacing:.3px;
+
+    animation:
+        breathing 2.5s ease-in-out infinite;
+
+    text-shadow:
+        0 0 10px rgba(123,46,255,.8),
+        0 0 25px rgba(123,46,255,.3);
+
+}
+
+
+/* Respiração */
+
+@keyframes breathing{
+
+    0%,
+    100%{
+
+        opacity:.8;
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:scale(1.025);
+
+    }
+
+}
+
+
+/* =====================================================
+   SUBTÍTULO
+===================================================== */
+
+.loading-subtitle{
+
+    max-width:300px;
+
+    margin-bottom:20px;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    color:rgba(255,255,255,.5);
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
 
 .phone{
-    width:210px;
-    height:390px;
+
+    position:relative;
+
+    width:215px;
+
+    height:405px;
+
     padding:7px;
-    border-radius:30px;
+
+    border-radius:34px;
+
     background:
-    linear-gradient(135deg,
-    #222,#777,#222);
+        linear-gradient(
+            135deg,
+            #151515,
+            #777,
+            #222,
+            #111
+        );
+
     box-shadow:
-    0 0 35px rgba(123,46,255,.5),
-    0 20px 50px #000;
+
+        0 20px 60px
+        rgba(0,0,0,.8),
+
+        0 0 30px
+        rgba(123,46,255,.35),
+
+        0 0 70px
+        rgba(45,140,255,.12);
+
 }
 
-.screen{
+
+/* =====================================================
+   BORDA INTERNA
+===================================================== */
+
+.phone-border{
+
     width:100%;
     height:100%;
-    overflow:hidden;
-    border-radius:24px;
-    background:#000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
 
-.screen img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-}
+    padding:4px;
 
-/* TEXTO */
+    border-radius:29px;
 
-.title{
-    margin-bottom:18px;
-    font-size:20px;
-    text-align:center;
-    animation:brilho 2s infinite;
-}
-
-@keyframes brilho{
-    50%{
-        text-shadow:0 0 15px #7B2EFF;
-    }
-}
-
-/* BARRA */
-
-.loading{
-    width:260px;
-    margin-top:22px;
-}
-
-.bar{
-    height:8px;
-    border-radius:20px;
-    background:#222;
-    overflow:hidden;
-}
-
-.fill{
-    width:0;
-    height:100%;
-    background:
-    linear-gradient(90deg,
-    #7B2EFF,#2D8CFF);
-    box-shadow:0 0 15px #7B2EFF;
-}
-
-.percent{
-    display:block;
-    text-align:center;
-    margin-top:8px;
-    font-size:12px;
-    color:#aaa;
-}
-
-/* TRANSIÇÃO */
-
-.fade{
-    position:fixed;
-    inset:0;
     background:#050505;
-    z-index:20;
-    opacity:0;
-    pointer-events:none;
-    transition:opacity 1s;
+
 }
 
-.fade.show{
+
+/* =====================================================
+   TELA DO CELULAR
+===================================================== */
+
+.phone-screen{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    background:#000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+/* =====================================================
+   FOTO
+===================================================== */
+
+#loading-photo{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    display:block;
+
     opacity:1;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+
+}
+
+
+/* Pequeno efeito de entrada */
+
+.photo-change{
+
+    opacity:0 !important;
+
+    transform:scale(1.04);
+
+}
+
+
+/* =====================================================
+   REFLEXO DO CELULAR
+===================================================== */
+
+.phone-screen::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.08),
+            transparent 30%,
+            transparent 70%,
+            rgba(255,255,255,.03)
+        );
+
+}
+
+
+/* =====================================================
+   NOTCH
+===================================================== */
+
+.notch{
+
+    position:absolute;
+
+    top:11px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:75px;
+    height:18px;
+
+    border-radius:20px;
+
+    background:#000;
+
+    z-index:3;
+
+}
+
+
+/* =====================================================
+   BARRA DE CARREGAMENTO
+===================================================== */
+
+.loading-area{
+
+    width:280px;
+
+    max-width:90vw;
+
+    margin-top:25px;
+
+}
+
+
+/* Fundo da barra */
+
+.loading-bar{
+
+    width:100%;
+
+    height:9px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    box-shadow:
+        inset 0 0 8px rgba(0,0,0,.6);
+
+}
+
+
+/* Preenchimento */
+
+#loading-fill{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7B2EFF,
+            #8F4BFF,
+            #2D8CFF
+        );
+
+    box-shadow:
+        0 0 10px #7B2EFF,
+        0 0 20px rgba(45,140,255,.5);
+
+}
+
+
+/* Porcentagem */
+
+#loading-percent{
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:11px;
+
+    color:rgba(255,255,255,.5);
+
+}
+
+
+/* =====================================================
+   TRANSIÇÃO FINAL
+===================================================== */
+
+#transition{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:50;
+
+    background:#050505;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+        opacity 1s ease;
+
+}
+
+
+#transition.active{
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+   CELULARES MENORES
+===================================================== */
+
+@media(max-width:380px){
+
+    .loading-title{
+
+        font-size:19px;
+
+    }
+
+    .loading-subtitle{
+
+        font-size:11px;
+
+    }
+
+    .phone{
+
+        width:190px;
+
+        height:360px;
+
+    }
+
+    .loading-area{
+
+        width:245px;
+
+    }
+
+}
+
+
+/* =====================================================
+   CELULARES MUITO PEQUENOS
+===================================================== */
+
+@media(max-height:650px){
+
+    .loading-title{
+
+        margin-bottom:10px;
+
+    }
+
+    .loading-subtitle{
+
+        margin-bottom:10px;
+
+    }
+
+    .phone{
+
+        width:170px;
+
+        height:320px;
+
+    }
+
+    .loading-area{
+
+        margin-top:15px;
+
+    }
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<div class="bg"></div>
 
-<div id="fall"></div>
+<!-- =====================================================
+     FUNDO
+===================================================== -->
 
-<div class="fade" id="fade"></div>
+<div class="background">
 
-<main class="main">
+    <div class="light light-purple"></div>
 
-    <h1 class="title">
+    <div class="light light-blue"></div>
+
+</div>
+
+
+<!-- =====================================================
+     ELOGIOS E CORAÇÕES
+===================================================== -->
+
+<div id="falling"></div>
+
+
+<!-- =====================================================
+     TRANSIÇÃO
+===================================================== -->
+
+<div id="transition"></div>
+
+
+<!-- =====================================================
+     CONTEÚDO PRINCIPAL
+===================================================== -->
+
+<main class="loading-content">
+
+
+    <!-- TÍTULO -->
+
+    <h1 class="loading-title">
+
         Carregando memórias... ❤️
+
     </h1>
+
+
+    <!-- SUBTÍTULO -->
+
+    <p class="loading-subtitle">
+
+        Reunindo momentos especiais
+        antes de começar a surpresa...
+
+    </p>
+
+
+    <!-- =================================================
+         CELULAR
+    ================================================= -->
 
     <div class="phone">
 
-        <div class="screen">
+        <div class="phone-border">
 
-            <img
-            id="photo"
-            src="Fotos/foto1.jpg"
-            alt="Memória">
+            <div class="phone-screen">
 
-        </div>
 
-    </div>
+                <!-- NOTCH -->
 
-    <div class="loading">
+                <div class="notch"></div>
 
-        <div class="bar">
 
-            <div
-            class="fill"
-            id="fill">
+                <!-- FOTO -->
+
+                <img
+                    id="loading-photo"
+                    src="Fotos/foto1.jpg"
+                    alt="Memória especial">
+
+
             </div>
 
         </div>
 
-        <span
-        class="percent"
-        id="percent">
-        0%
+    </div>
+
+
+    <!-- =================================================
+         CARREGAMENTO
+    ================================================= -->
+
+    <div class="loading-area">
+
+
+        <div class="loading-bar">
+
+            <div
+                id="loading-fill">
+            </div>
+
+        </div>
+
+
+        <span id="loading-percent">
+
+            0%
+
         </span>
+
 
     </div>
 
+
 </main>
+
 
 <script>
 
-/* FOTOS */
+/* =====================================================
+   CONFIGURAÇÕES
+===================================================== */
+
+
+/* Tempo total */
+
+const TOTAL_TIME = 10000;
+
+
+/* Fotos */
+
+const TOTAL_PHOTOS = 10;
+
+
+/* =====================================================
+   ELEMENTOS
+===================================================== */
 
 const photo =
-document.getElementById("photo");
-
-let numero = 1;
-
-/* TROCA DAS FOTOS */
-
-const troca =
-setInterval(function(){
-
-    numero++;
-
-    if(numero <= 10){
-
-        photo.src =
-        "Fotos/foto" +
-        numero +
-        ".jpg";
-
-    }
-
-},1000);
-
-
-/* BARRA */
-
-const fill =
-document.getElementById("fill");
-
-const percent =
-document.getElementById("percent");
-
-let inicio =
-Date.now();
-
-function carregar(){
-
-    let tempo =
-    Date.now()-inicio;
-
-    let valor =
-    Math.min(
-        tempo/10000*100,
-        100
+    document.getElementById(
+        "loading-photo"
     );
 
-    fill.style.width =
-    valor+"%";
+const fill =
+    document.getElementById(
+        "loading-fill"
+    );
 
-    percent.textContent =
-    Math.floor(valor)+"%";
+const percent =
+    document.getElementById(
+        "loading-percent"
+    );
 
-    if(valor < 100){
+const transition =
+    document.getElementById(
+        "transition"
+    );
 
-        requestAnimationFrame(carregar);
+const falling =
+    document.getElementById(
+        "falling"
+    );
 
-    }else{
 
-        clearInterval(troca);
+/* =====================================================
+   LISTA DE FOTOS
+===================================================== */
 
-        /* TRANSIÇÃO SIMPLES */
+const photos = [];
 
-        document
-        .getElementById("fade")
-        .classList
-        .add("show");
+for(
+    let i = 1;
+    i <= TOTAL_PHOTOS;
+    i++
+){
 
-        setTimeout(function(){
-
-            window.location.href =
-            "fotos.html";
-
-        },1000);
-
-    }
+    photos.push(
+        "Fotos/foto" +
+        i +
+        ".jpg"
+    );
 
 }
 
-carregar();
+
+/* =====================================================
+   PRÉ-CARREGAR FOTOS
+===================================================== */
+
+photos.forEach(
+    src => {
+
+        const image =
+            new Image();
+
+        image.src =
+            src;
+
+    }
+);
 
 
-/* ELEMENTOS CAINDO */
+/* =====================================================
+   TROCA DAS FOTOS
+===================================================== */
 
-const fall =
-document.getElementById("fall");
+let currentPhoto = 0;
 
-const palavras = [
+
+/*
+Cada foto fica 1 segundo.
+*/
+
+const photoTimer =
+    setInterval(
+        function(){
+
+            currentPhoto++;
+
+            if(
+                currentPhoto <
+                TOTAL_PHOTOS
+            ){
+
+                photo.classList.add(
+                    "photo-change"
+                );
+
+
+                setTimeout(
+                    function(){
+
+                        photo.src =
+                            photos[
+                                currentPhoto
+                            ];
+
+                        photo.classList.remove(
+                            "photo-change"
+                        );
+
+                    },
+                    150
+                );
+
+            }
+
+        },
+        1000
+    );
+
+
+/* =====================================================
+   BARRA DE PROGRESSO
+===================================================== */
+
+const startTime =
+    performance.now();
+
+
+function updateLoading(
+    currentTime
+){
+
+    const elapsed =
+        currentTime -
+        startTime;
+
+
+    let progress =
+        elapsed /
+        TOTAL_TIME;
+
+
+    if(progress > 1){
+
+        progress = 1;
+
+    }
+
+
+    const percentage =
+        Math.floor(
+            progress * 100
+        );
+
+
+    fill.style.width =
+        percentage + "%";
+
+
+    percent.textContent =
+        percentage + "%";
+
+
+    /* Ainda carregando */
+
+    if(progress < 1){
+
+        requestAnimationFrame(
+            updateLoading
+        );
+
+        return;
+
+    }
+
+
+    /* =================================================
+       FINALIZAÇÃO
+    ================================================= */
+
+
+    clearInterval(
+        photoTimer
+    );
+
+
+    fill.style.width =
+        "100%";
+
+    percent.textContent =
+        "100%";
+
+
+    /*
+    Pequena pausa para
+    mostrar 100%.
+    */
+
+    setTimeout(
+        function(){
+
+            transition.classList.add(
+                "active"
+            );
+
+
+            /*
+            Depois do fade,
+            abre a próxima página.
+            */
+
+            setTimeout(
+                function(){
+
+                    window.location.href =
+                        "fotos.html";
+
+                },
+                1000
+            );
+
+        },
+        250
+    );
+
+}
+
+
+requestAnimationFrame(
+    updateLoading
+);
+
+
+/* =====================================================
+   ELEMENTOS QUE CAEM
+===================================================== */
+
+const fallingWords = [
 
     "meu bem",
     "amor",
@@ -325,50 +1068,166 @@ const palavras = [
     "mozão",
     "amorzin",
     "meu amor",
-    "mor",
-    "❤️",
-    "💜",
-    "💙",
-    "🤍"
+    "mor"
 
 ];
 
-function criar(){
+
+const fallingEmojis = [
+
+    "❤️",
+    "💜",
+    "💙",
+    "🤍",
+    "💕",
+    "✨"
+
+];
+
+
+/* =====================================================
+   CRIAR ELEMENTO
+===================================================== */
+
+function createFallingItem(){
 
     const item =
-    document.createElement("span");
+        document.createElement(
+            "span"
+        );
+
 
     item.className =
-    "fall";
+        "falling-item";
 
-    item.textContent =
-    palavras[
-    Math.floor(
-    Math.random()*palavras.length
-    )];
+
+    /*
+    Metade das vezes será
+    um emoji.
+    */
+
+    if(
+        Math.random() < .5
+    ){
+
+        item.textContent =
+            fallingEmojis[
+                Math.floor(
+                    Math.random() *
+                    fallingEmojis.length
+                )
+            ];
+
+    }else{
+
+        item.textContent =
+            fallingWords[
+                Math.floor(
+                    Math.random() *
+                    fallingWords.length
+                )
+            ];
+
+    }
+
+
+    /* Posição */
 
     item.style.left =
-    Math.random()*100+"%";
+        Math.random() * 100 +
+        "%";
+
+
+    /* Tamanho */
 
     item.style.fontSize =
-    10+Math.random()*12+"px";
+        (
+            10 +
+            Math.random() * 9
+        ) + "px";
+
+
+    /* Velocidade */
 
     item.style.animationDuration =
-    4+Math.random()*4+"s";
+        (
+            4 +
+            Math.random() * 5
+        ) + "s";
 
-    fall.appendChild(item);
 
-    setTimeout(function(){
+    /* Movimento lateral */
 
-        item.remove();
+    item.style.setProperty(
+        "--side",
+        (
+            -60 +
+            Math.random() * 120
+        ) + "px"
+    );
 
-    },9000);
+
+    /* Rotação */
+
+    item.style.setProperty(
+        "--rotation",
+        (
+            -45 +
+            Math.random() * 90
+        ) + "deg"
+    );
+
+
+    falling.appendChild(
+        item
+    );
+
+
+    /*
+    Remove depois que
+    termina a animação.
+    */
+
+    setTimeout(
+        function(){
+
+            item.remove();
+
+        },
+        10000
+    );
 
 }
 
-setInterval(criar,300);
+
+/* =====================================================
+   GERADOR CONTÍNUO
+===================================================== */
+
+const fallingInterval =
+    setInterval(
+        createFallingItem,
+        300
+    );
+
+
+/* =====================================================
+   PARAR A CHUVA NO FINAL
+===================================================== */
+
+setTimeout(
+    function(){
+
+        clearInterval(
+            fallingInterval
+        );
+
+    },
+    TOTAL_TIME
+);
 
 </script>
 
 </body>
-</html>
+
+                                      </html>
