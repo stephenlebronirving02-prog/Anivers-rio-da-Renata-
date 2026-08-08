@@ -3,574 +3,318 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#050505">
-<title>Uma surpresa para Renata ❤️</title>
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>Feliz Aniversário, Renata ❤️</title>
 
 <style>
 
-/* ===== RESET ===== */
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-}
-
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#050505;
-    font-family:Arial,Helvetica,sans-serif;
-    color:white;
 }
 
 body{
-    -webkit-tap-highlight-color:transparent;
+    height:100vh;
+    overflow:hidden;
+    background:#050505;
+    color:white;
+    font-family:Arial,sans-serif;
 }
 
+/* FUNDO */
 
-/* ===== FUNDO ===== */
-
-#page{
+.bg{
     position:fixed;
     inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
     background:
-        radial-gradient(circle at 50% 40%,rgba(123,46,255,.20),transparent 38%),
-        radial-gradient(circle at 20% 90%,rgba(45,140,255,.14),transparent 35%),
-        #050505;
+    radial-gradient(circle at 20% 20%,
+    rgba(123,46,255,.35),
+    transparent 35%),
+    radial-gradient(circle at 80% 80%,
+    rgba(45,140,255,.25),
+    transparent 35%),
+    #050505;
 }
 
+/* ELEMENTOS CAINDO */
 
-/* ===== LUZES ===== */
-
-.light{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(70px);
-    opacity:.35;
-    pointer-events:none;
-    animation:float 7s ease-in-out infinite alternate;
-}
-
-.purple{
-    width:230px;
-    height:230px;
-    background:#7B2EFF;
-    top:-90px;
-    left:-80px;
-}
-
-.blue{
-    width:220px;
-    height:220px;
-    background:#2D8CFF;
-    right:-80px;
-    bottom:-70px;
-    animation-delay:-3s;
-}
-
-@keyframes float{
-    to{
-        transform:translate(20px,-15px) scale(1.08);
-    }
-}
-
-
-/* ===== PARTÍCULAS ===== */
-
-#particles{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:1;
-}
-
-
-/* ===== ELOGIOS ===== */
-
-#falling{
-    position:absolute;
+#fall{
+    position:fixed;
     inset:0;
     overflow:hidden;
     pointer-events:none;
-    z-index:2;
 }
 
 .fall{
     position:absolute;
-    top:-50px;
-    white-space:nowrap;
-    color:rgba(255,255,255,.42);
-    font-weight:bold;
-    text-shadow:0 0 10px rgba(123,46,255,.8);
-    animation:fall linear forwards;
+    top:-40px;
+    animation:cair linear forwards;
+    opacity:.6;
+    text-shadow:0 0 10px #7B2EFF;
 }
 
-@keyframes fall{
-
-    0%{
-        transform:translateY(-60px) rotate(0);
-        opacity:0;
-    }
-
-    12%{
-        opacity:1;
-    }
-
-    88%{
-        opacity:.7;
-    }
-
-    100%{
+@keyframes cair{
+    to{
         transform:
-            translate(var(--move),110vh)
-            rotate(var(--rotate));
+        translateY(110vh)
+        rotate(180deg);
         opacity:0;
     }
 }
 
+/* CONTEÚDO */
 
-/* ===== CONTEÚDO ===== */
-
-.content{
+.main{
     position:relative;
-    z-index:10;
-    width:100%;
-    height:100%;
-    padding:20px;
+    z-index:2;
+    height:100vh;
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
-    text-align:center;
+    justify-content:center;
+    padding:20px;
 }
 
-
-/* ===== TÍTULOS ===== */
-
-h1{
-    font-size:25px;
-    margin-bottom:10px;
-    text-shadow:
-        0 0 10px #7B2EFF,
-        0 0 25px rgba(45,140,255,.5);
-    animation:breath 3s infinite ease-in-out;
-}
-
-.subtitle{
-    max-width:290px;
-    margin-bottom:18px;
-    font-size:13px;
-    line-height:1.5;
-    color:rgba(255,255,255,.65);
-}
-
-@keyframes breath{
-
-    0%,100%{
-        transform:scale(1);
-        opacity:.85;
-    }
-
-    50%{
-        transform:scale(1.03);
-        opacity:1;
-    }
-}
-
-
-/* ===== CELULAR ===== */
+/* CELULAR */
 
 .phone{
-    position:relative;
-    width:min(72vw,285px);
-    height:min(65vh,520px);
-    min-height:400px;
+    width:210px;
+    height:390px;
     padding:7px;
-    border-radius:42px;
-
+    border-radius:30px;
     background:
-        linear-gradient(
-            145deg,
-            #252525,
-            #080808 45%,
-            #222
-        );
-
-    border:1px solid rgba(255,255,255,.18);
-
+    linear-gradient(135deg,
+    #222,#777,#222);
     box-shadow:
-        0 15px 50px rgba(0,0,0,.75),
-        0 0 35px rgba(123,46,255,.28),
-        0 0 60px rgba(45,140,255,.12);
-
-    overflow:hidden;
+    0 0 35px rgba(123,46,255,.5),
+    0 20px 50px #000;
 }
-
-
-/* ===== NOTCH ===== */
-
-.notch{
-    position:absolute;
-    z-index:20;
-    top:12px;
-    left:50%;
-    transform:translateX(-50%);
-    width:80px;
-    height:21px;
-    border-radius:20px;
-    background:#020202;
-}
-
-
-/* ===== TELA ===== */
 
 .screen{
-    position:relative;
     width:100%;
     height:100%;
     overflow:hidden;
-    border-radius:36px;
-    background:#020202;
-}
-
-
-/* ===== FOTO ===== */
-
-#photo{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-
-    /*
-       contain mantém a foto inteira
-       e evita cortes.
-    */
-
-    object-fit:contain;
-    object-position:center;
-
-    display:block;
-    background:#020202;
-
-    opacity:1;
-    transform:scale(.94);
-
-    transition:
-        opacity .25s ease,
-        transform .35s ease;
-}
-
-
-/* ===== INFORMAÇÕES ===== */
-
-.info{
-    width:min(88vw,330px);
-    margin-top:16px;
+    border-radius:24px;
+    background:#000;
     display:flex;
-    flex-direction:column;
     align-items:center;
+    justify-content:center;
 }
 
-.loading-text{
-    margin-bottom:9px;
-    font-size:14px;
-    font-weight:bold;
-    color:rgba(255,255,255,.9);
-    text-shadow:0 0 12px #7B2EFF;
-    animation:breathText 2s infinite;
-}
-
-@keyframes breathText{
-
-    0%,100%{
-        opacity:.6;
-    }
-
-    50%{
-        opacity:1;
-    }
-}
-
-
-/* ===== BARRA ===== */
-
-.progress{
+.screen img{
     width:100%;
-    height:9px;
-    border-radius:20px;
-    overflow:hidden;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.1);
-}
-
-#bar{
-    width:0%;
     height:100%;
+    object-fit:contain;
+}
+
+/* TEXTO */
+
+.title{
+    margin-bottom:18px;
+    font-size:20px;
+    text-align:center;
+    animation:brilho 2s infinite;
+}
+
+@keyframes brilho{
+    50%{
+        text-shadow:0 0 15px #7B2EFF;
+    }
+}
+
+/* BARRA */
+
+.loading{
+    width:260px;
+    margin-top:22px;
+}
+
+.bar{
+    height:8px;
     border-radius:20px;
-    background:linear-gradient(90deg,#7B2EFF,#2D8CFF);
-    box-shadow:
-        0 0 8px #7B2EFF,
-        0 0 18px #2D8CFF;
+    background:#222;
+    overflow:hidden;
 }
 
-#percent{
-    margin-top:7px;
-    font-size:11px;
-    color:rgba(255,255,255,.5);
+.fill{
+    width:0;
+    height:100%;
+    background:
+    linear-gradient(90deg,
+    #7B2EFF,#2D8CFF);
+    box-shadow:0 0 15px #7B2EFF;
 }
 
+.percent{
+    display:block;
+    text-align:center;
+    margin-top:8px;
+    font-size:12px;
+    color:#aaa;
+}
 
-/* ===== TRANSIÇÃO ===== */
+/* TRANSIÇÃO */
 
-#transition{
+.fade{
     position:fixed;
     inset:0;
-    z-index:100;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     background:#050505;
+    z-index:20;
     opacity:0;
-    visibility:hidden;
-    transition:opacity .8s;
+    pointer-events:none;
+    transition:opacity 1s;
 }
 
-#transition.active{
+.fade.show{
     opacity:1;
-    visibility:visible;
-}
-
-.glow{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    background:
-        radial-gradient(
-            circle,
-            white,
-            #7B2EFF 35%,
-            #2D8CFF 65%,
-            transparent 70%
-        );
-    filter:blur(5px);
-    animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-
-    0%,100%{
-        transform:scale(.7);
-        opacity:.5;
-    }
-
-    50%{
-        transform:scale(1.5);
-        opacity:1;
-    }
-}
-
-
-/* ===== CELULARES PEQUENOS ===== */
-
-@media(max-height:700px){
-
-    h1{
-        font-size:22px;
-    }
-
-    .subtitle{
-        font-size:12px;
-        margin-bottom:10px;
-    }
-
-    .phone{
-        width:210px;
-        height:390px;
-        min-height:0;
-    }
-
-    .info{
-        margin-top:10px;
-    }
-}
-
-@media(max-height:580px){
-
-    h1,
-    .subtitle{
-        display:none;
-    }
-
-    .phone{
-        width:185px;
-        height:350px;
-    }
 }
 
 </style>
 </head>
 
-
 <body>
 
-<!-- ===== FUNDO ===== -->
+<div class="bg"></div>
 
-<main id="page">
+<div id="fall"></div>
 
-    <div class="light purple"></div>
-    <div class="light blue"></div>
+<div class="fade" id="fade"></div>
 
-    <canvas id="particles"></canvas>
+<main class="main">
 
-    <div id="falling"></div>
+    <h1 class="title">
+        Carregando memórias... ❤️
+    </h1>
 
+    <div class="phone">
 
-    <!-- ===== CONTEÚDO CENTRAL ===== -->
+        <div class="screen">
 
-    <div class="content">
-
-        <h1>
-            Preparando uma surpresa... ❤️
-        </h1>
-
-        <p class="subtitle">
-            Reunindo algumas memórias
-            muito especiais.
-        </p>
-
-
-        <!-- ===== CELULAR ===== -->
-
-        <div class="phone">
-
-            <div class="notch"></div>
-
-            <div class="screen">
-
-                <img
-                    id="photo"
-                    src="Fotos/foto1.jpg"
-                    alt="Memória especial"
-                >
-
-            </div>
-
-        </div>
-
-
-        <!-- ===== CARREGAMENTO ===== -->
-
-        <div class="info">
-
-            <div class="loading-text">
-                Carregando memórias...
-            </div>
-
-            <div class="progress">
-
-                <div id="bar"></div>
-
-            </div>
-
-            <div id="percent">
-                0%
-            </div>
+            <img
+            id="photo"
+            src="Fotos/foto1.jpg"
+            alt="Memória">
 
         </div>
 
     </div>
 
+    <div class="loading">
+
+        <div class="bar">
+
+            <div
+            class="fill"
+            id="fill">
+            </div>
+
+        </div>
+
+        <span
+        class="percent"
+        id="percent">
+        0%
+        </span>
+
+    </div>
+
 </main>
-
-
-<!-- ===== TRANSIÇÃO ===== -->
-
-<div id="transition">
-
-    <div class="glow"></div>
-
-</div>
-
 
 <script>
 
-/* =====================================================
-   CONFIGURAÇÕES
-===================================================== */
-
-const photos = [
-
-    "Fotos/foto1.jpg",
-    "Fotos/foto2.jpg",
-    "Fotos/foto3.jpg",
-    "Fotos/foto4.jpg",
-    "Fotos/foto5.jpg",
-    "Fotos/foto6.jpg",
-    "Fotos/foto7.jpg",
-    "Fotos/foto8.jpg",
-    "Fotos/foto9.jpg",
-    "Fotos/foto10.jpg"
-
-];
-
-const totalTime = 10000;
-const photoTime = 1000;
-
-
-/* =====================================================
-   ELEMENTOS
-===================================================== */
+/* FOTOS */
 
 const photo =
-    document.getElementById("photo");
+document.getElementById("photo");
 
-const bar =
-    document.getElementById("bar");
+let numero = 1;
+
+/* TROCA DAS FOTOS */
+
+const troca =
+setInterval(function(){
+
+    numero++;
+
+    if(numero <= 10){
+
+        photo.src =
+        "Fotos/foto" +
+        numero +
+        ".jpg";
+
+    }
+
+},1000);
+
+
+/* BARRA */
+
+const fill =
+document.getElementById("fill");
 
 const percent =
-    document.getElementById("percent");
+document.getElementById("percent");
 
-const falling =
-    document.getElementById("falling");
+let inicio =
+Date.now();
 
-const transition =
-    document.getElementById("transition");
+function carregar(){
 
-const canvas =
-    document.getElementById("particles");
+    let tempo =
+    Date.now()-inicio;
 
-const ctx =
-    canvas.getContext("2d");
+    let valor =
+    Math.min(
+        tempo/10000*100,
+        100
+    );
+
+    fill.style.width =
+    valor+"%";
+
+    percent.textContent =
+    Math.floor(valor)+"%";
+
+    if(valor < 100){
+
+        requestAnimationFrame(carregar);
+
+    }else{
+
+        clearInterval(troca);
+
+        /* TRANSIÇÃO SIMPLES */
+
+        document
+        .getElementById("fade")
+        .classList
+        .add("show");
+
+        setTimeout(function(){
+
+            window.location.href =
+            "fotos.html";
+
+        },1000);
+
+    }
+
+}
+
+carregar();
 
 
-/* =====================================================
-   PRÉ-CARREGAR FOTOS
-===================================================== */
+/* ELEMENTOS CAINDO */
 
-photos.forEach(src => {
+const fall =
+document.getElementById("fall");
 
-    const img = new Image();
-
-    img.src = src;
-
-});
-
-
-/* =====================================================
-   ELOGIOS E EMOJIS
-===================================================== */
-
-const words = [
+const palavras = [
 
     "meu bem",
     "amor",
@@ -582,319 +326,49 @@ const words = [
     "amorzin",
     "meu amor",
     "mor",
-    "perfeita",
-    "maravilhosa",
-    "incrível",
-    "especial",
-    "única"
-
-];
-
-const emojis = [
     "❤️",
     "💜",
     "💙",
-    "💕",
-    "✨",
-    "🥰"
+    "🤍"
+
 ];
 
-
-function createFall(){
+function criar(){
 
     const item =
-        document.createElement("span");
+    document.createElement("span");
 
-    const emoji =
-        Math.random() > .55;
+    item.className =
+    "fall";
 
-    item.className = "fall";
-
-    item.textContent = emoji
-
-        ? emojis[
-            Math.floor(
-                Math.random()*emojis.length
-            )
-        ]
-
-        : words[
-            Math.floor(
-                Math.random()*words.length
-            )
-        ];
-
+    item.textContent =
+    palavras[
+    Math.floor(
+    Math.random()*palavras.length
+    )];
 
     item.style.left =
-        Math.random()*100 + "%";
-
+    Math.random()*100+"%";
 
     item.style.fontSize =
-        (
-            emoji
-            ? 15 + Math.random()*11
-            : 12 + Math.random()*7
-        ) + "px";
-
-
-    const duration =
-        5 + Math.random()*5;
-
+    10+Math.random()*12+"px";
 
     item.style.animationDuration =
-        duration + "s";
+    4+Math.random()*4+"s";
 
+    fall.appendChild(item);
 
-    item.style.setProperty(
-        "--move",
-        (-60 + Math.random()*120) + "px"
-    );
+    setTimeout(function(){
 
+        item.remove();
 
-    item.style.setProperty(
-        "--rotate",
-        (-35 + Math.random()*70) + "deg"
-    );
-
-
-    falling.appendChild(item);
-
-
-    setTimeout(
-        () => item.remove(),
-        duration*1000 + 500
-    );
+    },9000);
 
 }
 
-
-const fallTimer =
-    setInterval(createFall,350);
-
-
-/* =====================================================
-   PARTÍCULAS
-===================================================== */
-
-let particles = [];
-
-
-function resize(){
-
-    canvas.width =
-        window.innerWidth;
-
-    canvas.height =
-        window.innerHeight;
-
-}
-
-
-function newParticle(){
-
-    particles.push({
-
-        x:
-            Math.random()*canvas.width,
-
-        y:
-            Math.random()*canvas.height,
-
-        size:
-            .5 + Math.random()*1.5,
-
-        speed:
-            .08 + Math.random()*.25,
-
-        opacity:
-            .15 + Math.random()*.5
-
-    });
-
-}
-
-
-function animateParticles(){
-
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-
-    particles.forEach(p => {
-
-        p.y -= p.speed;
-
-        if(p.y < -10)
-            p.y =
-                canvas.height + 10;
-
-
-        ctx.beginPath();
-
-        ctx.arc(
-            p.x,
-            p.y,
-            p.size,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fillStyle =
-            `rgba(255,255,255,${p.opacity})`;
-
-        ctx.fill();
-
-    });
-
-
-    requestAnimationFrame(
-        animateParticles
-    );
-
-}
-
-
-resize();
-
-
-for(let i=0;i<45;i++)
-    newParticle();
-
-
-animateParticles();
-
-
-window.addEventListener(
-    "resize",
-    resize
-);
-
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-const start =
-    performance.now();
-
-
-let current = 0;
-
-
-function loading(now){
-
-    const elapsed =
-        now - start;
-
-
-    const progress =
-        Math.min(
-            elapsed/totalTime,
-            1
-        );
-
-
-    const value =
-        Math.floor(
-            progress*100
-        );
-
-
-    bar.style.width =
-        value + "%";
-
-
-    percent.textContent =
-        value + "%";
-
-
-    /* ===== TROCA DAS FOTOS ===== */
-
-    const next =
-        Math.min(
-            Math.floor(
-                elapsed/photoTime
-            ),
-            photos.length-1
-        );
-
-
-    if(next !== current){
-
-        current = next;
-
-        photo.style.opacity = "0";
-        photo.style.transform = "scale(.90)";
-
-
-        setTimeout(() => {
-
-            photo.src =
-                photos[current];
-
-            photo.style.opacity = "1";
-            photo.style.transform = "scale(.94)";
-
-        },120);
-
-    }
-
-
-    /* ===== FINAL ===== */
-
-    if(progress >= 1){
-
-        finish();
-
-        return;
-
-    }
-
-
-    requestAnimationFrame(
-        loading
-    );
-
-}
-
-
-/* =====================================================
-   FINALIZAÇÃO
-===================================================== */
-
-function finish(){
-
-    bar.style.width = "100%";
-    percent.textContent = "100%";
-
-    clearInterval(fallTimer);
-
-
-    setTimeout(() => {
-
-        transition.classList.add("active");
-
-        /*
-           FUTURAMENTE:
-
-           window.location.href =
-           "fotos.html";
-        */
-
-    },700);
-
-}
-
-
-requestAnimationFrame(
-    loading
-);
+setInterval(criar,300);
 
 </script>
 
 </body>
-  </html>
+</html>
