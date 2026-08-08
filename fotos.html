@@ -6,20 +6,15 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width,
-initial-scale=1.0,
-maximum-scale=1.0,
-user-scalable=no">
-
-<meta name="theme-color" content="#050505">
+content="width=device-width, initial-scale=1.0">
 
 <title>Memórias da Renata ❤️</title>
 
 <style>
 
-/* ==============================
+/* =========================
    RESET
-============================== */
+========================= */
 
 *{
     margin:0;
@@ -28,229 +23,201 @@ user-scalable=no">
 }
 
 html{
-    background:#050505;
     scroll-behavior:smooth;
+    background:#050505;
 }
 
 body{
-    min-height:100vh;
-    overflow-x:hidden;
     background:#050505;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
+    color:white;
+    font-family:Arial,sans-serif;
+    overflow-x:hidden;
 }
 
 
-/* ==============================
+/* =========================
    FUNDO
-============================== */
+========================= */
 
-#background{
+body::before{
+
+    content:"";
+
     position:fixed;
-    inset:0;
-    z-index:0;
-    overflow:hidden;
-    pointer-events:none;
 
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(123,46,255,.20),
-            transparent 42%
-        ),
-        radial-gradient(
-            circle at 100% 80%,
-            rgba(45,140,255,.16),
-            transparent 38%
-        ),
-        #050505;
-}
+    width:300px;
+    height:300px;
 
-
-/* ==============================
-   LUZES
-============================== */
-
-.light{
-    position:absolute;
-
-    width:260px;
-    height:260px;
+    top:-120px;
+    left:-100px;
 
     border-radius:50%;
 
-    filter:blur(90px);
+    background:#7B2EFF;
+
+    filter:blur(110px);
+
+    opacity:.25;
+
+    z-index:-3;
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:300px;
+    height:300px;
+
+    right:-120px;
+    bottom:-100px;
+
+    border-radius:50%;
+
+    background:#2D8CFF;
+
+    filter:blur(110px);
 
     opacity:.22;
 
-    animation:
-        lightMove
-        9s
-        ease-in-out
-        infinite
-        alternate;
-}
-
-.light-purple{
-    background:#7B2EFF;
-    top:-120px;
-    left:-100px;
-}
-
-.light-blue{
-    background:#2D8CFF;
-    right:-120px;
-    bottom:5%;
-    animation-delay:-4s;
-}
-
-@keyframes lightMove{
-
-    from{
-        transform:translate(0,0) scale(1);
-    }
-
-    to{
-        transform:translate(25px,-20px) scale(1.08);
-    }
+    z-index:-3;
 }
 
 
-/* ==============================
+/* =========================
    PARTÍCULAS
-============================== */
+========================= */
 
 #particles{
-    position:absolute;
+
+    position:fixed;
+
     inset:0;
+
     width:100%;
     height:100%;
+
+    pointer-events:none;
+
+    z-index:0;
 }
 
 
-/* ==============================
-   ELOGIOS E CORAÇÕES
-============================== */
+/* =========================
+   ELOGIOS / CORAÇÕES
+========================= */
 
 #falling{
+
     position:fixed;
+
     inset:0;
-    z-index:2;
+
     overflow:hidden;
+
     pointer-events:none;
+
+    z-index:1;
 }
 
 .fall{
+
     position:absolute;
-    top:-70px;
+
+    top:-60px;
 
     white-space:nowrap;
 
-    font-weight:bold;
-
-    color:rgba(255,255,255,.30);
+    color:rgba(255,255,255,.45);
 
     text-shadow:
-        0 0 10px
-        rgba(123,46,255,.75);
-
-    will-change:
-        transform,
-        opacity;
+        0 0 10px #7B2EFF;
 
     animation:
-        fallDown
-        linear
-        forwards;
+        fall linear forwards;
+
 }
 
-@keyframes fallDown{
+@keyframes fall{
 
-    0%{
+    from{
+
         transform:
-            translate3d(0,-70px,0)
+            translateY(-60px)
             rotate(0deg);
 
         opacity:0;
+
     }
 
     10%{
-        opacity:.9;
+        opacity:.8;
     }
 
-    85%{
-        opacity:.55;
+    90%{
+        opacity:.5;
     }
 
-    100%{
+    to{
+
         transform:
-            translate3d(
-                var(--move),
-                110vh,
-                0
+            translate(
+                var(--x),
+                110vh
             )
-            rotate(var(--rotate));
+            rotate(var(--r));
 
         opacity:0;
+
     }
+
 }
 
 
-/* ==============================
-   CONTEÚDO
-============================== */
-
-main{
-    position:relative;
-    z-index:5;
-    width:100%;
-}
-
-
-/* ==============================
-   INTRODUÇÃO
-============================== */
+/* =========================
+   ABERTURA
+========================= */
 
 .intro{
 
     min-height:100vh;
 
-    padding:
-        35px
-        22px
-        70px;
+    padding:30px 20px;
 
     display:flex;
 
     flex-direction:column;
 
-    justify-content:center;
-
     align-items:center;
 
+    justify-content:center;
+
     text-align:center;
+
+    position:relative;
+
+    z-index:3;
+
 }
 
 .intro-heart{
 
-    font-size:58px;
+    font-size:60px;
 
     margin-bottom:20px;
 
     filter:
         drop-shadow(
-            0 0 22px
-            rgba(123,46,255,.95)
+            0 0 25px #7B2EFF
         );
 
-    animation:
-        heartPulse
-        2s
-        ease-in-out
-        infinite;
+    animation:pulse 2s infinite;
+
 }
 
-@keyframes heartPulse{
+@keyframes pulse{
 
     0%,100%{
         transform:scale(1);
@@ -259,6 +226,7 @@ main{
     50%{
         transform:scale(1.12);
     }
+
 }
 
 .intro h1{
@@ -267,13 +235,13 @@ main{
 
     font-size:30px;
 
-    line-height:1.18;
+    line-height:1.2;
 
     margin-bottom:18px;
 
     text-shadow:
-        0 0 15px
-        rgba(123,46,255,.9);
+        0 0 15px #7B2EFF;
+
 }
 
 .intro p{
@@ -284,69 +252,42 @@ main{
 
     line-height:1.7;
 
-    color:
-        rgba(255,255,255,.68);
+    color:#aaa;
+
 }
 
+.scroll{
 
-/* ==============================
-   INDICADOR
-============================== */
+    margin-top:35px;
 
-.scroll-indicator{
+    font-size:13px;
 
-    margin-top:38px;
+    color:#888;
 
-    display:flex;
+    animation:bounce 1.5s infinite;
 
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:7px;
-
-    color:
-        rgba(255,255,255,.50);
-
-    font-size:12px;
 }
 
-.scroll-arrow{
-
-    font-size:26px;
-
-    animation:
-        arrowMove
-        1.5s
-        ease-in-out
-        infinite;
-}
-
-@keyframes arrowMove{
-
-    0%,100%{
-        transform:translateY(0);
-        opacity:.4;
-    }
+@keyframes bounce{
 
     50%{
-        transform:translateY(9px);
-        opacity:1;
+        transform:translateY(8px);
     }
+
 }
 
-   /* ==============================
-   ÁREA DAS MEMÓRIAS
-============================== */
+
+/* =========================
+   MEMÓRIAS
+========================= */
 
 .memory{
 
     min-height:100vh;
 
     padding:
-        70px
-        18px
-        100px;
+        70px 15px
+        90px;
 
     display:flex;
 
@@ -357,44 +298,47 @@ main{
     align-items:center;
 
     text-align:center;
+
+    position:relative;
+
+    z-index:3;
+
 }
 
-
-/* Número da memória */
-
 .memory-number{
-
-    margin-bottom:16px;
 
     font-size:11px;
 
     letter-spacing:4px;
 
-    color:
-        rgba(255,255,255,.42);
+    color:#777;
+
+    margin-bottom:18px;
+
 }
 
 
-/* ==============================
+/* =========================
    CARTÃO DA FOTO
-============================== */
+========================= */
 
 .photo-card{
 
-    position:relative;
+    width:88vw;
 
-    width:min(88vw,360px);
+    max-width:360px;
 
-    height:min(110vw,440px);
+    height:115vw;
 
-    padding:7px;
+    max-height:450px;
 
-    border-radius:27px;
+    padding:6px;
+
+    border-radius:25px;
 
     background:
-
         linear-gradient(
-            145deg,
+            135deg,
             #7B2EFF,
             #2D8CFF,
             #7B2EFF
@@ -402,28 +346,22 @@ main{
 
     box-shadow:
 
-        0 25px 70px
-        rgba(0,0,0,.75),
+        0 20px 60px
+        rgba(0,0,0,.8),
 
-        0 0 35px
-        rgba(123,46,255,.28);
+        0 0 30px
+        rgba(123,46,255,.35);
 
     opacity:0;
 
     transform:
-        translateY(45px)
-        scale(.94);
+        translateY(35px)
+        scale(.95);
 
     transition:
+        .8s ease;
 
-        opacity .8s ease,
-
-        transform .8s
-        cubic-bezier(.2,.8,.2,1);
 }
-
-
-/* Quando a foto entra na tela */
 
 .memory.visible .photo-card{
 
@@ -432,12 +370,13 @@ main{
     transform:
         translateY(0)
         scale(1);
+
 }
 
 
-/* ==============================
-   ÁREA INTERNA DA FOTO
-============================== */
+/* =========================
+   FOTO
+========================= */
 
 .photo-inner{
 
@@ -445,21 +384,19 @@ main{
 
     height:100%;
 
-    overflow:hidden;
-
-    border-radius:21px;
-
     background:#080808;
+
+    border-radius:20px;
+
+    overflow:hidden;
 
     display:flex;
 
     align-items:center;
 
     justify-content:center;
+
 }
-
-
-/* A imagem */
 
 .photo-inner img{
 
@@ -467,61 +404,41 @@ main{
 
     height:100%;
 
-    display:block;
-
     object-fit:contain;
 
     object-position:center;
 
-    background:#080808;
+    display:block;
 
-    transition:
-        transform 1.2s ease;
 }
 
 
-/* Pequeno zoom */
-
-.memory.visible
-.photo-inner img{
-
-    transform:scale(1.02);
-}
-
-
-/* ==============================
-   FRASE DA FOTO
-============================== */
+/* =========================
+   FRASE
+========================= */
 
 .caption{
 
-    width:min(90vw,350px);
+    max-width:350px;
 
-    margin-top:27px;
+    margin-top:25px;
 
     opacity:0;
 
-    transform:translateY(20px);
+    transform:translateY(15px);
 
     transition:
+        .8s ease .2s;
 
-        opacity .8s ease .25s,
-
-        transform .8s ease .25s;
 }
-
-
-/* Mostrar frase */
 
 .memory.visible .caption{
 
     opacity:1;
 
     transform:translateY(0);
+
 }
-
-
-/* Título */
 
 .caption h2{
 
@@ -532,62 +449,49 @@ main{
     margin-bottom:12px;
 
     text-shadow:
-        0 0 13px
-        rgba(123,46,255,.65);
+        0 0 12px #7B2EFF;
+
 }
-
-
-/* Texto */
 
 .caption p{
 
     font-size:14px;
 
-    line-height:1.75;
+    line-height:1.7;
 
-    color:
-        rgba(255,255,255,.68);
+    color:#aaa;
+
 }
-
-
-/* Linha decorativa */
 
 .divider{
 
-    width:55px;
+    width:50px;
 
     height:2px;
 
-    margin:24px auto 0;
+    margin:20px auto;
 
     border-radius:10px;
 
     background:
-
         linear-gradient(
             90deg,
             #7B2EFF,
             #2D8CFF
         );
 
-    box-shadow:
-        0 0 12px
-        rgba(123,46,255,.8);
 }
 
 
-/* ==============================
-   FINAL DA GALERIA
-============================== */
+/* =========================
+   FINAL
+========================= */
 
-.gallery-end{
+.final{
 
     min-height:90vh;
 
-    padding:
-        80px
-        22px
-        100px;
+    padding:70px 20px;
 
     display:flex;
 
@@ -598,30 +502,29 @@ main{
     align-items:center;
 
     text-align:center;
+
+    position:relative;
+
+    z-index:3;
+
 }
 
-
-.gallery-heart{
+.final-heart{
 
     font-size:65px;
 
-    margin-bottom:22px;
+    margin-bottom:20px;
 
     filter:
         drop-shadow(
-            0 0 25px
-            rgba(123,46,255,.95)
+            0 0 25px #7B2EFF
         );
 
-    animation:
-        heartPulse
-        2s
-        ease-in-out
-        infinite;
+    animation:pulse 2s infinite;
+
 }
 
-
-.gallery-end h2{
+.final h2{
 
     max-width:350px;
 
@@ -629,363 +532,82 @@ main{
 
     line-height:1.3;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
-    text-shadow:
-        0 0 14px
-        rgba(123,46,255,.8);
 }
 
+.final p{
 
-.gallery-end p{
+    max-width:340px;
 
-    max-width:335px;
+    color:#aaa;
 
-    font-size:15px;
-
-    line-height:1.75;
-
-    color:
-        rgba(255,255,255,.68);
-
-    margin-bottom:12px;
-}
-
-
-/* ==============================
-   BOTÃO PRÓXIMA PÁGINA
-============================== */
-
-.next-button{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    margin-top:28px;
-
-    padding:
-        16px
-        27px;
-
-    border-radius:50px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.20);
-
-    background:
-
-        linear-gradient(
-            135deg,
-            rgba(123,46,255,.92),
-            rgba(45,140,255,.85)
-        );
-
-    color:#fff;
+    line-height:1.7;
 
     font-size:14px;
 
-    font-weight:bold;
+}
+
+.next{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:16px 25px;
+
+    border-radius:40px;
 
     text-decoration:none;
 
+    color:white;
+
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7B2EFF,
+            #2D8CFF
+        );
+
     box-shadow:
+        0 0 25px
+        rgba(123,46,255,.5);
 
-        0 12px 35px
-        rgba(0,0,0,.45),
+    transition:.25s;
 
-        0 0 28px
-        rgba(123,46,255,.4);
-
-    transition:
-
-        transform .25s ease,
-
-        box-shadow .25s ease;
 }
 
-
-.next-button:active{
+.next:active{
 
     transform:scale(.94);
 
-    box-shadow:
-
-        0 0 38px
-        rgba(123,46,255,.8);
 }
 
 
-/* ==============================
+/* =========================
    CELULARES PEQUENOS
-============================== */
+========================= */
 
-@media(max-height:700px){
-
-    .intro{
-
-        padding-top:25px;
-
-    }
-
-    .intro-heart{
-
-        font-size:45px;
-
-    }
+@media(max-width:360px){
 
     .intro h1{
-
         font-size:26px;
-
-    }
-
-    .memory{
-
-        padding-top:55px;
-
     }
 
     .photo-card{
 
-        height:390px;
+        width:90vw;
 
-    }
-
-}
-
-
-/* ==============================
-   TELAS MAIORES
-============================== */
-
-@media(min-width:600px){
-
-    .photo-card{
-
-        width:420px;
-
-        height:520px;
-
-    }
-
-    .caption{
-
-        width:420px;
-
-    }
-
-}
-
-
-/* ==============================
-   ACESSIBILIDADE
-============================== */
-
-@media(prefers-reduced-motion:reduce){
-
-    *{
-
-        animation-duration:.01ms !important;
-
-        animation-iteration-count:1 !important;
-
-        scroll-behavior:auto !important;
-
-        transition-duration:.01ms !important;
-
-    }
-
-   }
-
-   /* ==============================
-   AJUSTES EXTRAS PARA CELULAR
-============================== */
-
-@media(max-width:380px){
-
-    .intro{
-        padding-left:16px;
-        padding-right:16px;
-    }
-
-    .intro h1{
-        font-size:25px;
-    }
-
-    .intro p{
-        font-size:14px;
-    }
-
-    .photo-card{
-        width:88vw;
         height:112vw;
-        max-height:430px;
-    }
 
-    .caption{
-        width:88vw;
     }
 
     .caption h2{
         font-size:19px;
     }
 
-    .caption p{
-        font-size:13px;
-    }
-
-}
-
-
-/* ==============================
-   EVITAR SELEÇÃO ACIDENTAL
-============================== */
-
-img{
-    -webkit-user-drag:none;
-    user-select:none;
-}
-
-
-/* ==============================
-   TRANSIÇÃO DAS FOTOS
-============================== */
-
-.memory{
-    overflow:hidden;
-}
-
-
-/* ==============================
-   BRILHO DA BORDA
-============================== */
-
-.photo-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-2px;
-
-    border-radius:29px;
-
-    background:
-
-        linear-gradient(
-            120deg,
-            transparent 20%,
-            rgba(255,255,255,.35),
-            transparent 80%
-        );
-
-    opacity:.25;
-
-    pointer-events:none;
-
-    z-index:-1;
-}
-
-
-/* ==============================
-   EFEITO DE PROFUNDIDADE
-============================== */
-
-.photo-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:27px;
-
-    box-shadow:
-        inset 0 0 30px
-        rgba(255,255,255,.06);
-
-    pointer-events:none;
-}
-
-
-/* ==============================
-   ESPAÇAMENTO FINAL
-============================== */
-
-.gallery-end{
-    position:relative;
-}
-
-
-/* ==============================
-   BOTÃO COM BRILHO
-============================== */
-
-.next-button::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:80px;
-
-    height:100%;
-
-    top:0;
-
-    left:-100px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.25),
-            transparent
-        );
-
-    transform:skewX(-20deg);
-
-    animation:
-        buttonShine
-        4s
-        infinite;
-}
-
-.next-button{
-    position:relative;
-    overflow:hidden;
-}
-
-@keyframes buttonShine{
-
-    0%{
-        left:-100px;
-    }
-
-    25%{
-        left:120%;
-    }
-
-    100%{
-        left:120%;
-    }
-}
-
-
-/* ==============================
-   SELEÇÃO DE TEXTO
-============================== */
-
-::selection{
-
-    background:#7B2EFF;
-
-    color:#fff;
 }
 
 </style>
@@ -996,38 +618,26 @@ img{
 <body>
 
 
-<!-- =====================================================
-     FUNDO GLOBAL
-===================================================== -->
-
-<div id="background">
-
-    <div class="light light-purple"></div>
-
-    <div class="light light-blue"></div>
-
-    <canvas id="particles"></canvas>
-
-</div>
-
-
-<!-- =====================================================
-     CAMADA DOS ELOGIOS E CORAÇÕES
-===================================================== -->
+<!-- =========================
+     CAMADA DE ELOGIOS
+========================= -->
 
 <div id="falling"></div>
 
 
-<!-- =====================================================
-     CONTEÚDO PRINCIPAL
-===================================================== -->
+<!-- =========================
+     PARTÍCULAS
+========================= -->
+
+<canvas id="particles"></canvas>
+
 
 <main>
 
 
-<!-- =====================================================
+<!-- =========================
      ABERTURA
-===================================================== -->
+========================= -->
 
 <section class="intro">
 
@@ -1041,29 +651,20 @@ img{
     </h1>
 
     <p>
-        Antes de continuar a surpresa,
-        quero te levar por alguns momentos
-        que tornam tudo ainda mais especial.
+        Deslize para baixo e reviva
+        alguns momentos especiais.
     </p>
 
-    <div class="scroll-indicator">
-
-        <span>
-            Role para começar
-        </span>
-
-        <span class="scroll-arrow">
-            ↓
-        </span>
-
+    <div class="scroll">
+        Role para começar ↓
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 01
-===================================================== -->
+<!-- =========================
+     FOTO 1
+========================= -->
 
 <section class="memory">
 
@@ -1077,8 +678,7 @@ img{
 
             <img
                 src="Fotos/foto1.jpg"
-                alt="Memória especial 1"
-                loading="lazy"
+                alt="Memória 1"
             >
 
         </div>
@@ -1088,15 +688,14 @@ img{
     <div class="caption">
 
         <h2>
-            Esses olhos são
-            simplesmente encantadores. ❤️
+            Seus olhos são simplesmente
+            encantadores. ❤️
         </h2>
 
         <p>
-            É impossível olhar para você
-            e não reparar no brilho dos seus olhos.
-            Eles conseguem deixar sua beleza
-            ainda mais especial.
+            Existe um brilho no seu olhar
+            que consegue deixar tudo
+            ainda mais bonito.
         </p>
 
         <div class="divider"></div>
@@ -1106,9 +705,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 02
-===================================================== -->
+<!-- =========================
+     FOTO 2
+========================= -->
 
 <section class="memory">
 
@@ -1122,8 +721,7 @@ img{
 
             <img
                 src="Fotos/foto2.jpg"
-                alt="Memória especial 2"
-                loading="lazy"
+                alt="Memória 2"
             >
 
         </div>
@@ -1133,15 +731,13 @@ img{
     <div class="caption">
 
         <h2>
-            Seu sorriso é uma
-            das coisas mais lindas. 💜
+            Seu sorriso é lindo demais. 💜
         </h2>
 
         <p>
-            Tem alguma coisa no seu sorriso
-            que simplesmente muda o ambiente.
-            É daqueles sorrisos que a gente
-            olha e automaticamente sorri também.
+            É aquele sorriso que consegue
+            deixar qualquer momento
+            muito mais especial.
         </p>
 
         <div class="divider"></div>
@@ -1151,9 +747,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 03
-===================================================== -->
+<!-- =========================
+     FOTO 3
+========================= -->
 
 <section class="memory">
 
@@ -1167,8 +763,7 @@ img{
 
             <img
                 src="Fotos/foto3.jpg"
-                alt="Memória especial 3"
-                loading="lazy"
+                alt="Memória 3"
             >
 
         </div>
@@ -1183,9 +778,9 @@ img{
         </h2>
 
         <p>
-            O cabelo, o rosto, o olhar...
-            tudo parece combinar de um jeito
-            que deixa você ainda mais linda.
+            É um daqueles detalhes que
+            conseguem deixar sua beleza
+            ainda mais marcante.
         </p>
 
         <div class="divider"></div>
@@ -1195,9 +790,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 04
-===================================================== -->
+<!-- =========================
+     FOTO 4
+========================= -->
 
 <section class="memory">
 
@@ -1211,8 +806,7 @@ img{
 
             <img
                 src="Fotos/foto4.jpg"
-                alt="Memória especial 4"
-                loading="lazy"
+                alt="Memória 4"
             >
 
         </div>
@@ -1223,14 +817,13 @@ img{
 
         <h2>
             Você tem uma beleza
-            que chama atenção. 💙
+            impossível de ignorar. 💙
         </h2>
 
         <p>
-            Não é apenas uma coisa.
-            É o conjunto do seu olhar,
-            do seu sorriso, do seu cabelo
-            e desse seu jeito único.
+            Seu olhar, seu sorriso e
+            cada detalhe seu formam
+            um conjunto maravilhoso.
         </p>
 
         <div class="divider"></div>
@@ -1240,9 +833,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 05
-===================================================== -->
+<!-- =========================
+     FOTO 5
+========================= -->
 
 <section class="memory">
 
@@ -1256,8 +849,7 @@ img{
 
             <img
                 src="Fotos/foto5.jpg"
-                alt="Memória especial 5"
-                loading="lazy"
+                alt="Memória 5"
             >
 
         </div>
@@ -1267,15 +859,13 @@ img{
     <div class="caption">
 
         <h2>
-            Seu olhar consegue
-            ser inesquecível. ❤️
+            Seu olhar é inesquecível. ❤️
         </h2>
 
         <p>
-            Existem olhares bonitos,
-            e existe o seu.
-            Um olhar que consegue transmitir
-            muito sem precisar dizer nada.
+            Tem algo no seu olhar que
+            simplesmente faz a gente
+            querer continuar olhando.
         </p>
 
         <div class="divider"></div>
@@ -1285,9 +875,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 06
-===================================================== -->
+<!-- =========================
+     FOTO 6
+========================= -->
 
 <section class="memory">
 
@@ -1301,8 +891,7 @@ img{
 
             <img
                 src="Fotos/foto6.jpg"
-                alt="Memória especial 6"
-                loading="lazy"
+                alt="Memória 6"
             >
 
         </div>
@@ -1312,15 +901,13 @@ img{
     <div class="caption">
 
         <h2>
-            Que sorriso
-            maravilhoso. 🥰
+            Que sorriso maravilhoso. 🥰
         </h2>
 
         <p>
-            Seu sorriso tem aquele tipo
-            de beleza que não precisa de filtro,
-            porque sozinho já consegue
-            deixar tudo mais bonito.
+            Um sorriso natural, bonito
+            e capaz de transformar
+            qualquer momento.
         </p>
 
         <div class="divider"></div>
@@ -1330,9 +917,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 07
-===================================================== -->
+<!-- =========================
+     FOTO 7
+========================= -->
 
 <section class="memory">
 
@@ -1346,8 +933,7 @@ img{
 
             <img
                 src="Fotos/foto7.jpg"
-                alt="Memória especial 7"
-                loading="lazy"
+                alt="Memória 7"
             >
 
         </div>
@@ -1357,14 +943,14 @@ img{
     <div class="caption">
 
         <h2>
-            Seu cabelo é
-            simplesmente perfeito. 💜
+            Seu cabelo é simplesmente
+            perfeito. 💜
         </h2>
 
         <p>
-            Ele combina com seu rosto,
-            com seu estilo e principalmente
-            com essa beleza que é tão sua.
+            Um detalhe que combina
+            perfeitamente com seu rosto
+            e com seu estilo.
         </p>
 
         <div class="divider"></div>
@@ -1374,9 +960,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 08
-===================================================== -->
+<!-- =========================
+     FOTO 8
+========================= -->
 
 <section class="memory">
 
@@ -1390,8 +976,7 @@ img{
 
             <img
                 src="Fotos/foto8.jpg"
-                alt="Memória especial 8"
-                loading="lazy"
+                alt="Memória 8"
             >
 
         </div>
@@ -1401,15 +986,14 @@ img{
     <div class="caption">
 
         <h2>
-            Até de longe
-            você consegue ser linda. ✨
+            Você consegue ser linda
+            até sem perceber. ✨
         </h2>
 
         <p>
-            Seu jeito, seu sorriso,
-            seus cabelos e sua presença
-            fazem você se destacar
-            naturalmente.
+            Seu jeito natural já possui
+            uma beleza que não precisa
+            de nenhum esforço.
         </p>
 
         <div class="divider"></div>
@@ -1418,9 +1002,10 @@ img{
 
 </section>
 
-   <!-- =====================================================
-     MEMÓRIA 09
-===================================================== -->
+
+<!-- =========================
+     FOTO 9
+========================= -->
 
 <section class="memory">
 
@@ -1434,8 +1019,7 @@ img{
 
             <img
                 src="Fotos/foto9.jpg"
-                alt="Memória especial 9"
-                loading="lazy"
+                alt="Memória 9"
             >
 
         </div>
@@ -1445,15 +1029,13 @@ img{
     <div class="caption">
 
         <h2>
-            Sua beleza está
-            em cada detalhe. ❤️
+            Sua beleza está em cada detalhe. ❤️
         </h2>
 
         <p>
             Seus olhos, seu sorriso,
-            seu cabelo e cada pequeno detalhe
-            fazem de você alguém impossível
-            de não admirar.
+            seu cabelo e seu jeito
+            fazem você ser única.
         </p>
 
         <div class="divider"></div>
@@ -1463,9 +1045,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 10
-===================================================== -->
+<!-- =========================
+     FOTO 10
+========================= -->
 
 <section class="memory">
 
@@ -1479,8 +1061,7 @@ img{
 
             <img
                 src="Fotos/foto10.jpg"
-                alt="Memória especial 10"
-                loading="lazy"
+                alt="Memória 10"
             >
 
         </div>
@@ -1491,14 +1072,13 @@ img{
 
         <h2>
             Você fica ainda mais linda
-            quando simplesmente é você. 💜
+            quando é simplesmente você. 💜
         </h2>
 
         <p>
-            Sem precisar tentar,
-            sem precisar mudar nada.
-            Seu jeito natural já é
-            uma das coisas mais bonitas em você.
+            Seu jeito natural é uma
+            das coisas mais bonitas
+            em você.
         </p>
 
         <div class="divider"></div>
@@ -1508,9 +1088,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 11
-===================================================== -->
+<!-- =========================
+     FOTO 11
+========================= -->
 
 <section class="memory">
 
@@ -1524,8 +1104,7 @@ img{
 
             <img
                 src="Fotos/foto11.jpg"
-                alt="Memória especial 11"
-                loading="lazy"
+                alt="Memória 11"
             >
 
         </div>
@@ -1535,15 +1114,14 @@ img{
     <div class="caption">
 
         <h2>
-            Esse sorriso deveria
-            ser patrimônio mundial. 😍
+            Esse sorriso deveria ser
+            patrimônio mundial. 😍
         </h2>
 
         <p>
-            Porque é simplesmente impossível
-            ver você sorrindo e não perceber
-            o quanto esse sorriso combina
-            perfeitamente com você.
+            É impossível ver você sorrindo
+            e não perceber o quanto
+            esse sorriso combina com você.
         </p>
 
         <div class="divider"></div>
@@ -1553,9 +1131,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 12
-===================================================== -->
+<!-- =========================
+     FOTO 12
+========================= -->
 
 <section class="memory">
 
@@ -1569,8 +1147,7 @@ img{
 
             <img
                 src="Fotos/foto12.jpg"
-                alt="Memória especial 12"
-                loading="lazy"
+                alt="Memória 12"
             >
 
         </div>
@@ -1580,15 +1157,13 @@ img{
     <div class="caption">
 
         <h2>
-            Seu olhar tem
-            alguma coisa diferente. 💙
+            Seu olhar tem algo diferente. 💙
         </h2>
 
         <p>
-            É aquele olhar que prende a atenção
-            por alguns segundos a mais,
-            porque simplesmente não dá vontade
-            de olhar para outro lugar.
+            É aquele olhar que prende
+            a atenção por alguns segundos
+            a mais.
         </p>
 
         <div class="divider"></div>
@@ -1598,9 +1173,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 13
-===================================================== -->
+<!-- =========================
+     FOTO 13
+========================= -->
 
 <section class="memory">
 
@@ -1614,8 +1189,7 @@ img{
 
             <img
                 src="Fotos/foto13.jpg"
-                alt="Memória especial 13"
-                loading="lazy"
+                alt="Memória 13"
             >
 
         </div>
@@ -1625,14 +1199,13 @@ img{
     <div class="caption">
 
         <h2>
-            Seu cabelo é um
-            detalhe que encanta. ✨
+            Seu cabelo é um detalhe
+            que encanta. ✨
         </h2>
 
         <p>
-            Seja como estiver,
-            ele sempre consegue completar
-            seu visual e deixar sua beleza
+            Ele completa seu visual
+            e deixa sua beleza
             ainda mais marcante.
         </p>
 
@@ -1643,9 +1216,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 14
-===================================================== -->
+<!-- =========================
+     FOTO 14
+========================= -->
 
 <section class="memory">
 
@@ -1659,8 +1232,7 @@ img{
 
             <img
                 src="Fotos/foto14.jpg"
-                alt="Memória especial 14"
-                loading="lazy"
+                alt="Memória 14"
             >
 
         </div>
@@ -1676,9 +1248,7 @@ img{
 
         <p>
             É a mistura do seu sorriso,
-            do seu olhar, do seu jeito
-            e de toda essa beleza
-            que faz você ser tão especial.
+            do seu olhar e do seu jeito.
         </p>
 
         <div class="divider"></div>
@@ -1688,9 +1258,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 15
-===================================================== -->
+<!-- =========================
+     FOTO 15
+========================= -->
 
 <section class="memory">
 
@@ -1704,8 +1274,7 @@ img{
 
             <img
                 src="Fotos/foto15.jpg"
-                alt="Memória especial 15"
-                loading="lazy"
+                alt="Memória 15"
             >
 
         </div>
@@ -1720,10 +1289,9 @@ img{
         </h2>
 
         <p>
-            Seus traços, seu sorriso,
-            seus olhos e seu cabelo
-            formam um conjunto
-            simplesmente maravilhoso.
+            Seus olhos, seu sorriso,
+            seu cabelo e todos os detalhes
+            formam um conjunto maravilhoso.
         </p>
 
         <div class="divider"></div>
@@ -1733,9 +1301,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 16
-===================================================== -->
+<!-- =========================
+     FOTO 16
+========================= -->
 
 <section class="memory">
 
@@ -1749,8 +1317,7 @@ img{
 
             <img
                 src="Fotos/foto16.jpg"
-                alt="Memória especial 16"
-                loading="lazy"
+                alt="Memória 16"
             >
 
         </div>
@@ -1765,9 +1332,7 @@ img{
         </h2>
 
         <p>
-            Porque sua beleza não está
-            em apenas uma característica.
-            Está no conjunto inteiro,
+            Sua beleza está no conjunto,
             no seu jeito e na sua essência.
         </p>
 
@@ -1778,9 +1343,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 17
-===================================================== -->
+<!-- =========================
+     FOTO 17
+========================= -->
 
 <section class="memory">
 
@@ -1794,8 +1359,7 @@ img{
 
             <img
                 src="Fotos/foto17.jpg"
-                alt="Memória especial 17"
-                loading="lazy"
+                alt="Memória 17"
             >
 
         </div>
@@ -1810,8 +1374,7 @@ img{
         </h2>
 
         <p>
-            É impossível não perceber
-            como você fica ainda mais linda
+            Você fica ainda mais linda
             quando deixa esse sorriso aparecer.
         </p>
 
@@ -1822,9 +1385,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 18
-===================================================== -->
+<!-- =========================
+     FOTO 18
+========================= -->
 
 <section class="memory">
 
@@ -1838,8 +1401,7 @@ img{
 
             <img
                 src="Fotos/foto18.jpg"
-                alt="Memória especial 18"
-                loading="lazy"
+                alt="Memória 18"
             >
 
         </div>
@@ -1849,14 +1411,14 @@ img{
     <div class="caption">
 
         <h2>
-            Seus olhos continuam
-            sendo impossíveis de ignorar. 💙
+            Seus olhos continuam sendo
+            impossíveis de ignorar. 💙
         </h2>
 
         <p>
-            Existe uma intensidade no seu olhar
-            que combina perfeitamente
-            com toda a sua personalidade.
+            Existe uma intensidade
+            no seu olhar que combina
+            perfeitamente com você.
         </p>
 
         <div class="divider"></div>
@@ -1866,9 +1428,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 19
-===================================================== -->
+<!-- =========================
+     FOTO 19
+========================= -->
 
 <section class="memory">
 
@@ -1882,8 +1444,7 @@ img{
 
             <img
                 src="Fotos/foto19.jpg"
-                alt="Memória especial 19"
-                loading="lazy"
+                alt="Memória 19"
             >
 
         </div>
@@ -1893,14 +1454,14 @@ img{
     <div class="caption">
 
         <h2>
-            Seu jeito consegue
-            ser tão bonito quanto você. ❤️
+            Seu jeito consegue ser tão
+            bonito quanto você. ❤️
         </h2>
 
         <p>
-            Porque não é apenas sobre aparência.
-            É sobre a pessoa incrível
-            que existe por trás de cada sorriso.
+            Porque não é apenas aparência.
+            É a pessoa incrível que existe
+            por trás de cada sorriso.
         </p>
 
         <div class="divider"></div>
@@ -1910,9 +1471,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 20
-===================================================== -->
+<!-- =========================
+     FOTO 20
+========================= -->
 
 <section class="memory">
 
@@ -1926,8 +1487,7 @@ img{
 
             <img
                 src="Fotos/foto20.jpg"
-                alt="Memória especial 20"
-                loading="lazy"
+                alt="Memória 20"
             >
 
         </div>
@@ -1944,8 +1504,7 @@ img{
         <p>
             Dos cabelos aos olhos,
             do sorriso aos detalhes,
-            existe sempre alguma coisa
-            nova para admirar em você.
+            existe sempre algo para admirar.
         </p>
 
         <div class="divider"></div>
@@ -1955,9 +1514,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 21
-===================================================== -->
+<!-- =========================
+     FOTO 21
+========================= -->
 
 <section class="memory">
 
@@ -1971,8 +1530,7 @@ img{
 
             <img
                 src="Fotos/foto21.jpg"
-                alt="Memória especial 21"
-                loading="lazy"
+                alt="Memória 21"
             >
 
         </div>
@@ -1988,9 +1546,8 @@ img{
 
         <p>
             Seu sorriso, seus olhos,
-            seu cabelo, sua beleza
-            e principalmente seu jeito
-            fazem você ser única.
+            seu cabelo e principalmente
+            seu jeito fazem você ser única.
         </p>
 
         <div class="divider"></div>
@@ -2000,9 +1557,9 @@ img{
 </section>
 
 
-<!-- =====================================================
-     MEMÓRIA 22
-===================================================== -->
+<!-- =========================
+     FOTO 22
+========================= -->
 
 <section class="memory">
 
@@ -2016,8 +1573,7 @@ img{
 
             <img
                 src="Fotos/foto22.jpg"
-                alt="Memória especial 22"
-                loading="lazy"
+                alt="Memória 22"
             >
 
         </div>
@@ -2027,15 +1583,16 @@ img{
     <div class="caption">
 
         <h2>
-            E no final de todas
-            essas memórias...
+            E ainda não existe foto
+            suficiente para mostrar
+            o quanto você é especial. ❤️
         </h2>
 
         <p>
-            Ainda existe uma coisa
-            que nenhuma dessas fotos
-            consegue mostrar completamente:
-            o quanto você é especial. ❤️
+            Porque sua beleza está nos olhos,
+            no sorriso, no cabelo,
+            no seu jeito e em tudo aquilo
+            que faz você ser você.
         </p>
 
         <div class="divider"></div>
@@ -2045,38 +1602,36 @@ img{
 </section>
 
 
-<!-- =====================================================
-     FINAL DA GALERIA
-===================================================== -->
+<!-- =========================
+     FINAL
+========================= -->
 
-<section class="gallery-end">
+<section class="final">
 
-    <div class="gallery-heart">
+    <div class="final-heart">
         ❤️
     </div>
 
     <h2>
         22 fotos...
-        e ainda não foram suficientes
-        para mostrar o quanto você é linda.
+        e ainda não foram suficientes.
     </h2>
 
     <p>
-        Seus olhos, seu sorriso,
-        seu cabelo, seu jeito,
-        sua beleza e todos os pequenos
-        detalhes fazem você ser
-        simplesmente única.
+        Cada uma delas guarda um momento,
+        mas nenhuma consegue mostrar
+        completamente o quanto você
+        é especial.
     </p>
 
-    <p>
-        Mas essa história ainda está
-        só começando...
+    <p style="margin-top:12px;">
+        E essa surpresa ainda está
+        apenas começando...
     </p>
 
     <a
-        href="quebra-cabeca.html"
-        class="next-button">
+        class="next"
+        href="quebra-cabeca.html">
 
         Continuar a surpresa ❤️
 
@@ -2088,25 +1643,13 @@ img{
 </main>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
 
-/* =====================================================
-   ELEMENTOS PRINCIPAIS
-===================================================== */
+/* =========================
+   ELOGIOS E EMOJIS
+========================= */
 
-const fallingLayer =
-    document.getElementById("falling");
-
-
-/* =====================================================
-   PALAVRAS QUE IRÃO CAIR
-===================================================== */
-
-const compliments = [
+const words = [
 
     "meu bem",
     "amor",
@@ -2121,11 +1664,6 @@ const compliments = [
 
 ];
 
-
-/* =====================================================
-   EMOJIS
-===================================================== */
-
 const emojis = [
 
     "❤️",
@@ -2138,20 +1676,27 @@ const emojis = [
 ];
 
 
-/* =====================================================
-   CRIAR ELEMENTO CAINDO
-===================================================== */
+const falling =
+    document.getElementById("falling");
 
-function createFallingItem(){
+
+/* =========================
+   CRIAR ELEMENTOS
+========================= */
+
+function createFall(){
 
     const element =
         document.createElement("span");
 
-    const useEmoji =
-        Math.random() < 0.48;
+    const isEmoji =
+        Math.random() < .5;
 
 
-    if(useEmoji){
+    element.className = "fall";
+
+
+    if(isEmoji){
 
         element.textContent =
             emojis[
@@ -2164,101 +1709,68 @@ function createFallingItem(){
     }else{
 
         element.textContent =
-            compliments[
+            words[
                 Math.floor(
                     Math.random()
-                    * compliments.length
+                    * words.length
                 )
             ];
 
     }
 
 
-    element.className = "fall";
-
-
-    /* posição horizontal */
-
     element.style.left =
         Math.random() * 100 + "%";
 
 
-    /* tamanho */
-
-    const size =
-        useEmoji
-        ? 15 + Math.random() * 17
-        : 10 + Math.random() * 7;
-
     element.style.fontSize =
-        size + "px";
+        (
+            isEmoji
+            ? 15 + Math.random() * 15
+            : 10 + Math.random() * 6
+        ) + "px";
 
-
-    /* velocidade */
-
-    const duration =
-        5 + Math.random() * 6;
 
     element.style.animationDuration =
-        duration + "s";
+        5 + Math.random() * 5 + "s";
 
-
-    /* movimento lateral */
-
-    const move =
-        -60 + Math.random() * 120;
 
     element.style.setProperty(
-        "--move",
-        move + "px"
+        "--x",
+        (-60 + Math.random() * 120) + "px"
     );
 
 
-    /* rotação */
-
-    const rotate =
-        -35 + Math.random() * 70;
-
     element.style.setProperty(
-        "--rotate",
-        rotate + "deg"
+        "--r",
+        (-40 + Math.random() * 80) + "deg"
     );
 
 
-    fallingLayer.appendChild(element);
+    falling.appendChild(element);
 
-
-    /* remover depois da animação */
 
     setTimeout(
-        () => {
-
-            element.remove();
-
-        },
-        (duration + .5) * 1000
+        () => element.remove(),
+        11000
     );
 
 }
 
 
-/* =====================================================
-   GERADOR CONTÍNUO
-===================================================== */
+/* =========================
+   COMEÇAR CHUVA
+========================= */
 
-function startFalling(){
-
-    setInterval(
-        createFallingItem,
-        280
-    );
-
-}
+setInterval(
+    createFall,
+    300
+);
 
 
-/* =====================================================
-   PARTÍCULAS DE FUNDO
-===================================================== */
+/* =========================
+   PARTÍCULAS
+========================= */
 
 const canvas =
     document.getElementById("particles");
@@ -2266,10 +1778,11 @@ const canvas =
 const ctx =
     canvas.getContext("2d");
 
+
 let particles = [];
 
 
-function resizeCanvas(){
+function resize(){
 
     canvas.width =
         window.innerWidth;
@@ -2280,35 +1793,39 @@ function resizeCanvas(){
 }
 
 
+resize();
+
 window.addEventListener(
     "resize",
-    resizeCanvas
+    resize
 );
-
-resizeCanvas();
 
 
 /* criar partículas */
 
-for(let i = 0; i < 45; i++){
+for(
+    let i = 0;
+    i < 45;
+    i++
+){
 
     particles.push({
 
         x:
             Math.random()
-            * canvas.width,
+            * window.innerWidth,
 
         y:
             Math.random()
-            * canvas.height,
+            * window.innerHeight,
 
         size:
             Math.random() * 2 + .5,
 
         speed:
-            Math.random() * .35 + .1,
+            Math.random() * .3 + .1,
 
-        opacity:
+        alpha:
             Math.random() * .5 + .1
 
     });
@@ -2316,9 +1833,9 @@ for(let i = 0; i < 45; i++){
 }
 
 
-/* animação */
+/* animar */
 
-function animateParticles(){
+function animate(){
 
     ctx.clearRect(
         0,
@@ -2328,57 +1845,71 @@ function animateParticles(){
     );
 
 
-    particles.forEach(p => {
+    particles.forEach(
+        particle => {
 
-        p.y -= p.speed;
+            particle.y -=
+                particle.speed;
 
 
-        if(p.y < -10){
+            if(
+                particle.y < -10
+            ){
 
-            p.y =
-                canvas.height + 10;
+                particle.y =
+                    canvas.height + 10;
 
-            p.x =
-                Math.random()
-                * canvas.width;
+                particle.x =
+                    Math.random()
+                    * canvas.width;
+
+            }
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                particle.x,
+                particle.y,
+                particle.size,
+                0,
+                Math.PI * 2
+            );
+
+
+            ctx.fillStyle =
+                `rgba(
+                    255,
+                    255,
+                    255,
+                    ${particle.alpha}
+                )`;
+
+
+            ctx.fill();
 
         }
-
-
-        ctx.beginPath();
-
-        ctx.arc(
-            p.x,
-            p.y,
-            p.size,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle =
-            `rgba(255,255,255,${p.opacity})`;
-
-        ctx.fill();
-
-    });
+    );
 
 
     requestAnimationFrame(
-        animateParticles
+        animate
     );
 
 }
 
 
-animateParticles();
+animate();
 
 
-/* =====================================================
-   REVELAR FOTOS AO ROLAR
-===================================================== */
+/* =========================
+   ANIMAÇÃO DAS MEMÓRIAS
+========================= */
 
 const memories =
-    document.querySelectorAll(".memory");
+    document.querySelectorAll(
+        ".memory"
+    );
 
 
 const observer =
@@ -2386,22 +1917,26 @@ const observer =
 
         entries => {
 
-            entries.forEach(entry => {
+            entries.forEach(
+                entry => {
 
-                if(entry.isIntersecting){
+                    if(
+                        entry.isIntersecting
+                    ){
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+                        entry.target
+                            .classList
+                            .add("visible");
+
+                    }
 
                 }
-
-            });
+            );
 
         },
 
         {
-            threshold:.22
+            threshold:.2
         }
 
     );
@@ -2412,15 +1947,8 @@ memories.forEach(
         observer.observe(memory)
 );
 
-
-/* =====================================================
-   INICIAR EFEITOS
-===================================================== */
-
-startFalling();
-
 </script>
 
 </body>
 
-               </html>
+   </html>
