@@ -186,10 +186,13 @@ body{
 
     white-space:nowrap;
 
-    color:rgba(255,255,255,.55);
+    color:rgba(255,255,255,.95);
+
+    font-weight:600;
 
     text-shadow:
-        0 0 8px rgba(123,46,255,.8);
+        0 0 10px rgba(123,46,255,1),
+        0 0 20px rgba(45,140,255,0.8);
 
     animation:
         falling linear forwards;
@@ -213,13 +216,13 @@ body{
 
     10%{
 
-        opacity:.7;
+        opacity:.9;
 
     }
 
     85%{
 
-        opacity:.55;
+        opacity:.85;
 
     }
 
@@ -692,10 +695,6 @@ body{
 <body>
 
 
-<!-- =====================================================
-     FUNDO
-===================================================== -->
-
 <div class="background">
 
     <div class="light light-purple"></div>
@@ -705,28 +704,14 @@ body{
 </div>
 
 
-<!-- =====================================================
-     ELOGIOS E CORAÇÕES
-===================================================== -->
-
 <div id="falling"></div>
 
-
-<!-- =====================================================
-     TRANSIÇÃO
-===================================================== -->
 
 <div id="transition"></div>
 
 
-<!-- =====================================================
-     CONTEÚDO PRINCIPAL
-===================================================== -->
-
 <main class="loading-content">
 
-
-    <!-- TÍTULO -->
 
     <h1 class="loading-title">
 
@@ -734,8 +719,6 @@ body{
 
     </h1>
 
-
-    <!-- SUBTÍTULO -->
 
     <p class="loading-subtitle">
 
@@ -745,10 +728,6 @@ body{
     </p>
 
 
-    <!-- =================================================
-         CELULAR
-    ================================================= -->
-
     <div class="phone">
 
         <div class="phone-border">
@@ -756,12 +735,8 @@ body{
             <div class="phone-screen">
 
 
-                <!-- NOTCH -->
-
                 <div class="notch"></div>
 
-
-                <!-- FOTO -->
 
                 <img
                     id="loading-photo"
@@ -775,10 +750,6 @@ body{
 
     </div>
 
-
-    <!-- =================================================
-         CARREGAMENTO
-    ================================================= -->
 
     <div class="loading-area">
 
@@ -1138,12 +1109,12 @@ function createFallingItem(){
         "%";
 
 
-    /* Tamanho */
+    /* Tamanho aumentado */
 
     item.style.fontSize =
         (
-            10 +
-            Math.random() * 9
+            18 +
+            Math.random() * 12
         ) + "px";
 
 
@@ -1230,4 +1201,5 @@ setTimeout(
 
 </body>
 
-                                      </html>
+      </html>
+      
