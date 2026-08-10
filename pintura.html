@@ -18,7 +18,7 @@ user-scalable=no">
 <style>
 
 /* =========================
-   RESET
+RESET
 ========================= */
 
 *{
@@ -27,27 +27,31 @@ padding:0;
 box-sizing:border-box;
 }
 
-html,
+html{
+width:100%;
+min-height:100%;
+background:#030308;
+}
+
 body{
 width:100%;
 min-height:100%;
 background:#030308;
 color:#fff;
+
 font-family:
 -apple-system,
 BlinkMacSystemFont,
 "Segoe UI",
 Roboto,
 sans-serif;
-}
 
-body{
 overflow-x:hidden;
 }
 
 
 /* =========================
-   FUNDO
+FUNDO
 ========================= */
 
 .background{
@@ -59,13 +63,14 @@ background:
 radial-gradient(
 circle at 20% 20%,
 #25104d 0%,
-#090514 38%,
-#030308 75%
+#090514 40%,
+#030308 78%
 );
 }
 
 .background::before{
 content:"";
+
 position:absolute;
 
 width:380px;
@@ -85,6 +90,7 @@ opacity:.38;
 
 .background::after{
 content:"";
+
 position:absolute;
 
 width:350px;
@@ -104,11 +110,12 @@ opacity:.28;
 
 
 /* =========================
-   CHUVA DE ELOGIOS
+CHUVA
 ========================= */
 
 #falling{
 position:fixed;
+
 inset:0;
 
 pointer-events:none;
@@ -127,7 +134,7 @@ white-space:nowrap;
 
 font-weight:700;
 
-color:rgba(255,255,255,.72);
+color:rgba(255,255,255,.68);
 
 text-shadow:
 0 0 10px rgba(255,255,255,.5),
@@ -148,11 +155,11 @@ opacity:0;
 }
 
 15%{
-opacity:.8;
+opacity:.75;
 }
 
 80%{
-opacity:.55;
+opacity:.5;
 }
 
 100%{
@@ -170,7 +177,7 @@ opacity:0;
 
 
 /* =========================
-   CONTEÚDO
+PÁGINA
 ========================= */
 
 .page{
@@ -179,22 +186,22 @@ position:relative;
 z-index:5;
 
 width:100%;
+
 min-height:100vh;
 
 padding:
-35px 16px 50px;
+35px 16px 60px;
 
 display:flex;
 
 flex-direction:column;
 
 align-items:center;
-
 }
 
 
 /* =========================
-   CABEÇALHO
+TÍTULO
 ========================= */
 
 .emoji-title{
@@ -253,10 +260,11 @@ rgba(255,255,255,.68);
 
 
 /* =========================
-   ÁREA DA PINTURA
+ÁREA DA PINTURA
 ========================= */
 
 .paint-box{
+
 position:relative;
 
 width:min(390px,94vw);
@@ -285,10 +293,11 @@ box-shadow:
 
 
 /* =========================
-   FOTO
+FOTO
 ========================= */
 
 .paint-photo{
+
 position:absolute;
 
 inset:7px;
@@ -308,10 +317,11 @@ display:block;
 
 
 /* =========================
-   CANVAS
+CANVAS
 ========================= */
 
 #paintCanvas{
+
 position:absolute;
 
 inset:7px;
@@ -322,20 +332,24 @@ height:calc(100% - 14px);
 
 border-radius:23px;
 
+z-index:3;
+
 touch-action:none;
 
-z-index:3;
+display:block;
 }
 
 
 /* =========================
-   BRILHO DO PINCEL
+BRILHO
 ========================= */
 
 #brushGlow{
+
 position:absolute;
 
 width:65px;
+
 height:65px;
 
 border-radius:50%;
@@ -362,10 +376,11 @@ filter:blur(5px);
 
 
 /* =========================
-   PROGRESSO
+PROGRESSO
 ========================= */
 
 .progress-area{
+
 width:min(390px,90vw);
 
 margin-top:22px;
@@ -374,6 +389,7 @@ text-align:center;
 }
 
 .progress-bar{
+
 width:100%;
 
 height:8px;
@@ -395,6 +411,7 @@ rgba(123,46,255,.2);
 }
 
 #fill{
+
 width:0%;
 
 height:100%;
@@ -414,10 +431,11 @@ box-shadow:
 0 0 25px #2D8CFF;
 
 transition:
-width .18s ease;
+width .15s ease;
 }
 
 #progress-text{
+
 display:block;
 
 margin-top:9px;
@@ -427,17 +445,18 @@ font-size:12px;
 font-weight:600;
 
 color:
-rgba(255,255,255,.62);
+rgba(255,255,255,.65);
 
 min-height:18px;
 }
 
 
 /* =========================
-   MENSAGEM FINAL
+MENSAGEM FINAL
 ========================= */
 
 #message{
+
 width:min(390px,92vw);
 
 margin-top:28px;
@@ -479,6 +498,7 @@ transform .8s ease;
 }
 
 #message.show{
+
 opacity:1;
 
 transform:
@@ -489,6 +509,7 @@ pointer-events:auto;
 }
 
 .message-heart{
+
 font-size:35px;
 
 display:block;
@@ -502,6 +523,7 @@ drop-shadow(
 }
 
 #message h2{
+
 font-size:22px;
 
 line-height:1.25;
@@ -510,6 +532,7 @@ margin-bottom:15px;
 }
 
 #message h2 span{
+
 color:#c68cff;
 
 text-shadow:
@@ -517,6 +540,7 @@ text-shadow:
 }
 
 #message p{
+
 font-size:14px;
 
 line-height:1.65;
@@ -528,6 +552,7 @@ margin-top:13px;
 }
 
 .highlight{
+
 color:#fff;
 
 font-weight:700;
@@ -535,10 +560,11 @@ font-weight:700;
 
 
 /* =========================
-   BOTÃO
+BOTÃO
 ========================= */
 
 .next-button{
+
 display:inline-block;
 
 margin-top:22px;
@@ -568,21 +594,17 @@ box-shadow:
 rgba(123,46,255,.55);
 
 transition:
-transform .2s ease,
-box-shadow .2s ease;
+transform .2s ease;
 }
 
 .next-button:active{
-transform:scale(.95);
 
-box-shadow:
-0 0 28px
-rgba(45,140,255,.7);
+transform:scale(.95);
 }
 
 
 /* =========================
-   CELULARES PEQUENOS
+TELAS PEQUENAS
 ========================= */
 
 @media(max-width:360px){
@@ -615,24 +637,7 @@ padding:20px 16px;
 
 
 /* =========================
-   CELULARES GRANDES
-========================= */
-
-@media(min-width:500px){
-
-.page{
-padding-top:50px;
-}
-
-.paint-box{
-width:390px;
-}
-
-}
-
-
-/* =========================
-   REDUZIR MOVIMENTO
+REDUÇÃO DE MOVIMENTO
 ========================= */
 
 @media(prefers-reduced-motion:reduce){
@@ -652,30 +657,36 @@ transition:none !important;
 <body>
 
 
-<!-- FUNDO -->
+<!-- =========================
+FUNDO
+========================= -->
 
 <div class="background"></div>
 
 
-<!-- CHUVA -->
+<!-- =========================
+CHUVA
+========================= -->
 
 <div id="falling"></div>
 
 
-<!-- PÁGINA -->
+<!-- =========================
+CONTEÚDO
+========================= -->
 
 <main class="page">
 
-
-<!-- TÍTULO -->
 
 <div class="emoji-title">
 🎨
 </div>
 
+
 <h1 class="title">
 Uma obra de arte...
 </h1>
+
 
 <p class="subtitle">
 Passe o dedo pela tela e descubra
@@ -683,76 +694,116 @@ o que está escondido por trás da tinta. ❤️
 </p>
 
 
-<!-- PINTURA -->
+<!-- =========================
+PINTURA
+========================= -->
 
-<div class="paint-box" id="paintArea">
+<div
+class="paint-box"
+id="paintArea">
 
 <img
 class="paint-photo"
 src="Fotos/foto12.jpg"
 alt="Memória especial">
 
-<canvas id="paintCanvas"></canvas>
 
-<div id="brushGlow"></div>
+<canvas
+id="paintCanvas">
+</canvas>
+
+
+<div
+id="brushGlow">
+</div>
 
 </div>
 
 
-<!-- BARRA -->
+<!-- =========================
+BARRA
+========================= -->
 
 <div class="progress-area">
 
 <div class="progress-bar">
 
-<div id="fill"></div>
+<div id="fill">
+</div>
 
 </div>
 
+
 <span id="progress-text">
+
 Passe o dedo pela tela para começar... 🎨
+
 </span>
 
 </div>
 
 
-<!-- MENSAGEM -->
+<!-- =========================
+MENSAGEM FINAL
+========================= -->
 
 <section id="message">
+
 
 <span class="message-heart">
 ❤️
 </span>
 
+
 <h2>
+
 Você acabou de revelar
 uma obra de arte.
+
 <span>❤️</span>
+
 </h2>
+
 
 <p>
 Mas pensando bem...
 </p>
 
+
 <p>
+
 Talvez a verdadeira obra de arte
 nunca tenha sido a fotografia.
+
 </p>
 
+
 <p>
-São seus <span class="highlight">olhos</span>,
-seu <span class="highlight">sorriso</span>,
-seu <span class="highlight">cabelo</span>,
-suas <span class="highlight">curvas</span>
-e toda a <span class="highlight">beleza</span>
+
+São seus
+<span class="highlight">olhos</span>,
+seu
+<span class="highlight">sorriso</span>,
+seu
+<span class="highlight">cabelo</span>,
+suas
+<span class="highlight">curvas</span>
+e toda a
+<span class="highlight">beleza</span>
 que existe em você.
+
 </p>
 
+
 <p>
+
 Algumas pinturas precisam de tinta.
+
 Você só precisa existir
 para deixar tudo mais bonito. 💜
+
 </p>
+
 
 <a
 class="next-button"
@@ -761,6 +812,7 @@ href="memoria.html">
 Próxima surpresa ❤️
 
 </a>
+
 
 </section>
 
@@ -771,73 +823,131 @@ Próxima surpresa ❤️
 <script>
 
 /* =========================
-   ELEMENTOS
+ELEMENTOS
 ========================= */
 
 const area =
-document.getElementById("paintArea");
+document.getElementById(
+"paintArea"
+);
 
 const canvas =
-document.getElementById("paintCanvas");
+document.getElementById(
+"paintCanvas"
+);
 
 const ctx =
-canvas.getContext("2d");
+canvas.getContext(
+"2d",
+{
+willReadFrequently:true
+}
+);
 
 const fill =
-document.getElementById("fill");
+document.getElementById(
+"fill"
+);
 
 const progressText =
-document.getElementById("progress-text");
+document.getElementById(
+"progress-text"
+);
 
 const message =
-document.getElementById("message");
+document.getElementById(
+"message"
+);
 
 const glow =
-document.getElementById("brushGlow");
+document.getElementById(
+"brushGlow"
+);
 
 
 /* =========================
-   CONFIGURAÇÃO
+CONFIGURAÇÃO
 ========================= */
 
-const GRID_W = 50;
-const GRID_H = 67;
+/*
+   A máscara possui baixa resolução
+   de propósito.
 
-let painted;
+   Isso deixa o sistema leve
+   no celular e evita lag.
+*/
+
+const MASK_W = 100;
+
+const MASK_H = 134;
+
+
+/* Máscara da área realmente pintada */
+
+const mask =
+document.createElement(
+"canvas"
+);
+
+mask.width =
+MASK_W;
+
+mask.height =
+MASK_H;
+
+const maskCtx =
+mask.getContext(
+"2d"
+);
+
+
+/* =========================
+ESTADO
+========================= */
 
 let painting = false;
 
 let lastX = null;
+
 let lastY = null;
 
 let completed = false;
 
 let finishing = false;
 
+let maskPixels = null;
 
-/* =========================
-   GRID
-========================= */
-
-function resetGrid(){
-
-painted =
-Array.from(
-{length:GRID_H},
-() => new Uint8Array(GRID_W)
-);
-
-}
+let totalMaskPixels =
+MASK_W * MASK_H;
 
 
 /* =========================
-   CANVAS
+INICIALIZAR
 ========================= */
 
-function resizeCanvas(){
+function init(){
+
+/*
+   IMPORTANTE:
+
+   O tamanho é definido somente
+   uma vez.
+
+   Não usamos resizeCanvas()
+   durante a rolagem.
+*/
 
 const rect =
 area.getBoundingClientRect();
+
+const width =
+rect.width - 14;
+
+const height =
+rect.height - 14;
+
+
+/* resolução física limitada */
 
 const ratio =
 Math.min(
@@ -846,16 +956,21 @@ window.devicePixelRatio || 1,
 );
 
 canvas.width =
-rect.width * ratio;
+Math.round(
+width * ratio
+);
 
 canvas.height =
-rect.height * ratio;
+Math.round(
+height * ratio
+);
 
 canvas.style.width =
-rect.width + "px";
+width + "px";
 
 canvas.style.height =
-rect.height + "px";
+height + "px";
+
 
 ctx.setTransform(
 ratio,
@@ -866,29 +981,17 @@ ratio,
 0
 );
 
-createPaint();
-
-}
-
 
 /* =========================
    CRIAR TINTA
 ========================= */
 
-function createPaint(){
-
-const w =
-area.clientWidth - 14;
-
-const h =
-area.clientHeight - 14;
-
 const gradient =
 ctx.createLinearGradient(
 0,
 0,
-w,
-h
+width,
+height
 );
 
 gradient.addColorStop(
@@ -915,51 +1018,74 @@ gradient;
 ctx.fillRect(
 0,
 0,
-w,
-h
+width,
+height
 );
 
-resetGrid();
 
-completed=false;
+/* =========================
+   MÁSCARA
+========================= */
 
-finishing=false;
+/*
+   Preto = ainda não pintado
+   Branco = já pintado
+*/
 
-fill.style.width="0%";
+maskCtx.globalCompositeOperation =
+"source-over";
 
-progressText.textContent =
-"Passe o dedo pela tela para começar... 🎨";
+maskCtx.fillStyle =
+"#000";
 
-message.classList.remove("show");
+maskCtx.fillRect(
+0,
+0,
+MASK_W,
+MASK_H
+);
+
+
+/* =========================
+   PIXELS
+========================= */
+
+maskPixels =
+maskCtx.getImageData(
+0,
+0,
+MASK_W,
+MASK_H
+);
 
 }
 
 
 /* =========================
-   POSIÇÃO DO DEDO
+POSIÇÃO
 ========================= */
 
-function position(e){
+function getPosition(e){
 
 const rect =
-area.getBoundingClientRect();
+canvas.getBoundingClientRect();
 
 const point =
-e.touches ?
-e.touches[0] :
+e.touches
+?
+e.touches[0]
+:
 e;
 
 return{
 
 x:
 point.clientX -
-rect.left -
-7,
+rect.left,
 
 y:
 point.clientY -
-rect.top -
-7
+rect.top
 
 };
 
@@ -967,161 +1093,276 @@ rect.top -
 
 
 /* =========================
-   MARCAR ÁREA
+MARCAR MÁSCARA
 ========================= */
 
-function markPainted(x,y){
+function markMask(x,y){
 
-const w =
-area.clientWidth - 14;
+const width =
+canvas.clientWidth;
 
-const h =
-area.clientHeight - 14;
+const height =
+canvas.clientHeight;
 
-const gx =
-Math.floor(
-x / w * GRID_W
+
+/*
+   Converte a posição
+   da tela para a máscara.
+*/
+
+const mx =
+x / width *
+MASK_W;
+
+const my =
+y / height *
+MASK_H;
+
+
+/*
+   Raio da máscara.
+
+   Ele acompanha aproximadamente
+   o raio visual do pincel.
+*/
+
+const radius =
+9;
+
+
+/* desenha na máscara */
+
+maskCtx.fillStyle =
+"#fff";
+
+maskCtx.beginPath();
+
+maskCtx.arc(
+mx,
+my,
+radius,
+0,
+Math.PI * 2
 );
 
-const gy =
-Math.floor(
-y / h * GRID_H
+maskCtx.fill();
+
+
+/* linha entre pontos */
+
+if(
+lastX !== null &&
+lastY !== null
+){
+
+const lx =
+lastX / width *
+MASK_W;
+
+const ly =
+lastY / height *
+MASK_H;
+
+const dx =
+mx - lx;
+
+const dy =
+my - ly;
+
+const distance =
+Math.sqrt(
+dx*dx + dy*dy
 );
 
-const radius=3;
+const steps =
+Math.max(
+1,
+Math.ceil(distance / 4)
+);
+
 
 for(
-let yy=gy-radius;
-yy<=gy+radius;
-yy++
+let i=1;
+i<=steps;
+i++
 ){
 
-for(
-let xx=gx-radius;
-xx<=gx+radius;
-xx++
-){
+const px =
+lx +
+dx *
+(i / steps);
 
-if(
-xx<0 ||
-yy<0 ||
-xx>=GRID_W ||
-yy>=GRID_H
-) continue;
+const py =
+ly +
+dy *
+(i / steps);
 
-const dx=xx-gx;
+maskCtx.beginPath();
 
-const dy=yy-gy;
+maskCtx.arc(
+px,
+py,
+radius,
+0,
+Math.PI*2
+);
 
-if(
-dx*dx+
-dy*dy<=
-radius*radius
-){
-
-painted[yy][xx]=1;
+maskCtx.fill();
 
 }
 
 }
 
-}
+
+/*
+   Atualiza os pixels
+   da máscara.
+*/
+
+maskPixels =
+maskCtx.getImageData(
+0,
+0,
+MASK_W,
+MASK_H
+);
 
 }
 
 
 /* =========================
-   CALCULAR PROGRESSO
+CALCULAR COBERTURA
 ========================= */
 
-function getProgress(){
+function getCoverage(){
 
-let total=0;
+if(!maskPixels)return 0;
+
+let painted=0;
+
+const data =
+maskPixels.data;
+
+
+/*
+   Cada pixel possui:
+
+   R
+   G
+   B
+   A
+
+   Como nossa máscara é branca
+   quando pintada, usamos o canal R.
+*/
 
 for(
-let y=0;
-y<GRID_H;
-y++
-){
-
-for(
-let x=0;
-x<GRID_W;
-x++
+let i=0;
+i<data.length;
+i+=4
 ){
 
 if(
-painted[y][x]
-) total++;
+data[i] > 20
+){
+
+painted++;
 
 }
 
 }
 
-return total /
-(GRID_W*GRID_H) *
-100;
+
+return (
+painted /
+totalMaskPixels
+) * 100;
 
 }
 
 
 /* =========================
-   ATUALIZAR BARRA
+ATUALIZAR PROGRESSO
 ========================= */
 
 function updateProgress(){
 
 if(finishing)return;
 
-const progress =
-getProgress();
+let value =
+getCoverage();
 
-const value =
+
+/*
+   Limita entre 0 e 100.
+*/
+
+value =
+Math.max(
+0,
 Math.min(
-progress,
-100
+100,
+value
+)
 );
 
+
 fill.style.width =
-value.toFixed(1)+"%";
+value.toFixed(1) +
+"%";
 
 
-if(value<5){
+/* FRASES */
+
+if(value < 5){
 
 progressText.textContent =
 "Passe o dedo pela tela para começar... 🎨";
 
 }
 
-else if(value<25){
+else if(value < 25){
 
 progressText.textContent =
 "A tinta está começando a desaparecer... ✨";
 
 }
 
-else if(value<50){
+else if(value < 50){
 
 progressText.textContent =
 "Continue... já dá para ver alguns detalhes. ❤️";
 
 }
 
-else if(value<75){
+else if(value < 70){
 
 progressText.textContent =
 "Está ficando linda... 💜";
 
 }
 
-else if(value<85){
+else if(value < 85){
 
 progressText.textContent =
-"Está quase revelada... ❤️";
+"Você está revelando cada detalhe... ✨";
 
 }
 
-else{
+else if(value < 98){
+
+progressText.textContent =
+"Está quase completamente revelada... ❤️";
+
+}
+
+
+/*
+   Só finaliza quando a máscara
+   realmente atingir 98%.
+*/
+
+if(value >= 98){
 
 finish();
 
@@ -1131,18 +1372,26 @@ finish();
 
 
 /* =========================
-   PINCEL
+PINCEL VISUAL
 ========================= */
 
-function brush(x,y){
+function paint(x,y){
 
-const radius=33;
+if(completed)return;
+
+const radius =
+33;
+
+
+/*
+   Apaga a tinta.
+*/
 
 ctx.globalCompositeOperation =
 "destination-out";
 
 
-/* PINCEL PRINCIPAL */
+/* círculo principal */
 
 ctx.beginPath();
 
@@ -1157,7 +1406,11 @@ Math.PI*2
 ctx.fill();
 
 
-/* PEQUENAS GOTAS */
+/*
+   Pequenos detalhes
+   para deixar o pincel
+   menos artificial.
+*/
 
 for(
 let i=0;
@@ -1167,25 +1420,26 @@ i++
 
 const angle =
 Math.random() *
-Math.PI*2;
+Math.PI * 2;
 
 const distance =
-18+
+18 +
 Math.random()*22;
 
 const px =
-x+
-Math.cos(angle)*
+x +
+Math.cos(angle) *
 distance;
 
 const py =
-y+
-Math.sin(angle)*
+y +
+Math.sin(angle) *
 distance;
 
 const size =
-4+
-Math.random()*7;
+4 +
+Math.random()*6;
+
 
 ctx.beginPath();
 
@@ -1202,11 +1456,16 @@ ctx.fill();
 }
 
 
-/* LINHA ENTRE OS MOVIMENTOS */
+/*
+   Liga as pinceladas.
+
+   Isso evita buracos quando
+   o dedo se move rapidamente.
+*/
 
 if(
-lastX!==null &&
-lastY!==null
+lastX !== null &&
+lastY !== null
 ){
 
 ctx.beginPath();
@@ -1222,7 +1481,7 @@ y
 );
 
 ctx.lineWidth =
-radius*2;
+radius * 2;
 
 ctx.lineCap =
 "round";
@@ -1232,18 +1491,38 @@ ctx.stroke();
 }
 
 
+/*
+   Atualiza a máscara
+   separadamente.
+*/
+
+markMask(
+x,
+y
+);
+
+
+/*
+   Atualiza coordenadas.
+*/
+
 lastX=x;
 
 lastY=y;
 
-markPainted(
-x,
-y
-);
+
+/*
+   Atualiza barra.
+*/
 
 updateProgress();
 
-showBrush(
+
+/*
+   Mostra o brilho.
+*/
+
+showGlow(
 x,
 y
 );
@@ -1252,42 +1531,45 @@ y
 
 
 /* =========================
-   BRILHO
+BRILHO
 ========================= */
 
-function showBrush(x,y){
+function showGlow(x,y){
 
 glow.style.left =
-(x+7)+"px";
+(x + 7) +
+"px";
 
 glow.style.top =
-(y+7)+"px";
+(y + 7) +
+"px";
 
-glow.style.opacity=".8";
+glow.style.opacity =
+".8";
 
 }
 
 
 /* =========================
-   COMEÇAR PINTURA
+COMEÇAR
 ========================= */
 
 function startPainting(e){
 
-e.preventDefault();
-
 if(completed)return;
+
+e.preventDefault();
 
 painting=true;
 
 const p =
-position(e);
+getPosition(e);
 
-lastX=p.x;
+lastX=null;
 
-lastY=p.y;
+lastY=null;
 
-brush(
+paint(
 p.x,
 p.y
 );
@@ -1296,7 +1578,7 @@ p.y
 
 
 /* =========================
-   MOVIMENTO
+MOVER
 ========================= */
 
 function movePainting(e){
@@ -1306,9 +1588,9 @@ if(!painting)return;
 e.preventDefault();
 
 const p =
-position(e);
+getPosition(e);
 
-brush(
+paint(
 p.x,
 p.y
 );
@@ -1317,7 +1599,7 @@ p.y
 
 
 /* =========================
-   PARAR
+PARAR
 ========================= */
 
 function stopPainting(){
@@ -1334,37 +1616,46 @@ glow.style.opacity="0";
 
 
 /* =========================
-   TOUCH
+TOUCH
 ========================= */
 
-area.addEventListener(
+canvas.addEventListener(
 "touchstart",
 startPainting,
-{passive:false}
+{
+passive:false
+}
 );
 
-area.addEventListener(
+canvas.addEventListener(
 "touchmove",
 movePainting,
-{passive:false}
+{
+passive:false
+}
 );
 
-area.addEventListener(
+canvas.addEventListener(
 "touchend",
+stopPainting
+);
+
+canvas.addEventListener(
+"touchcancel",
 stopPainting
 );
 
 
 /* =========================
-   MOUSE
+MOUSE
 ========================= */
 
-area.addEventListener(
+canvas.addEventListener(
 "mousedown",
 startPainting
 );
 
-area.addEventListener(
+canvas.addEventListener(
 "mousemove",
 movePainting
 );
@@ -1376,12 +1667,15 @@ stopPainting
 
 
 /* =========================
-   FINALIZAÇÃO
+FINALIZAÇÃO
 ========================= */
 
 function finish(){
 
-if(completed || finishing)return;
+if(
+completed ||
+finishing
+)return;
 
 finishing=true;
 
@@ -1395,32 +1689,89 @@ glow.style.opacity="0";
 
 
 /*
-   A partir de 85%,
-   consideramos a imagem
-   suficientemente revelada.
+   Neste ponto já temos 98%
+   de cobertura REAL.
 
-   A barra completa
-   suavemente até 100%.
+   Agora apagamos suavemente
+   qualquer pequeno resíduo.
+
+   Isso garante que visualmente
+   a fotografia fique completamente
+   revelada.
 */
 
-let current =
-parseFloat(
-fill.style.width
-) || 85;
+const duration =
+700;
 
-const animation =
-setInterval(
-function(){
+const start =
+performance.now();
 
-current += .8;
 
-if(current>=100){
+function eraseRemaining(time){
 
-current=100;
+const progress =
+Math.min(
+(time - start) /
+duration,
+1
+);
 
-clearInterval(animation);
 
-fill.style.width="100%";
+/*
+   Pequena redução progressiva
+   da camada restante.
+*/
+
+ctx.globalCompositeOperation =
+"destination-out";
+
+ctx.fillStyle =
+"rgba(0,0,0," +
+(0.035 * progress) +
+")";
+
+ctx.fillRect(
+0,
+0,
+canvas.clientWidth,
+canvas.clientHeight
+);
+
+
+fill.style.width =
+(
+98 +
+progress * 2
+) +
+"%";
+
+
+if(progress < 1){
+
+requestAnimationFrame(
+eraseRemaining
+);
+
+}
+
+else{
+
+/*
+   Garantia absoluta:
+   remove qualquer restante.
+*/
+
+ctx.clearRect(
+0,
+0,
+canvas.clientWidth,
+canvas.clientHeight
+);
+
+
+fill.style.width =
+"100%";
+
 
 progressText.textContent =
 "Você revelou tudo! ❤️";
@@ -1436,23 +1787,23 @@ message.classList.add(
 );
 
 },
-500
+600
 );
 
 }
 
-fill.style.width =
-current+"%";
+}
 
-},
-18
+
+requestAnimationFrame(
+eraseRemaining
 );
 
 }
 
 
 /* =========================
-   CHUVA
+CHUVA
 ========================= */
 
 const falling =
@@ -1493,8 +1844,10 @@ document.createElement(
 item.className =
 "falling-item";
 
+
 const isEmoji =
 Math.random()<.5;
+
 
 item.textContent =
 isEmoji
@@ -1517,7 +1870,8 @@ words.length
 item.style.left =
 (
 Math.random()*90+5
-)+"%";
+) +
+"%";
 
 
 item.style.fontSize =
@@ -1529,14 +1883,16 @@ Math.random()*9
 :
 12+
 Math.random()*7
-)+"px";
+) +
+"px";
 
 
 item.style.animationDuration =
 (
 5+
 Math.random()*5
-)+"s";
+) +
+"s";
 
 
 item.style.setProperty(
@@ -1544,7 +1900,8 @@ item.style.setProperty(
 (
 -60+
 Math.random()*120
-)+"px"
+) +
+"px"
 );
 
 
@@ -1553,7 +1910,8 @@ item.style.setProperty(
 (
 -40+
 Math.random()*80
-)+"deg"
+) +
+"deg"
 );
 
 
@@ -1574,6 +1932,11 @@ item.remove();
 }
 
 
+/*
+   Não exageramos na quantidade
+   para preservar o desempenho.
+*/
+
 setInterval(
 createFalling,
 500
@@ -1581,15 +1944,21 @@ createFalling,
 
 
 /* =========================
-   INICIALIZAÇÃO
+INICIALIZAÇÃO
 ========================= */
 
-window.addEventListener(
-"resize",
-resizeCanvas
-);
+/*
+   SOMENTE UMA VEZ.
 
-resizeCanvas();
+   Não existe listener de resize
+   aqui.
+
+   Isso é proposital para impedir
+   que a pintura seja reiniciada
+   durante a rolagem da página.
+*/
+
+init();
 
 </script>
 
