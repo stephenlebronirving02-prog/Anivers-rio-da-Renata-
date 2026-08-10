@@ -13,8 +13,7 @@ user-scalable=no">
 
 <title>Uma obra de arte... ❤️</title>
 
-<meta name="theme-color"
-content="#030308">
+<meta name="theme-color" content="#030308">
 
 <style>
 
@@ -55,6 +54,7 @@ overflow-x:hidden;
 position:fixed;
 inset:0;
 z-index:0;
+
 background:
 radial-gradient(
 circle at 20% 20%,
@@ -67,51 +67,72 @@ circle at 20% 20%,
 .background::before{
 content:"";
 position:absolute;
+
 width:380px;
 height:380px;
+
 left:-170px;
 top:-100px;
+
 border-radius:50%;
+
 background:#7B2EFF;
+
 filter:blur(120px);
+
 opacity:.38;
 }
 
 .background::after{
 content:"";
 position:absolute;
+
 width:350px;
 height:350px;
+
 right:-150px;
 bottom:-100px;
+
 border-radius:50%;
+
 background:#2D8CFF;
+
 filter:blur(120px);
+
 opacity:.28;
 }
 
 
 /* =========================
-   CHUVA
+   CHUVA DE ELOGIOS
 ========================= */
 
 #falling{
 position:fixed;
 inset:0;
+
 pointer-events:none;
+
 z-index:2;
+
 overflow:hidden;
 }
 
 .falling-item{
 position:absolute;
+
 top:-60px;
+
 white-space:nowrap;
+
 font-weight:700;
+
 color:rgba(255,255,255,.72);
+
 text-shadow:
 0 0 10px rgba(255,255,255,.5),
 0 0 22px #7B2EFF;
+
 animation:
 falling linear forwards;
 }
@@ -122,6 +143,7 @@ falling linear forwards;
 transform:
 translateY(-60px)
 rotate(0deg);
+
 opacity:0;
 }
 
@@ -140,6 +162,7 @@ var(--side),
 110vh
 )
 rotate(var(--rotation));
+
 opacity:0;
 }
 
@@ -152,14 +175,21 @@ opacity:0;
 
 .page{
 position:relative;
+
 z-index:5;
+
 width:100%;
 min-height:100vh;
+
 padding:
 35px 16px 50px;
+
 display:flex;
+
 flex-direction:column;
+
 align-items:center;
+
 }
 
 
@@ -169,11 +199,14 @@ align-items:center;
 
 .emoji-title{
 font-size:42px;
+
 margin-bottom:8px;
+
 filter:
 drop-shadow(
 0 0 15px #7B2EFF
 );
+
 animation:
 float 3s ease-in-out infinite;
 }
@@ -192,20 +225,30 @@ transform:translateY(-7px);
 
 .title{
 font-size:27px;
+
 font-weight:800;
+
 text-align:center;
+
 line-height:1.15;
+
 text-shadow:
 0 0 15px rgba(123,46,255,.8);
 }
 
 .subtitle{
 margin-top:12px;
+
 max-width:330px;
+
 text-align:center;
+
 font-size:15px;
+
 line-height:1.5;
-color:rgba(255,255,255,.68);
+
+color:
+rgba(255,255,255,.68);
 }
 
 
@@ -215,10 +258,15 @@ color:rgba(255,255,255,.68);
 
 .paint-box{
 position:relative;
+
 width:min(390px,94vw);
+
 aspect-ratio:3 / 4;
+
 margin-top:28px;
+
 padding:7px;
+
 border-radius:30px;
 
 background:
@@ -237,16 +285,20 @@ box-shadow:
 
 
 /* =========================
-   FOTO ESCONDIDA
+   FOTO
 ========================= */
 
 .paint-photo{
 position:absolute;
+
 inset:7px;
+
 width:calc(100% - 14px);
+
 height:calc(100% - 14px);
 
 object-fit:cover;
+
 object-position:center;
 
 border-radius:23px;
@@ -256,14 +308,16 @@ display:block;
 
 
 /* =========================
-   CANVAS DA TINTA
+   CANVAS
 ========================= */
 
 #paintCanvas{
 position:absolute;
+
 inset:7px;
 
 width:calc(100% - 14px);
+
 height:calc(100% - 14px);
 
 border-radius:23px;
@@ -280,12 +334,14 @@ z-index:3;
 
 #brushGlow{
 position:absolute;
+
 width:65px;
 height:65px;
 
 border-radius:50%;
 
 pointer-events:none;
+
 z-index:5;
 
 transform:
@@ -306,22 +362,25 @@ filter:blur(5px);
 
 
 /* =========================
-   ÁREA DE PROGRESSO
+   PROGRESSO
 ========================= */
 
 .progress-area{
 width:min(390px,90vw);
+
 margin-top:22px;
+
 text-align:center;
 }
 
 .progress-bar{
 width:100%;
+
 height:8px;
 
-border-radius:20px;
-
 overflow:hidden;
+
+border-radius:20px;
 
 background:
 rgba(255,255,255,.09);
@@ -337,6 +396,7 @@ rgba(123,46,255,.2);
 
 #fill{
 width:0%;
+
 height:100%;
 
 border-radius:20px;
@@ -359,9 +419,11 @@ width .18s ease;
 
 #progress-text{
 display:block;
+
 margin-top:9px;
 
 font-size:12px;
+
 font-weight:600;
 
 color:
@@ -404,6 +466,7 @@ rgba(123,46,255,.06);
 text-align:center;
 
 opacity:0;
+
 transform:
 translateY(25px)
 scale(.96);
@@ -429,6 +492,7 @@ pointer-events:auto;
 font-size:35px;
 
 display:block;
+
 margin-bottom:8px;
 
 filter:
@@ -439,7 +503,9 @@ drop-shadow(
 
 #message h2{
 font-size:22px;
+
 line-height:1.25;
+
 margin-bottom:15px;
 }
 
@@ -452,6 +518,7 @@ text-shadow:
 
 #message p{
 font-size:14px;
+
 line-height:1.65;
 
 color:
@@ -462,6 +529,7 @@ margin-top:13px;
 
 .highlight{
 color:#fff;
+
 font-weight:700;
 }
 
@@ -492,6 +560,7 @@ color:#fff;
 text-decoration:none;
 
 font-size:14px;
+
 font-weight:800;
 
 box-shadow:
@@ -583,23 +652,17 @@ transition:none !important;
 <body>
 
 
-<!-- =========================
-     FUNDO
-========================= -->
+<!-- FUNDO -->
 
 <div class="background"></div>
 
 
-<!-- =========================
-     CHUVA
-========================= -->
+<!-- CHUVA -->
 
 <div id="falling"></div>
 
 
-<!-- =========================
-     PÁGINA
-========================= -->
+<!-- PÁGINA -->
 
 <main class="page">
 
@@ -620,30 +683,23 @@ o que está escondido por trás da tinta. ❤️
 </p>
 
 
-<!-- =========================
-     PINTURA
-========================= -->
+<!-- PINTURA -->
 
-<div class="paint-box"
-id="paintArea">
+<div class="paint-box" id="paintArea">
 
 <img
 class="paint-photo"
 src="Fotos/foto12.jpg"
-alt="Uma memória especial">
+alt="Memória especial">
 
-<canvas
-id="paintCanvas">
-</canvas>
+<canvas id="paintCanvas"></canvas>
 
 <div id="brushGlow"></div>
 
 </div>
 
 
-<!-- =========================
-     PROGRESSO
-========================= -->
+<!-- BARRA -->
 
 <div class="progress-area">
 
@@ -660,9 +716,7 @@ Passe o dedo pela tela para começar... 🎨
 </div>
 
 
-<!-- =========================
-     MENSAGEM FINAL
-========================= -->
+<!-- MENSAGEM -->
 
 <section id="message">
 
@@ -671,12 +725,9 @@ Passe o dedo pela tela para começar... 🎨
 </span>
 
 <h2>
-
 Você acabou de revelar
 uma obra de arte.
-
 <span>❤️</span>
-
 </h2>
 
 <p>
@@ -761,6 +812,8 @@ let lastY = null;
 
 let completed = false;
 
+let finishing = false;
+
 
 /* =========================
    GRID
@@ -778,7 +831,7 @@ Array.from(
 
 
 /* =========================
-   TAMANHO DO CANVAS
+   CANVAS
 ========================= */
 
 function resizeCanvas(){
@@ -819,7 +872,7 @@ createPaint();
 
 
 /* =========================
-   CAMADA DE TINTA
+   CRIAR TINTA
 ========================= */
 
 function createPaint(){
@@ -830,12 +883,12 @@ area.clientWidth - 14;
 const h =
 area.clientHeight - 14;
 
-
-/* fundo */
-
 const gradient =
 ctx.createLinearGradient(
-0,0,w,h
+0,
+0,
+w,
+h
 );
 
 gradient.addColorStop(
@@ -870,6 +923,8 @@ resetGrid();
 
 completed=false;
 
+finishing=false;
+
 fill.style.width="0%";
 
 progressText.textContent =
@@ -881,7 +936,7 @@ message.classList.remove("show");
 
 
 /* =========================
-   POSIÇÃO
+   POSIÇÃO DO DEDO
 ========================= */
 
 function position(e){
@@ -894,7 +949,7 @@ e.touches ?
 e.touches[0] :
 e;
 
-return {
+return{
 
 x:
 point.clientX -
@@ -912,7 +967,7 @@ rect.top -
 
 
 /* =========================
-   REGISTRAR ÁREA
+   MARCAR ÁREA
 ========================= */
 
 function markPainted(x,y){
@@ -955,6 +1010,7 @@ yy>=GRID_H
 ) continue;
 
 const dx=xx-gx;
+
 const dy=yy-gy;
 
 if(
@@ -975,7 +1031,7 @@ painted[yy][xx]=1;
 
 
 /* =========================
-   PROGRESSO
+   CALCULAR PROGRESSO
 ========================= */
 
 function getProgress(){
@@ -1010,10 +1066,12 @@ return total /
 
 
 /* =========================
-   ATUALIZAR
+   ATUALIZAR BARRA
 ========================= */
 
 function updateProgress(){
+
+if(finishing)return;
 
 const progress =
 getProgress();
@@ -1056,7 +1114,7 @@ progressText.textContent =
 
 }
 
-else if(value<92){
+else if(value<85){
 
 progressText.textContent =
 "Está quase revelada... ❤️";
@@ -1078,13 +1136,13 @@ finish();
 
 function brush(x,y){
 
-const radius=31;
+const radius=33;
 
 ctx.globalCompositeOperation =
 "destination-out";
 
 
-/* pincel principal */
+/* PINCEL PRINCIPAL */
 
 ctx.beginPath();
 
@@ -1099,7 +1157,7 @@ Math.PI*2
 ctx.fill();
 
 
-/* pequenas gotas */
+/* PEQUENAS GOTAS */
 
 for(
 let i=0;
@@ -1144,7 +1202,7 @@ ctx.fill();
 }
 
 
-/* conexão */
+/* LINHA ENTRE OS MOVIMENTOS */
 
 if(
 lastX!==null &&
@@ -1175,6 +1233,7 @@ ctx.stroke();
 
 
 lastX=x;
+
 lastY=y;
 
 markPainted(
@@ -1210,12 +1269,14 @@ glow.style.opacity=".8";
 
 
 /* =========================
-   COMEÇAR
+   COMEÇAR PINTURA
 ========================= */
 
 function startPainting(e){
 
 e.preventDefault();
+
+if(completed)return;
 
 painting=true;
 
@@ -1223,6 +1284,7 @@ const p =
 position(e);
 
 lastX=p.x;
+
 lastY=p.y;
 
 brush(
@@ -1263,6 +1325,7 @@ function stopPainting(){
 painting=false;
 
 lastX=null;
+
 lastY=null;
 
 glow.style.opacity="0";
@@ -1318,17 +1381,55 @@ stopPainting
 
 function finish(){
 
-if(completed)return;
+if(completed || finishing)return;
 
-completed=true;
+finishing=true;
+
+painting=false;
+
+lastX=null;
+
+lastY=null;
+
+glow.style.opacity="0";
+
+
+/*
+   A partir de 85%,
+   consideramos a imagem
+   suficientemente revelada.
+
+   A barra completa
+   suavemente até 100%.
+*/
+
+let current =
+parseFloat(
+fill.style.width
+) || 85;
+
+const animation =
+setInterval(
+function(){
+
+current += .8;
+
+if(current>=100){
+
+current=100;
+
+clearInterval(animation);
 
 fill.style.width="100%";
 
 progressText.textContent =
 "Você revelou tudo! ❤️";
 
+
 setTimeout(
 function(){
+
+completed=true;
 
 message.classList.add(
 "show"
@@ -1340,9 +1441,18 @@ message.classList.add(
 
 }
 
+fill.style.width =
+current+"%";
+
+},
+18
+);
+
+}
+
 
 /* =========================
-   CHUVA DE ELOGIOS
+   CHUVA
 ========================= */
 
 const falling =
@@ -1383,11 +1493,11 @@ document.createElement(
 item.className =
 "falling-item";
 
-const emoji =
+const isEmoji =
 Math.random()<.5;
 
 item.textContent =
-emoji
+isEmoji
 ?
 emojis[
 Math.floor(
@@ -1412,7 +1522,7 @@ Math.random()*90+5
 
 item.style.fontSize =
 (
-emoji
+isEmoji
 ?
 20+
 Math.random()*9
@@ -1454,7 +1564,9 @@ item
 
 setTimeout(
 function(){
+
 item.remove();
+
 },
 10000
 );
@@ -1482,4 +1594,5 @@ resizeCanvas();
 </script>
 
 </body>
+
    </html>
