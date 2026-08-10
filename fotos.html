@@ -1,1 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Feliz Aniversário, Renata ❤️</title>
+<meta name="theme-color" content="#030308">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { width:100%; background:#030308; color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; overflow-x:hidden; }
 
+/* FUNDO CINEMATOGRÁFICO */
+.background { position:fixed; inset:0; z-index:0; background: radial-gradient(circle at 50% 20%, #110b2b 0%, #05030b 55%, #030308 100%); pointer-events:none; }
+.background::before { content:""; position:absolute; width:330px; height:330px; top:-120px; left:-120px; border-radius:50%; background:#7B2EFF; filter:blur(130px); opacity:.35; animation:glow 8s ease-in-out infinite alternate; }
+.background::after { content:""; position:absolute; width:330px; height:330px; right:-120px; bottom:-120px; border-radius:50%; background:#2D8CFF; filter:blur(130px); opacity:.3; animation:glow 8s ease-in-out infinite alternate-reverse; }
+@keyframes glow { from { transform:scale(1); opacity:.25; } to { transform:scale(1.25); opacity:.45; } }
+
+/* CHUVA DE ELOGIOS */
+#falling { position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+.falling-item { position:absolute; top:-50px; white-space:nowrap; font-weight:700; color:#fff; opacity:0; text-shadow: 0 0 10px #fff, 0 0 22px #7B2EFF, 0 0 35px #2D8CFF; animation:fall linear forwards; }
+@keyframes fall { 0% { transform: translateY(-50px) rotate(0deg); opacity:0; } 15% { opacity:.65; } 85% { opacity:.45; } 100% { transform: translate(var(--side), 110vh) rotate(var(--rotation)); opacity:0; } }
+
+main { position:relative; z-index:3; }
+
+/* CABEÇALHO & SEÇÕES */
+.intro { min-height:100vh; padding:45px 22px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.intro-heart { font-size:55px; margin-bottom:20px; filter: drop-shadow(0 0 15px #7B2EFF); animation:pulse 2s infinite; }
+@keyframes pulse { 50% { transform:scale(1.12); } }
+.intro h1 { font-size:30px; line-height:1.15; margin-bottom:15px; background: linear-gradient(90deg, #fff, #c99cff, #fff); -webkit-background-clip:text; color:transparent; }
+.intro p { max-width:320px; font-size:15px; line-height:1.7; color:rgba(255,255,255,.7); }
+.scroll-hint { margin-top:35px; color:#b98cff; font-size:12px; letter-spacing:1px; animation:breathe 2s infinite; }
+@keyframes breathe { 50% { opacity:.45; transform:translateY(5px); } }
+
+/* MEMÓRIAS */
+.memory { min-height:100vh; padding:35px 18px 70px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+.number { width:100%; max-width:390px; display:flex; justify-space-between; align-items:center; margin-bottom:15px; font-size:11px; letter-spacing:2px; color:rgba(255,255,255,.45); }
+.photo-box { width:100%; max-width:390px; min-height:430px; padding:9px; display:flex; align-items:center; justify-content:center; border-radius:28px; background: linear-gradient(145deg, rgba(123,46,255,.6), rgba(255,255,255,.12), rgba(45,140,255,.5)); box-shadow: 0 20px 50px rgba(0,0,0,.7), 0 0 30px rgba(123,46,255,.22); }
+.photo-inner { width:100%; height:100%; min-height:412px; display:flex; align-items:center; justify-content:center; overflow:hidden; border-radius:22px; background:#050505; }
+.photo-inner img { width:100%; height:100%; max-height:70vh; object-fit:contain; object-position:center; display:block; transition: transform .8s ease, opacity .8s ease; }
+
+.memory-text { width:100%; max-width:380px; margin-top:28px; padding:0 10px; }
+.memory-text h2 { font-size:23px; margin-bottom:12px; color:#fff; text-shadow: 0 0 15px rgba(123,46,255,.5); }
+.memory-text p { font-size:14px; line-height:1.75; color:rgba(255,255,255,.72); }
+.divider { width:70px; height:2px; margin:20px auto; border-radius:10px; background: linear-gradient(90deg, #7B2EFF, #2D8CFF); box-shadow: 0 0 12px #7B2EFF; }
+
+/* PRÓXIMA PÁGINA */
+.next-area { min-height:100vh; padding:40px 25px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.next-area h2 { font-size:26px; margin-bottom:15px; }
+.next-area p { max-width:320px; color:rgba(255,255,255,.65); line-height:1.6; margin-bottom:30px; }
+.next-button { display:inline-flex; align-items:center; justify-content:center; min-width:220px; padding:15px 25px; border:1px solid rgba(255,255,255,.2); border-radius:50px; background: linear-gradient(90deg, #7B2EFF, #5d38ff); color:#fff; text-decoration:none; font-size:14px; font-weight:700; box-shadow: 0 0 20px rgba(123,46,255,.45); transition: transform .25s ease, box-shadow .25s ease; }
+.next-button:active { transform:scale(.94); box-shadow: 0 0 35px rgba(123,46,255,.8); }
+
+footer { padding:30px; text-align:center; color:rgba(255,255,255,.3); font-size:11px; }
+
+.reveal { opacity:0; transform: translateY(35px); transition: opacity .9s ease, transform .9s ease; }
+.reveal.show { opacity:1; transform: translateY(0); }
+
+@media(max-width:380px){
+    .intro h1 { font-size:26px; }
+    .photo-box { min-height:370px; }
+    .photo-inner { min-height:352px; }
+    .memory-text h2 { font-size:20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="background"></div>
+<div id="falling"></div>
+
+<main>
+
+<section class="intro">
+    <div class="intro-heart">❤️</div>
+    <h1>Algumas memórias<br>especiais...</h1>
+    <p>Cada fotografia guarda um momento, mas algumas pessoas conseguem transformar momentos simples em lembranças inesquecíveis.</p>
+    <div class="scroll-hint">DESLIZE PARA COMEÇAR ↓</div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>01 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto1.jpg" alt="Memória 1"></div></div>
+    <div class="memory-text">
+        <h2>Um sorriso impossível de esquecer ❤️</h2>
+        <div class="divider"></div>
+        <p>Seu sorriso tem aquele jeito especial de deixar qualquer momento mais bonito. E seus olhos conseguem chamar atenção sem precisar dizer absolutamente nada.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>02 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto2.jpg" alt="Memória 2"></div></div>
+    <div class="memory-text">
+        <h2>Seu olhar diz tudo ✨</h2>
+        <div class="divider"></div>
+        <p>Seus olhos são uma das coisas mais bonitas em você, mas seu sorriso, seu cabelo, suas curvas e sua beleza inteira conseguem deixar tudo ainda mais especial.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>03 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto3.jpg" alt="Memória 3"></div></div>
+    <div class="memory-text">
+        <h2>Beleza em cada detalhe 💜</h2>
+        <div class="divider"></div>
+        <p>É impossível não reparar no seu cabelo, no seu sorriso, no brilho dos seus olhos e em cada detalhe que faz você ser simplesmente linda.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>04 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto4.jpg" alt="Memória 4"></div></div>
+    <div class="memory-text">
+        <h2>Simplesmente você ❤️</h2>
+        <div class="divider"></div>
+        <p>Talvez você nem perceba, mas existe uma beleza especial em você. No sorriso, nos olhos, no cabelo, nas curvas e principalmente no conjunto de tudo isso.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>05 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto5.jpg" alt="Memória 5"></div></div>
+    <div class="memory-text">
+        <h2>Um momento, mil sentimentos 💙</h2>
+        <div class="divider"></div>
+        <p>Seu sorriso ilumina qualquer lugar, seus olhos prendem a atenção e sua beleza aparece até nos momentos mais simples.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>06 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto6.jpg" alt="Memória 6"></div></div>
+    <div class="memory-text">
+        <h2>Linda sem esforço ✨</h2>
+        <div class="divider"></div>
+        <p>Tem gente que precisa tentar ser bonita. Você simplesmente é. Seu cabelo, seus olhos, seu sorriso, suas curvas e sua beleza natural fazem toda diferença.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>07 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto7.jpg" alt="Memória 7"></div></div>
+    <div class="memory-text">
+        <h2>Seu sorriso é especial ❤️</h2>
+        <div class="divider"></div>
+        <p>Entre tantas coisas bonitas em você, seu sorriso sempre encontra um jeito de se destacar. E seus olhos deixam tudo ainda mais lindo.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>08 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto8.jpg" alt="Memória 8"></div></div>
+    <div class="memory-text">
+        <h2>Cada detalhe importa 💜</h2>
+        <div class="divider"></div>
+        <p>O jeito do seu cabelo, o brilho dos seus olhos, seu sorriso, suas curvas e sua beleza fazem de você alguém impossível de ignorar.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>09 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto9.jpg" alt="Memória 9"></div></div>
+    <div class="memory-text">
+        <h2>Uma beleza que permanece ✨</h2>
+        <div class="divider"></div>
+        <p>Fotos passam, momentos mudam, mas aquele sorriso bonito, aqueles olhos marcantes e essa beleza continuam sendo impossíveis de esquecer.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>10 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto10.jpg" alt="Memória 10"></div></div>
+    <div class="memory-text">
+        <h2>Você é incrível ❤️</h2>
+        <div class="divider"></div>
+        <p>Seu olhar, seu sorriso, seu cabelo, suas curvas e toda a sua beleza fazem qualquer lembrança ficar ainda mais especial.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>11 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto11.jpg" alt="Memória 11"></div></div>
+    <div class="memory-text">
+        <h2>Mais uma lembrança linda 💙</h2>
+        <div class="divider"></div>
+        <p>Porque quando a pessoa é bonita por inteiro, qualquer fotografia acaba se tornando especial.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>12 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto12.jpg" alt="Memória 12"></div></div>
+    <div class="memory-text">
+        <h2>Seu brilho é diferente ✨</h2>
+        <div class="divider"></div>
+        <p>Seus olhos têm brilho, seu sorriso tem encanto, seu cabelo tem personalidade e sua beleza tem um jeito único de chamar atenção.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>13 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto13.jpg" alt="Memória 13"></div></div>
+    <div class="memory-text">
+        <h2>Impossível não admirar ❤️</h2>
+        <div class="divider"></div>
+        <p>É o conjunto: seus olhos, seu sorriso, seu cabelo, suas curvas e essa beleza que faz você ser simplesmente você.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>14 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto14.jpg" alt="Memória 14"></div></div>
+    <div class="memory-text">
+        <h2>Um encanto em forma de pessoa 💜</h2>
+        <div class="divider"></div>
+        <p>Cada detalhe seu tem seu próprio encanto, mas quando todos se juntam, o resultado é uma beleza impossível de não admirar.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>15 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto15.jpg" alt="Memória 15"></div></div>
+    <div class="memory-text">
+        <h2>Um sorriso que fica na memória 💙</h2>
+        <div class="divider"></div>
+        <p>Alguns sorrisos são bonitos. O seu é daqueles que ficam guardados na memória.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>16 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto16.jpg" alt="Memória 16"></div></div>
+    <div class="memory-text">
+        <h2>Bonita de todos os ângulos ✨</h2>
+        <div class="divider"></div>
+        <p>Seu olhar, seu cabelo, seu sorriso, suas curvas e sua beleza fazem qualquer ângulo parecer especial.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>17 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto17.jpg" alt="Memória 17"></div></div>
+    <div class="memory-text">
+        <h2>Uma pessoa inesquecível ❤️</h2>
+        <div class="divider"></div>
+        <p>Existem pessoas que passam pela nossa vida. E existem aquelas que deixam memórias bonitas. Você é uma delas.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>18 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto18.jpg" alt="Memória 18"></div></div>
+    <div class="memory-text">
+        <h2>Seu olhar é único 💜</h2>
+        <div class="divider"></div>
+        <p>Seus olhos têm uma presença única, e junto do seu sorriso, do seu cabelo e da sua beleza, fazem você ser ainda mais especial.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>19 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto19.jpg" alt="Memória 19"></div></div>
+    <div class="memory-text">
+        <h2>Uma beleza que fala sozinha ✨</h2>
+        <div class="divider"></div>
+        <p>Você não precisa fazer nada para ser bonita. Seus olhos, seu sorriso, seu cabelo e sua beleza natural já dizem tudo.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>20 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto20.jpg" alt="Memória 20"></div></div>
+    <div class="memory-text">
+        <h2>Quase no fim... ❤️</h2>
+        <div class="divider"></div>
+        <p>E ainda existem tantos detalhes para admirar: seus olhos, seu sorriso, seu cabelo, suas curvas e essa beleza que é só sua.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>MEMÓRIA</span><span>21 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto21.jpg" alt="Memória 21"></div></div>
+    <div class="memory-text">
+        <h2>Mais uma para guardar 💙</h2>
+        <div class="divider"></div>
+        <p>Que essa lembrança fique guardada junto de todas as outras coisas bonitas que tornam você tão especial.</p>
+    </div>
+</section>
+
+<section class="memory reveal">
+    <div class="number"><span>ÚLTIMA MEMÓRIA</span><span>22 / 22</span></div>
+    <div class="photo-box"><div class="photo-inner"><img src="Fotos/foto22.jpg" alt="Memória 22"></div></div>
+    <div class="memory-text">
+        <h2>E essas memórias são só o começo... ❤️</h2>
+        <div class="divider"></div>
+        <p>Porque ainda existem muitas coisas lindas esperando para serem vividas. E essa surpresa ainda está apenas começando.</p>
+    </div>
+</section>
+
+<section class="next-area">
+    <div class="intro-heart">🧩</div>
+    <h2>Agora vem uma surpresa...</h2>
+    <p>Uma lembrança especial foi transformada em um pequeno desafio. Será que você consegue montar?</p>
+    <a class="next-button" href="quebra-cabeca.html">Montar nosso quebra-cabeça ❤️</a>
+</section>
+
+<footer>Feito com carinho para Renata ❤️</footer>
+
+</main>
+
+<script>
+const falling = document.getElementById("falling");
+const words = ["meu bem","amor","vida","linda","princesa","benzinho","mozão","amorzin","meu amor","mor"];
+const emojis = ["❤️","💜","💙","🤍","✨","💕"];
+
+function createFalling(){
+    const item = document.createElement("span");
+    item.className = "falling-item";
+    const emoji = Math.random() < .5;
+    item.textContent = emoji ? emojis[Math.floor(Math.random() * emojis.length)] : words[Math.floor(Math.random() * words.length)];
+    item.style.left = Math.random() * 90 + 5 + "%";
+    item.style.fontSize = (emoji ? 20 + Math.random()*10 : 12 + Math.random()*7) + "px";
+    item.style.animationDuration = (5 + Math.random()*5) + "s";
+    item.style.setProperty("--side", (-60 + Math.random()*120) + "px");
+    item.style.setProperty("--rotation", (-40 + Math.random()*80) + "deg");
+    falling.appendChild(item);
+    setTimeout(() => item.remove(), 10000);
+}
+setInterval(createFalling, 450);
+
+const sections = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){ entry.target.classList.add("show"); }
+    });
+}, { threshold:.18 });
+
+sections.forEach(section => { observer.observe(section); });
+</script>
+</body>
+  </html>
+  
