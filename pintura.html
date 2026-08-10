@@ -14,9 +14,9 @@ content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no
 
 <style>
 
-/* ================================
-   RESET
-================================ */
+/* =========================
+   BASE
+========================= */
 
 *{
     margin:0;
@@ -38,20 +38,19 @@ body{
 }
 
 
-/* ================================
+/* =========================
    FUNDO
-================================ */
+========================= */
 
 .background{
     position:fixed;
     inset:0;
     z-index:0;
-
     background:
     radial-gradient(
         circle at 50% 40%,
         #170c30 0%,
-        #080510 45%,
+        #080510 48%,
         #030308 100%
     );
 }
@@ -59,83 +58,56 @@ body{
 .background:before{
     content:"";
     position:absolute;
-
     width:380px;
     height:380px;
-
     left:-150px;
     top:-100px;
-
     border-radius:50%;
-
     background:#7B2EFF;
-
     filter:blur(130px);
-
     opacity:.35;
-
     animation:glow 8s ease-in-out infinite alternate;
 }
 
 .background:after{
     content:"";
     position:absolute;
-
     width:380px;
     height:380px;
-
     right:-150px;
     bottom:-100px;
-
     border-radius:50%;
-
     background:#2D8CFF;
-
     filter:blur(130px);
-
     opacity:.28;
-
     animation:glow 8s ease-in-out infinite alternate-reverse;
 }
 
 @keyframes glow{
-
-    from{
-        transform:scale(1);
-    }
-
-    to{
-        transform:scale(1.25);
-    }
-
+    from{transform:scale(1);}
+    to{transform:scale(1.2);}
 }
 
 
-/* ================================
-   CHUVA
-================================ */
+/* =========================
+   CHUVA DE ELOGIOS
+========================= */
 
 #falling{
     position:fixed;
     inset:0;
-
+    z-index:1;
     pointer-events:none;
-
     overflow:hidden;
-
-    z-index:2;
 }
 
 .falling-item{
     position:absolute;
-
     top:-50px;
-
     white-space:nowrap;
-
     font-weight:700;
-
     color:#fff;
+    opacity:.45;
 
     text-shadow:
     0 0 10px #fff,
@@ -151,7 +123,6 @@ body{
         transform:
         translateY(-50px)
         rotate(0deg);
-
         opacity:0;
     }
 
@@ -170,80 +141,62 @@ body{
             110vh
         )
         rotate(var(--rotation));
-
         opacity:0;
     }
-
 }
 
 
-/* ================================
+/* =========================
    CONTEÚDO
-================================ */
+========================= */
 
 main{
     position:relative;
-
     z-index:5;
 
     min-height:100vh;
 
     padding:
-    30px
+    28px
     16px
-    60px;
+    55px;
 
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
 }
 
 
-/* ================================
-   TÍTULO
-================================ */
+/* =========================
+   CABEÇALHO
+========================= */
 
 .header{
-
     width:100%;
-
     max-width:390px;
-
     text-align:center;
-
     margin-bottom:22px;
-
 }
 
 .paint-icon{
-
     font-size:43px;
-
     margin-bottom:8px;
 
     filter:
     drop-shadow(0 0 15px #7B2EFF);
 
     animation:pulse 2s infinite;
-
 }
 
 @keyframes pulse{
-
     50%{
         transform:scale(1.1);
     }
-
 }
 
 .header h1{
-
     font-size:27px;
-
     line-height:1.2;
-
     margin-bottom:10px;
 
     background:
@@ -255,33 +208,24 @@ main{
     );
 
     -webkit-background-clip:text;
-
     color:transparent;
-
 }
 
 .header p{
-
     font-size:13px;
-
     line-height:1.6;
-
-    color:
-    rgba(255,255,255,.65);
-
+    color:rgba(255,255,255,.65);
 }
 
 
-/* ================================
-   ÁREA DA PINTURA
-================================ */
+/* =========================
+   QUADRO
+========================= */
 
 .paint-box{
-
     position:relative;
 
     width:min(92vw,370px);
-
     aspect-ratio:3 / 4;
 
     padding:8px;
@@ -299,16 +243,9 @@ main{
     box-shadow:
     0 25px 60px rgba(0,0,0,.85),
     0 0 35px rgba(123,46,255,.3);
-
 }
 
-
-/* ================================
-   MOLDURA
-================================ */
-
-.canvas{
-
+.canvas-area{
     position:relative;
 
     width:100%;
@@ -320,20 +257,15 @@ main{
 
     background:#050509;
 
-    box-shadow:
-    inset 0 0 25px rgba(0,0,0,.8);
-
     touch-action:none;
-
 }
 
 
-/* ================================
-   FOTO ESCONDIDA
-================================ */
+/* =========================
+   FOTO
+========================= */
 
-.photo{
-
+#photo{
     position:absolute;
 
     inset:0;
@@ -342,188 +274,86 @@ main{
     height:100%;
 
     object-fit:cover;
-
     object-position:center;
 
+    display:block;
 }
 
 
-/* ================================
-   CAMADA ESCURA
-================================ */
+/* =========================
+   CANVAS DA TINTA
+========================= */
 
-#paint-layer{
-
+#paintCanvas{
     position:absolute;
 
     inset:0;
 
-    background:
+    width:100%;
+    height:100%;
 
-    radial-gradient(
-        circle at 50% 50%,
-        #191020,
-        #07060b 70%
-    );
+    z-index:2;
 
-    z-index:3;
-
+    touch-action:none;
 }
 
 
-/* ================================
-   TINTA
-================================ */
+/* =========================
+   BRILHO DO PINCEL
+========================= */
 
-.paint{
-
+.brush-glow{
     position:absolute;
 
-    z-index:4;
-
-    pointer-events:none;
-
-    width:85px;
-
-    height:85px;
-
-    border-radius:
-
-    52% 48% 55% 45%
-    / 48% 55% 45% 52%;
-
-    transform:
-    translate(-50%,-50%)
-    rotate(var(--rotate));
-
-    background:
-    radial-gradient(
-        circle at 35% 30%,
-        rgba(255,255,255,.28),
-        transparent 20%
-    ),
-    radial-gradient(
-        circle,
-        rgba(123,46,255,.95) 0%,
-        rgba(123,46,255,.85) 35%,
-        rgba(45,140,255,.7) 70%,
-        rgba(45,140,255,.15) 100%
-    );
-
-    mix-blend-mode:screen;
-
-    filter:
-    blur(.2px)
-    drop-shadow(
-        0 0 10px
-        rgba(123,46,255,.8)
-    );
-
-    animation:paintIn .35s ease-out forwards;
-
-}
-
-@keyframes paintIn{
-
-    from{
-
-        opacity:0;
-
-        transform:
-        translate(-50%,-50%)
-        rotate(var(--rotate))
-        scale(.55);
-
-    }
-
-    to{
-
-        opacity:.9;
-
-        transform:
-        translate(-50%,-50%)
-        rotate(var(--rotate))
-        scale(1);
-
-    }
-
-}
-
-
-/* ================================
-   PEQUENAS GOTAS
-================================ */
-
-.drop{
-
-    position:absolute;
-
-    z-index:5;
-
-    pointer-events:none;
+    width:55px;
+    height:55px;
 
     border-radius:50%;
 
+    pointer-events:none;
+
+    z-index:3;
+
+    transform:
+    translate(-50%,-50%);
+
+    opacity:0;
+
     background:
-    linear-gradient(
-        135deg,
-        #c58cff,
-        #2D8CFF
+    radial-gradient(
+        circle,
+        rgba(180,100,255,.35),
+        rgba(123,46,255,.08),
+        transparent 70%
     );
 
-    box-shadow:
-    0 0 8px
-    rgba(123,46,255,.8);
-
-    animation:
-    dropIn .55s ease-out forwards;
-
-}
-
-@keyframes dropIn{
-
-    from{
-        opacity:0;
-        transform:scale(.2);
-    }
-
-    to{
-        opacity:.75;
-        transform:scale(1);
-    }
-
+    filter:blur(4px);
 }
 
 
-/* ================================
-   CONTADOR
-================================ */
+/* =========================
+   PROGRESSO
+========================= */
 
 .progress{
-
     width:min(360px,92vw);
 
     margin-top:18px;
 
     text-align:center;
-
 }
 
-.progress p{
-
+#progress-text{
     font-size:12px;
 
     color:
     rgba(255,255,255,.6);
 
     margin-bottom:8px;
-
 }
 
 .bar{
-
     width:100%;
-
     height:7px;
 
     border-radius:20px;
@@ -536,13 +366,10 @@ main{
     border:
     1px solid
     rgba(255,255,255,.1);
-
 }
 
 #fill{
-
     width:0%;
-
     height:100%;
 
     border-radius:20px;
@@ -559,17 +386,15 @@ main{
     0 0 14px #7B2EFF;
 
     transition:
-    width .3s ease;
-
+    width .25s ease;
 }
 
 
-/* ================================
-   MENSAGEM
-================================ */
+/* =========================
+   MENSAGEM FINAL
+========================= */
 
 .message{
-
     width:min(380px,100%);
 
     margin-top:27px;
@@ -599,51 +424,42 @@ main{
     transform:
     translateY(20px);
 
+    pointer-events:none;
+
     transition:
     opacity .8s ease,
     transform .8s ease;
-
 }
 
 .message.show{
-
     opacity:1;
 
     transform:
     translateY(0);
 
+    pointer-events:auto;
 }
 
 .message h2{
-
     font-size:22px;
-
     margin-bottom:12px;
-
 }
 
 .message p{
-
     font-size:13px;
-
     line-height:1.7;
-
-    color:
-    rgba(255,255,255,.7);
-
+    color:rgba(255,255,255,.7);
 }
 
 
-/* ================================
+/* =========================
    BOTÃO
-================================ */
+========================= */
 
 .next{
-
     display:inline-flex;
 
     align-items:center;
-
     justify-content:center;
 
     min-width:220px;
@@ -666,7 +482,6 @@ main{
     text-decoration:none;
 
     font-size:14px;
-
     font-weight:700;
 
     box-shadow:
@@ -676,28 +491,25 @@ main{
     border:
     1px solid
     rgba(255,255,255,.2);
-
 }
 
 .next:active{
-
     transform:scale(.95);
-
 }
 
 
-/* ================================
-   RESPONSIVIDADE
-================================ */
+/* =========================
+   CELULARES PEQUENOS
+========================= */
 
 @media(max-height:700px){
 
     main{
-        padding-top:18px;
+        padding-top:15px;
     }
 
     .header{
-        margin-bottom:15px;
+        margin-bottom:14px;
     }
 
     .paint-box{
@@ -714,6 +526,8 @@ main{
 <body>
 
 
+<!-- FUNDO -->
+
 <div class="background"></div>
 
 <div id="falling"></div>
@@ -722,9 +536,9 @@ main{
 <main>
 
 
-<!-- ============================
-     CABEÇALHO
-============================= -->
+<!-- =========================
+     TÍTULO
+========================= -->
 
 <header class="header">
 
@@ -744,36 +558,43 @@ main{
 </header>
 
 
-<!-- ============================
-     PINTURA
-============================= -->
+<!-- =========================
+     QUADRO
+========================= -->
 
 <section class="paint-box">
 
     <div
-    id="canvas"
-    class="canvas">
+    id="canvasArea"
+    class="canvas-area">
 
         <img
-        class="photo"
+        id="photo"
         src="Fotos/foto12.jpg"
         alt="Uma memória especial">
 
-        <div id="paint-layer"></div>
+        <canvas
+        id="paintCanvas">
+        </canvas>
+
+        <div
+        id="brushGlow"
+        class="brush-glow">
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- ============================
+<!-- =========================
      PROGRESSO
-============================= -->
+========================= -->
 
 <div class="progress">
 
     <p id="progress-text">
-        A pintura ainda está começando...
+        Passe o dedo pela tela para começar... 🎨
     </p>
 
     <div class="bar">
@@ -785,16 +606,16 @@ main{
 </div>
 
 
-<!-- ============================
-     MENSAGEM FINAL
-============================= -->
+<!-- =========================
+     MENSAGEM
+========================= -->
 
 <section
 id="message"
 class="message">
 
     <h2>
-        Você acabou de revelar uma obra de arte. ❤️
+        Você revelou uma obra de arte. ❤️
     </h2>
 
     <p>
@@ -823,7 +644,6 @@ class="message">
 
     </p>
 
-
     <a
     href="memoria.html"
     class="next">
@@ -840,15 +660,18 @@ class="message">
 
 <script>
 
-/* ================================
+/* =========================
    ELEMENTOS
-================================ */
+========================= */
+
+const area =
+document.getElementById("canvasArea");
 
 const canvas =
-document.getElementById("canvas");
+document.getElementById("paintCanvas");
 
-const layer =
-document.getElementById("paint-layer");
+const ctx =
+canvas.getContext("2d");
 
 const fill =
 document.getElementById("fill");
@@ -859,28 +682,136 @@ document.getElementById("progress-text");
 const message =
 document.getElementById("message");
 
+const glow =
+document.getElementById("brushGlow");
 
-/* ================================
-   CONTROLE
-================================ */
 
-let drawing=false;
+/* =========================
+   TAMANHO DO CANVAS
+========================= */
+
+function resizeCanvas(){
+
+    const rect =
+    area.getBoundingClientRect();
+
+    const ratio =
+    Math.min(
+        window.devicePixelRatio || 1,
+        1.5
+    );
+
+    canvas.width =
+    rect.width * ratio;
+
+    canvas.height =
+    rect.height * ratio;
+
+    canvas.style.width =
+    rect.width+"px";
+
+    canvas.style.height =
+    rect.height+"px";
+
+    ctx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+    );
+
+    paintLayer();
+
+}
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+/* =========================
+   CAMADA DE TINTA
+========================= */
+
+function paintLayer(){
+
+    const w =
+    area.clientWidth;
+
+    const h =
+    area.clientHeight;
+
+    /*
+       Tinta escura e elegante.
+    */
+
+    const gradient =
+    ctx.createLinearGradient(
+        0,
+        0,
+        w,
+        h
+    );
+
+    gradient.addColorStop(
+        0,
+        "#171020"
+    );
+
+    gradient.addColorStop(
+        .5,
+        "#08070d"
+    );
+
+    gradient.addColorStop(
+        1,
+        "#111020"
+    );
+
+    ctx.globalCompositeOperation=
+    "source-over";
+
+    ctx.fillStyle=
+    gradient;
+
+    ctx.fillRect(
+        0,
+        0,
+        w,
+        h
+    );
+
+}
+
+
+/* =========================
+   ESTADO
+========================= */
+
+let painting=false;
+
+let lastX=0;
+
+let lastY=0;
 
 let revealed=0;
 
-let points=[];
+let completed=false;
 
 
-/* ================================
-   POSIÇÃO DO DEDO
-================================ */
+/* =========================
+   POSIÇÃO
+========================= */
 
-function getPosition(e){
+function position(e){
 
     const rect =
-    canvas.getBoundingClientRect();
+    area.getBoundingClientRect();
 
-    const touch =
+    const point =
     e.touches
     ? e.touches[0]
     : e;
@@ -888,11 +819,11 @@ function getPosition(e){
     return{
 
         x:
-        touch.clientX -
+        point.clientX -
         rect.left,
 
         y:
-        touch.clientY -
+        point.clientY -
         rect.top
 
     };
@@ -900,97 +831,112 @@ function getPosition(e){
 }
 
 
-/* ================================
-   CRIAR TINTA
-================================ */
+/* =========================
+   PINCEL
+========================= */
 
-function paint(x,y){
+function brush(x,y){
 
-    const blob =
-    document.createElement("div");
+    const radius=32;
 
-    blob.className="paint";
+    /*
+       Apaga a tinta.
+       Isso revela a foto
+       que está por baixo.
+    */
 
+    ctx.globalCompositeOperation=
+    "destination-out";
 
-    const size =
-    65 + Math.random()*35;
+    ctx.beginPath();
 
-
-    blob.style.width =
-    size+"px";
-
-    blob.style.height =
-    size*.8+"px";
-
-
-    blob.style.left =
-    x+"px";
-
-    blob.style.top =
-    y+"px";
-
-
-    blob.style.setProperty(
-        "--rotate",
-        (-35+Math.random()*70)+"deg"
+    ctx.arc(
+        x,
+        y,
+        radius,
+        0,
+        Math.PI*2
     );
 
-
-    layer.appendChild(blob);
+    ctx.fill();
 
 
     /*
-       Pequenas gotas
+       Pequenas variações
+       deixam a borda
+       menos perfeita.
     */
 
-    for(
-        let i=0;
-        i<3;
-        i++
-    ){
+    for(let i=0;i<3;i++){
 
-        const drop =
-        document.createElement("span");
+        const angle=
+        Math.random()*Math.PI*2;
 
-        drop.className="drop";
+        const distance=
+        20+Math.random()*18;
 
+        const px=
+        x+
+        Math.cos(angle)*
+        distance;
 
-        const d =
-        4+Math.random()*10;
+        const py=
+        y+
+        Math.sin(angle)*
+        distance;
 
+        const size=
+        4+Math.random()*7;
 
-        drop.style.width=d+"px";
-        drop.style.height=d+"px";
+        ctx.beginPath();
 
+        ctx.arc(
+            px,
+            py,
+            size,
+            0,
+            Math.PI*2
+        );
 
-        drop.style.left =
-        (x-35+Math.random()*70)+"px";
-
-        drop.style.top =
-        (y-35+Math.random()*70)+"px";
-
-
-        layer.appendChild(drop);
+        ctx.fill();
 
     }
 
 
-    points.push({
-        x:x,
-        y:y
-    });
-
-
     /*
-       Limita a quantidade
-       de pontos analisados.
+       Linha entre o ponto
+       anterior e o atual.
+       Evita falhas durante
+       movimentos rápidos.
     */
 
-    if(points.length>500){
+    if(lastX!==null){
 
-        points.shift();
+        ctx.beginPath();
+
+        ctx.moveTo(
+            lastX,
+            lastY
+        );
+
+        ctx.lineTo(
+            x,
+            y
+        );
+
+        ctx.lineWidth=
+        radius*2;
+
+        ctx.lineCap=
+        "round";
+
+        ctx.stroke();
 
     }
+
+
+    lastX=x;
+    lastY=y;
 
 
     updateProgress();
@@ -998,177 +944,226 @@ function paint(x,y){
 }
 
 
-/* ================================
+/* =========================
    PROGRESSO
-================================ */
+========================= */
+
+let strokeDistance=0;
 
 function updateProgress(){
 
-    const total =
-    canvas.clientWidth *
-    canvas.clientHeight;
+    /*
+       Cada movimento aumenta
+       um pouco o progresso.
 
+       Agora um simples toque
+       NÃO completa a página.
+    */
 
-    const area =
+    strokeDistance+=18;
+
+    const total=
+    area.clientWidth*
+    area.clientHeight;
+
+    revealed=
     Math.min(
-        points.length*5200,
-        total
-    );
-
-
-    revealed =
-    Math.min(
-        area/total*100,
+        (strokeDistance/total)*100,
         100
     );
 
 
-    fill.style.width =
+    fill.style.width=
     revealed+"%";
 
 
-    if(revealed<20){
+    if(revealed<5){
 
         progressText.textContent=
-        "A pintura ainda está começando...";
+        "Passe o dedo pela tela para começar... 🎨";
 
     }
-    else if(revealed<50){
+    else if(revealed<30){
 
         progressText.textContent=
-        "Continue revelando... ✨";
+        "A tinta está começando a desaparecer... ✨";
 
     }
-    else if(revealed<80){
+    else if(revealed<60){
 
         progressText.textContent=
-        "Já dá para ver alguns detalhes... ❤️";
+        "Continue... já dá para ver alguns detalhes. ❤️";
 
     }
-    else if(revealed<95){
+    else if(revealed<85){
 
         progressText.textContent=
-        "Está quase lá... 💜";
+        "Está ficando linda... 💜";
+
+    }
+    else if(revealed<98){
+
+        progressText.textContent=
+        "Está quase revelada... ❤️";
 
     }
     else{
 
-        progressText.textContent=
-        "Você revelou tudo! ❤️";
-
-        showMessage();
+        finish();
 
     }
 
 }
 
 
-/* ================================
-   REVELAR
-================================ */
+/* =========================
+   INÍCIO
+========================= */
 
-function startPaint(e){
+function start(e){
 
     e.preventDefault();
 
-    drawing=true;
+    painting=true;
 
-    const pos =
-    getPosition(e);
+    const p=
+    position(e);
 
-    paint(
-        pos.x,
-        pos.y
+    lastX=p.x;
+    lastY=p.y;
+
+    brush(
+        p.x,
+        p.y
+    );
+
+    showGlow(
+        p.x,
+        p.y
     );
 
 }
 
 
-function movePaint(e){
+/* =========================
+   MOVIMENTO
+========================= */
 
-    if(!drawing)
+function move(e){
+
+    if(!painting)
         return;
 
     e.preventDefault();
 
-    const pos =
-    getPosition(e);
+    const p=
+    position(e);
 
-    /*
-       Cria vários pontos
-       entre os movimentos
-       para não deixar buracos.
-    */
+    brush(
+        p.x,
+        p.y
+    );
 
-    paint(
-        pos.x,
-        pos.y
+    showGlow(
+        p.x,
+        p.y
     );
 
 }
 
 
-function stopPaint(){
+/* =========================
+   FIM
+========================= */
 
-    drawing=false;
+function stop(){
+
+    painting=false;
+
+    lastX=null;
+    lastY=null;
+
+    glow.style.opacity="0";
 
 }
 
 
-/* ================================
+/* =========================
+   BRILHO DO PINCEL
+========================= */
+
+function showGlow(x,y){
+
+    glow.style.left=
+    x+"px";
+
+    glow.style.top=
+    y+"px";
+
+    glow.style.opacity=
+    ".8";
+
+}
+
+
+/* =========================
    TOUCH
-================================ */
+========================= */
 
-canvas.addEventListener(
+area.addEventListener(
     "touchstart",
-    startPaint,
+    start,
     {passive:false}
 );
 
-canvas.addEventListener(
+area.addEventListener(
     "touchmove",
-    movePaint,
+    move,
     {passive:false}
 );
 
-canvas.addEventListener(
+area.addEventListener(
     "touchend",
-    stopPaint
+    stop
 );
 
 
-/* ================================
+/* =========================
    MOUSE
-   (para testes no computador)
-================================ */
+========================= */
 
-canvas.addEventListener(
+area.addEventListener(
     "mousedown",
-    startPaint
+    start
 );
 
-canvas.addEventListener(
+area.addEventListener(
     "mousemove",
-    movePaint
+    move
 );
 
 window.addEventListener(
     "mouseup",
-    stopPaint
+    stop
 );
 
 
-/* ================================
-   MENSAGEM
-================================ */
+/* =========================
+   FINALIZAÇÃO
+========================= */
 
-function showMessage(){
+function finish(){
 
-    if(
-        message.classList.contains("show")
-    )
+    if(completed)
         return;
 
+    completed=true;
+
+    progressText.textContent=
+    "Você revelou tudo! ❤️";
+
+    fill.style.width=
+    "100%";
 
     message.classList.add(
         "show"
@@ -1177,15 +1172,14 @@ function showMessage(){
 }
 
 
-/* ================================
+/* =========================
    CHUVA
-================================ */
+========================= */
 
-const falling =
+const falling=
 document.getElementById(
     "falling"
 );
-
 
 const words=[
     "meu bem",
@@ -1200,7 +1194,6 @@ const words=[
     "mor"
 ];
 
-
 const emojis=[
     "❤️",
     "💜",
@@ -1210,68 +1203,58 @@ const emojis=[
     "✨"
 ];
 
-
 function createFalling(){
 
-    const item =
+    const item=
     document.createElement("span");
 
     item.className=
     "falling-item";
 
-
-    const emoji =
+    const isEmoji=
     Math.random()<.5;
 
-
-    item.textContent =
-    emoji
+    item.textContent=
+    isEmoji
     ?
     emojis[
         Math.floor(
-            Math.random()*emojis.length
+            Math.random()*
+            emojis.length
         )
     ]
     :
     words[
         Math.floor(
-            Math.random()*words.length
+            Math.random()*
+            words.length
         )
     ];
 
-
-    item.style.left =
+    item.style.left=
     Math.random()*90+5+"%";
 
-
-    item.style.fontSize =
+    item.style.fontSize=
     (
-        emoji
-        ? 20+Math.random()*9
-        : 12+Math.random()*7
+        isEmoji
+        ?20+Math.random()*9
+        :12+Math.random()*7
     )+"px";
 
-
-    item.style.animationDuration =
+    item.style.animationDuration=
     5+Math.random()*5+"s";
-
 
     item.style.setProperty(
         "--side",
         (-60+Math.random()*120)+"px"
     );
 
-
     item.style.setProperty(
         "--rotation",
         (-40+Math.random()*80)+"deg"
     );
 
-
-    falling.appendChild(
-        item
-    );
-
+    falling.appendChild(item);
 
     setTimeout(
         ()=>item.remove(),
@@ -1280,14 +1263,20 @@ function createFalling(){
 
 }
 
-
 setInterval(
     createFalling,
-    450
+    500
 );
+
+
+/* =========================
+   INICIAR CANVAS
+========================= */
+
+resizeCanvas();
 
 </script>
 
 </body>
 
-  </html>
+   </html>
