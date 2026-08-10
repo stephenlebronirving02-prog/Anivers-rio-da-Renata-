@@ -1,1 +1,1253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Nosso Quebra-Cabeça ❤️</title>
+
+<meta name="theme-color" content="#030308">
+
+<style>
+
+/* =====================================================
+   CONFIGURAÇÕES
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+    background:#030308;
+    color:#fff;
+    font-family:-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Roboto,sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+
+/* =====================================================
+   FUNDO
+===================================================== */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    background:
+    radial-gradient(
+        circle at 50% 45%,
+        #140b2d 0%,
+        #05030b 55%,
+        #030308 100%
+    );
+    pointer-events:none;
+}
+
+.background:before{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    left:-130px;
+    top:-100px;
+    border-radius:50%;
+    background:#7B2EFF;
+    filter:blur(130px);
+    opacity:.35;
+    animation:glow 8s ease-in-out infinite alternate;
+}
+
+.background:after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    right:-130px;
+    bottom:-100px;
+    border-radius:50%;
+    background:#2D8CFF;
+    filter:blur(130px);
+    opacity:.3;
+    animation:glow 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes glow{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.25);
+    }
+
+}
+
+
+/* =====================================================
+   ELOGIOS E EMOJIS
+===================================================== */
+
+#falling{
+    position:fixed;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.falling-item{
+    position:absolute;
+    top:-50px;
+    white-space:nowrap;
+    font-weight:700;
+    color:#fff;
+    text-shadow:
+    0 0 10px #fff,
+    0 0 22px #7B2EFF,
+    0 0 35px #2D8CFF;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+
+    0%{
+        transform:
+        translateY(-50px)
+        rotate(0deg);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.55;
+    }
+
+    85%{
+        opacity:.4;
+    }
+
+    100%{
+        transform:
+        translate(
+        var(--side),
+        110vh
+        )
+        rotate(var(--rotation));
+        opacity:0;
+    }
+
+}
+
+
+/* =====================================================
+   CONTEÚDO
+===================================================== */
+
+main{
+    position:relative;
+    z-index:3;
+    min-height:100vh;
+    padding:35px 18px 60px;
+}
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+.header{
+    text-align:center;
+    max-width:390px;
+    margin:0 auto 25px;
+}
+
+.header-heart{
+    font-size:48px;
+    margin-bottom:12px;
+    filter:
+    drop-shadow(0 0 15px #7B2EFF);
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+        transform:scale(1.1);
+    }
+
+}
+
+.header h1{
+    font-size:28px;
+    line-height:1.2;
+    margin-bottom:12px;
+    background:
+    linear-gradient(
+        90deg,
+        #fff,
+        #c89cff,
+        #fff
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.header p{
+    font-size:14px;
+    line-height:1.65;
+    color:rgba(255,255,255,.68);
+}
+
+
+/* =====================================================
+   ÁREA DO JOGO
+===================================================== */
+
+.game-area{
+    width:100%;
+    max-width:390px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+
+/* =====================================================
+   TABULEIRO
+===================================================== */
+
+.puzzle{
+    position:relative;
+
+    width:min(92vw,360px);
+    aspect-ratio:1 / 1;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    grid-template-rows:repeat(2,1fr);
+
+    gap:3px;
+
+    padding:5px;
+
+    border-radius:22px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #7B2EFF,
+        #080810,
+        #2D8CFF
+    );
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.8),
+    0 0 35px rgba(123,46,255,.3);
+
+    touch-action:none;
+}
+
+
+/* =====================================================
+   PEÇAS
+===================================================== */
+
+.piece{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:6px;
+
+    background-image:url("Fotos/foto23.jpg");
+
+    background-repeat:no-repeat;
+
+    border:
+    1px solid
+    rgba(255,255,255,.2);
+
+    box-shadow:
+    inset 0 0 10px rgba(0,0,0,.5);
+
+    transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    opacity .25s ease;
+
+    touch-action:none;
+}
+
+.piece:active{
+    transform:scale(.97);
+}
+
+.piece.selected{
+    box-shadow:
+    0 0 18px #7B2EFF,
+    inset 0 0 10px rgba(255,255,255,.2);
+    z-index:10;
+}
+
+
+/* =====================================================
+   INSTRUÇÃO
+===================================================== */
+
+.instruction{
+    margin-top:20px;
+    text-align:center;
+
+    font-size:13px;
+
+    color:rgba(255,255,255,.6);
+
+    line-height:1.6;
+}
+
+.instruction strong{
+    color:#c49aff;
+}
+
+
+/* =====================================================
+   PROGRESSO
+===================================================== */
+
+.progress{
+    width:min(360px,92vw);
+    margin:20px auto 0;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+
+    font-size:11px;
+
+    color:rgba(255,255,255,.5);
+
+    margin-bottom:7px;
+}
+
+.progress-bar{
+    width:100%;
+    height:7px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:
+    1px solid
+    rgba(255,255,255,.1);
+}
+
+#progress-fill{
+    width:0%;
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #7B2EFF,
+        #b45cff,
+        #2D8CFF
+    );
+
+    box-shadow:
+    0 0 12px #7B2EFF;
+
+    transition:
+    width .3s ease;
+}
+
+
+/* =====================================================
+   MENSAGEM FINAL
+===================================================== */
+
+.success{
+    width:min(380px,100%);
+
+    margin:35px auto 0;
+
+    padding:30px 22px;
+
+    text-align:center;
+
+    border-radius:25px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(123,46,255,.16),
+        rgba(45,140,255,.08)
+    );
+
+    border:
+    1px solid
+    rgba(255,255,255,.12);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.5),
+    0 0 30px rgba(123,46,255,.15);
+
+    opacity:0;
+
+    transform:
+    translateY(25px)
+    scale(.95);
+
+    pointer-events:none;
+
+    transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.success.show{
+    opacity:1;
+
+    transform:
+    translateY(0)
+    scale(1);
+
+    pointer-events:auto;
+}
+
+.success-heart{
+    font-size:45px;
+
+    margin-bottom:12px;
+
+    filter:
+    drop-shadow(0 0 15px #7B2EFF);
+}
+
+.success h2{
+    font-size:23px;
+    margin-bottom:15px;
+}
+
+.success p{
+    font-size:14px;
+    line-height:1.75;
+    color:rgba(255,255,255,.72);
+}
+
+
+/* =====================================================
+   BOTÃO
+===================================================== */
+
+.next-button{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-top:24px;
+
+    padding:15px 25px;
+
+    min-width:230px;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #7B2EFF,
+        #6138ff
+    );
+
+    border:
+    1px solid
+    rgba(255,255,255,.2);
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 0 25px
+    rgba(123,46,255,.5);
+
+    transition:
+    transform .2s ease;
+}
+
+.next-button:active{
+    transform:scale(.94);
+}
+
+
+/* =====================================================
+   CORAÇÕES DA VITÓRIA
+===================================================== */
+
+.win-heart{
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:20;
+
+    font-size:25px;
+
+    animation:
+    explode 1.2s ease-out forwards;
+}
+
+@keyframes explode{
+
+    0%{
+        transform:
+        translate(0,0)
+        scale(.3);
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translate(
+            var(--x),
+            var(--y)
+        )
+        scale(1.3)
+        rotate(var(--r));
+
+        opacity:0;
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media(max-width:370px){
+
+    main{
+        padding-left:12px;
+        padding-right:12px;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
+
+    .puzzle{
+        width:94vw;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     FUNDO
+===================================================== -->
+
+<div class="background"></div>
+
+<div id="falling"></div>
+
+
+<!-- =====================================================
+     CONTEÚDO
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     CABEÇALHO
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-heart">
+        🧩
+    </div>
+
+    <h1>
+        Uma memória em pedaços...
+    </h1>
+
+    <p>
+        Algumas coisas bonitas precisam
+        ser montadas aos poucos.
+        Essa é uma delas.
+    </p>
+
+</header>
+
+
+<!-- =====================================================
+     JOGO
+===================================================== -->
+
+<section class="game-area">
+
+
+    <div
+    id="puzzle"
+    class="puzzle">
+    </div>
+
+
+    <div class="instruction">
+
+        Toque em duas peças para
+        <strong>trocar de lugar.</strong><br>
+
+        Monte a nossa foto novamente ❤️
+
+    </div>
+
+
+    <div class="progress">
+
+        <div class="progress-top">
+
+            <span>
+                PROGRESSO
+            </span>
+
+            <span id="progress-text">
+                0%
+            </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div id="progress-fill"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MENSAGEM DE VITÓRIA
+    ================================================= -->
+
+    <div
+    id="success"
+    class="success">
+
+        <div class="success-heart">
+            ❤️
+        </div>
+
+        <h2>
+            Você conseguiu!
+        </h2>
+
+        <p>
+
+            Assim como um quebra-cabeça,
+            cada detalhe tem o seu lugar.
+
+            <br><br>
+
+            E quando todas as peças se encontram,
+            aparece algo ainda mais bonito.
+
+            <br><br>
+
+            Seus olhos, seu sorriso,
+            seu cabelo, suas curvas
+            e toda a sua beleza fazem parte
+            dessa lembrança.
+
+            <br><br>
+
+            E o mais bonito é que,
+            mesmo quando tudo parece estar
+            espalhado em pequenos pedaços,
+            no final sempre existe uma imagem
+            linda esperando para aparecer. 💜
+
+        </p>
+
+
+        <a
+        href="pintura.html"
+        class="next-button">
+
+            Próxima surpresa ❤️
+
+        </a>
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   CONFIGURAÇÕES
+===================================================== */
+
+const puzzle =
+document.getElementById("puzzle");
+
+const progressFill =
+document.getElementById("progress-fill");
+
+const progressText =
+document.getElementById("progress-text");
+
+const success =
+document.getElementById("success");
+
+
+const TOTAL = 10;
+
+
+/* =====================================================
+   CRIAÇÃO DAS PEÇAS
+===================================================== */
+
+let pieces = [];
+
+for(let i=0;i<TOTAL;i++){
+
+    const piece =
+    document.createElement("div");
+
+    piece.className =
+    "piece";
+
+    piece.dataset.correct =
+    i;
+
+    piece.dataset.position =
+    i;
+
+    const row =
+    Math.floor(i / 5);
+
+    const col =
+    i % 5;
+
+
+    /*
+       Cada peça mostra
+       uma parte diferente
+       da foto.
+    */
+
+    piece.style.backgroundSize =
+    "500% 200%";
+
+
+    piece.style.backgroundPosition =
+    `${col * 25}% ${row * 100}%`;
+
+
+    puzzle.appendChild(piece);
+
+    pieces.push(piece);
+
+}
+
+
+/* =====================================================
+   EMBARALHAR
+===================================================== */
+
+function shuffle(){
+
+    let order =
+    [...Array(TOTAL).keys()];
+
+
+    /*
+       Fisher-Yates
+    */
+
+    for(
+        let i=order.length-1;
+        i>0;
+        i--
+    ){
+
+        const j =
+        Math.floor(
+            Math.random()*(i+1)
+        );
+
+        [
+            order[i],
+            order[j]
+        ] =
+        [
+            order[j],
+            order[i]
+        ];
+
+    }
+
+
+    /*
+       Evita começar
+       já resolvido.
+    */
+
+    let solved =
+    order.every(
+        (value,index)=>
+        value===index
+    );
+
+    if(solved){
+
+        const temp=order[0];
+
+        order[0]=order[1];
+
+        order[1]=temp;
+
+    }
+
+
+    pieces.forEach(
+        (piece,index)=>{
+
+            piece.dataset.position =
+            order[index];
+
+            updatePiece(
+                piece,
+                order[index]
+            );
+
+        }
+    );
+
+}
+
+
+function updatePiece(
+    piece,
+    position
+){
+
+    const row =
+    Math.floor(
+        position / 5
+    );
+
+    const col =
+    position % 5;
+
+
+    piece.style.backgroundPosition =
+    `${col * 25}% ${row * 100}%`;
+
+}
+
+
+/* =====================================================
+   TROCA DE PEÇAS
+===================================================== */
+
+let selected = null;
+
+
+pieces.forEach(piece=>{
+
+    piece.addEventListener(
+        "click",
+        ()=>{
+
+            if(!selected){
+
+                selected=piece;
+
+                piece.classList.add(
+                    "selected"
+                );
+
+                return;
+
+            }
+
+
+            if(selected===piece){
+
+                piece.classList.remove(
+                    "selected"
+                );
+
+                selected=null;
+
+                return;
+
+            }
+
+
+            const first =
+            selected;
+
+            const second =
+            piece;
+
+
+            const firstPos =
+            first.dataset.position;
+
+            const secondPos =
+            second.dataset.position;
+
+
+            first.dataset.position =
+            secondPos;
+
+            second.dataset.position =
+            firstPos;
+
+
+            updatePiece(
+                first,
+                secondPos
+            );
+
+            updatePiece(
+                second,
+                firstPos
+            );
+
+
+            first.classList.remove(
+                "selected"
+            );
+
+
+            selected=null;
+
+
+            checkProgress();
+
+        }
+
+    );
+
+});
+
+
+/* =====================================================
+   VERIFICAR PROGRESSO
+===================================================== */
+
+function checkProgress(){
+
+    let correct=0;
+
+
+    pieces.forEach(
+        piece=>{
+
+            if(
+                Number(
+                    piece.dataset.position
+                ) ===
+                Number(
+                    piece.dataset.correct
+                )
+            ){
+
+                correct++;
+
+            }
+
+        }
+    );
+
+
+    const percentage =
+    Math.round(
+        correct / TOTAL * 100
+    );
+
+
+    progressFill.style.width =
+    percentage + "%";
+
+
+    progressText.textContent =
+    percentage + "%";
+
+
+    if(correct===TOTAL){
+
+        win();
+
+    }
+
+}
+
+
+/* =====================================================
+   VITÓRIA
+===================================================== */
+
+function win(){
+
+    success.classList.add(
+        "show"
+    );
+
+
+    /*
+       Corações explodindo
+       pelo tabuleiro.
+    */
+
+    for(
+        let i=0;
+        i<35;
+        i++
+    ){
+
+        setTimeout(
+            createWinHeart,
+            i*35
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CORAÇÕES DA VITÓRIA
+===================================================== */
+
+function createWinHeart(){
+
+    const heart =
+    document.createElement("span");
+
+    heart.className =
+    "win-heart";
+
+    heart.textContent =
+    [
+        "❤️",
+        "💜",
+        "💙",
+        "🤍",
+        "💕"
+    ][
+        Math.floor(
+            Math.random()*5
+        )
+    ];
+
+
+    heart.style.left =
+    "50%";
+
+    heart.style.top =
+    "42%";
+
+
+    heart.style.setProperty(
+        "--x",
+        (-160+Math.random()*320)+"px"
+    );
+
+
+    heart.style.setProperty(
+        "--y",
+        (-180+Math.random()*360)+"px"
+    );
+
+
+    heart.style.setProperty(
+        "--r",
+        (-180+Math.random()*360)+"deg"
+    );
+
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(
+        ()=>heart.remove(),
+        1300
+    );
+
+}
+
+
+/* =====================================================
+   CHUVA DE ELOGIOS
+===================================================== */
+
+const falling =
+document.getElementById(
+    "falling"
+);
+
+
+const words=[
+
+    "meu bem",
+    "amor",
+    "vida",
+    "linda",
+    "princesa",
+    "benzinho",
+    "mozão",
+    "amorzin",
+    "meu amor",
+    "mor"
+
+];
+
+
+const emojis=[
+
+    "❤️",
+    "💜",
+    "💙",
+    "🤍",
+    "💕",
+    "✨"
+
+];
+
+
+function createFalling(){
+
+    const item =
+    document.createElement("span");
+
+    item.className =
+    "falling-item";
+
+
+    const isEmoji =
+    Math.random()<.5;
+
+
+    item.textContent =
+    isEmoji
+
+    ? emojis[
+        Math.floor(
+            Math.random()*emojis.length
+        )
+      ]
+
+    : words[
+        Math.floor(
+            Math.random()*words.length
+        )
+      ];
+
+
+    item.style.left =
+    Math.random()*90+5+"%";
+
+
+    item.style.fontSize =
+    (
+        isEmoji
+        ? 20+Math.random()*9
+        : 12+Math.random()*7
+    )+"px";
+
+
+    item.style.animationDuration =
+    5+Math.random()*5+"s";
+
+
+    item.style.setProperty(
+        "--side",
+        (-60+Math.random()*120)+"px"
+    );
+
+
+    item.style.setProperty(
+        "--rotation",
+        (-40+Math.random()*80)+"deg"
+    );
+
+
+    falling.appendChild(
+        item
+    );
+
+
+    setTimeout(
+        ()=>item.remove(),
+        10000
+    );
+
+}
+
+
+setInterval(
+    createFalling,
+    450
+);
+
+
+/* =====================================================
+   INICIAR
+===================================================== */
+
+shuffle();
+
+checkProgress();
+
+</script>
+
+</body>
+
+  </html>
