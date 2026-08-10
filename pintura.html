@@ -6,35 +6,44 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
 
-<title>Uma obra de arte ❤️</title>
+<title>Uma obra de arte... ❤️</title>
 
-<meta name="theme-color" content="#030308">
+<meta name="theme-color"
+content="#030308">
 
 <style>
 
 /* =========================
-   BASE
+   RESET
 ========================= */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-html,body{
-    width:100%;
-    min-height:100%;
-    background:#030308;
-    color:#fff;
-    font-family:-apple-system,BlinkMacSystemFont,
-    "Segoe UI",Roboto,sans-serif;
+html,
+body{
+width:100%;
+min-height:100%;
+background:#030308;
+color:#fff;
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+sans-serif;
 }
 
 body{
-    overflow-x:hidden;
+overflow-x:hidden;
 }
 
 
@@ -43,106 +52,97 @@ body{
 ========================= */
 
 .background{
-    position:fixed;
-    inset:0;
-    z-index:0;
-    background:
-    radial-gradient(
-        circle at 50% 40%,
-        #170c30 0%,
-        #080510 48%,
-        #030308 100%
-    );
+position:fixed;
+inset:0;
+z-index:0;
+background:
+radial-gradient(
+circle at 20% 20%,
+#25104d 0%,
+#090514 38%,
+#030308 75%
+);
 }
 
-.background:before{
-    content:"";
-    position:absolute;
-    width:380px;
-    height:380px;
-    left:-150px;
-    top:-100px;
-    border-radius:50%;
-    background:#7B2EFF;
-    filter:blur(130px);
-    opacity:.35;
-    animation:glow 8s ease-in-out infinite alternate;
+.background::before{
+content:"";
+position:absolute;
+width:380px;
+height:380px;
+left:-170px;
+top:-100px;
+border-radius:50%;
+background:#7B2EFF;
+filter:blur(120px);
+opacity:.38;
 }
 
-.background:after{
-    content:"";
-    position:absolute;
-    width:380px;
-    height:380px;
-    right:-150px;
-    bottom:-100px;
-    border-radius:50%;
-    background:#2D8CFF;
-    filter:blur(130px);
-    opacity:.28;
-    animation:glow 8s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes glow{
-    from{transform:scale(1);}
-    to{transform:scale(1.2);}
+.background::after{
+content:"";
+position:absolute;
+width:350px;
+height:350px;
+right:-150px;
+bottom:-100px;
+border-radius:50%;
+background:#2D8CFF;
+filter:blur(120px);
+opacity:.28;
 }
 
 
 /* =========================
-   CHUVA DE ELOGIOS
+   CHUVA
 ========================= */
 
 #falling{
-    position:fixed;
-    inset:0;
-    z-index:1;
-    pointer-events:none;
-    overflow:hidden;
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:2;
+overflow:hidden;
 }
 
 .falling-item{
-    position:absolute;
-    top:-50px;
-    white-space:nowrap;
-    font-weight:700;
-    color:#fff;
-    opacity:.45;
-
-    text-shadow:
-    0 0 10px #fff,
-    0 0 22px #7B2EFF,
-    0 0 35px #2D8CFF;
-
-    animation:fall linear forwards;
+position:absolute;
+top:-60px;
+white-space:nowrap;
+font-weight:700;
+color:rgba(255,255,255,.72);
+text-shadow:
+0 0 10px rgba(255,255,255,.5),
+0 0 22px #7B2EFF;
+animation:
+falling linear forwards;
 }
 
-@keyframes fall{
+@keyframes falling{
 
-    0%{
-        transform:
-        translateY(-50px)
-        rotate(0deg);
-        opacity:0;
-    }
+0%{
+transform:
+translateY(-60px)
+rotate(0deg);
+opacity:0;
+}
 
-    15%{
-        opacity:.45;
-    }
+15%{
+opacity:.8;
+}
 
-    85%{
-        opacity:.35;
-    }
+80%{
+opacity:.55;
+}
 
-    100%{
-        transform:
-        translate(
-            var(--side),
-            110vh
-        )
-        rotate(var(--rotation));
-        opacity:0;
-    }
+100%{
+transform:
+translate(
+var(--side),
+110vh
+)
+rotate(var(--rotation));
+opacity:0;
+}
+
 }
 
 
@@ -150,20 +150,16 @@ body{
    CONTEÚDO
 ========================= */
 
-main{
-    position:relative;
-    z-index:5;
-
-    min-height:100vh;
-
-    padding:
-    28px
-    16px
-    55px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.page{
+position:relative;
+z-index:5;
+width:100%;
+min-height:100vh;
+padding:
+35px 16px 50px;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
 
@@ -171,112 +167,91 @@ main{
    CABEÇALHO
 ========================= */
 
-.header{
-    width:100%;
-    max-width:390px;
-    text-align:center;
-    margin-bottom:22px;
+.emoji-title{
+font-size:42px;
+margin-bottom:8px;
+filter:
+drop-shadow(
+0 0 15px #7B2EFF
+);
+animation:
+float 3s ease-in-out infinite;
 }
 
-.paint-icon{
-    font-size:43px;
-    margin-bottom:8px;
+@keyframes float{
 
-    filter:
-    drop-shadow(0 0 15px #7B2EFF);
-
-    animation:pulse 2s infinite;
+0%,100%{
+transform:translateY(0);
 }
 
-@keyframes pulse{
-    50%{
-        transform:scale(1.1);
-    }
+50%{
+transform:translateY(-7px);
 }
 
-.header h1{
-    font-size:27px;
-    line-height:1.2;
-    margin-bottom:10px;
-
-    background:
-    linear-gradient(
-        90deg,
-        #fff,
-        #cda8ff,
-        #fff
-    );
-
-    -webkit-background-clip:text;
-    color:transparent;
 }
 
-.header p{
-    font-size:13px;
-    line-height:1.6;
-    color:rgba(255,255,255,.65);
+.title{
+font-size:27px;
+font-weight:800;
+text-align:center;
+line-height:1.15;
+text-shadow:
+0 0 15px rgba(123,46,255,.8);
+}
+
+.subtitle{
+margin-top:12px;
+max-width:330px;
+text-align:center;
+font-size:15px;
+line-height:1.5;
+color:rgba(255,255,255,.68);
 }
 
 
 /* =========================
-   QUADRO
+   ÁREA DA PINTURA
 ========================= */
 
 .paint-box{
-    position:relative;
+position:relative;
+width:min(390px,94vw);
+aspect-ratio:3 / 4;
+margin-top:28px;
+padding:7px;
+border-radius:30px;
 
-    width:min(92vw,370px);
-    aspect-ratio:3 / 4;
+background:
+linear-gradient(
+135deg,
+#7B2EFF,
+#b84cff,
+#2D8CFF
+);
 
-    padding:8px;
-
-    border-radius:28px;
-
-    background:
-    linear-gradient(
-        145deg,
-        #7B2EFF,
-        #090912,
-        #2D8CFF
-    );
-
-    box-shadow:
-    0 25px 60px rgba(0,0,0,.85),
-    0 0 35px rgba(123,46,255,.3);
-}
-
-.canvas-area{
-    position:relative;
-
-    width:100%;
-    height:100%;
-
-    overflow:hidden;
-
-    border-radius:21px;
-
-    background:#050509;
-
-    touch-action:none;
+box-shadow:
+0 0 20px rgba(123,46,255,.7),
+0 0 45px rgba(45,140,255,.25),
+0 20px 50px rgba(0,0,0,.8);
 }
 
 
 /* =========================
-   FOTO
+   FOTO ESCONDIDA
 ========================= */
 
-#photo{
-    position:absolute;
+.paint-photo{
+position:absolute;
+inset:7px;
+width:calc(100% - 14px);
+height:calc(100% - 14px);
 
-    inset:0;
+object-fit:cover;
+object-position:center;
 
-    width:100%;
-    height:100%;
+border-radius:23px;
 
-    object-fit:cover;
-    object-position:center;
-
-    display:block;
+display:block;
 }
 
 
@@ -285,16 +260,17 @@ main{
 ========================= */
 
 #paintCanvas{
-    position:absolute;
+position:absolute;
+inset:7px;
 
-    inset:0;
+width:calc(100% - 14px);
+height:calc(100% - 14px);
 
-    width:100%;
-    height:100%;
+border-radius:23px;
 
-    z-index:2;
+touch-action:none;
 
-    touch-action:none;
+z-index:3;
 }
 
 
@@ -302,91 +278,96 @@ main{
    BRILHO DO PINCEL
 ========================= */
 
-.brush-glow{
-    position:absolute;
+#brushGlow{
+position:absolute;
+width:65px;
+height:65px;
 
-    width:55px;
-    height:55px;
+border-radius:50%;
 
-    border-radius:50%;
+pointer-events:none;
+z-index:5;
 
-    pointer-events:none;
+transform:
+translate(-50%,-50%);
 
-    z-index:3;
+opacity:0;
 
-    transform:
-    translate(-50%,-50%);
+background:
+radial-gradient(
+circle,
+rgba(255,255,255,.18),
+rgba(123,46,255,.08),
+transparent 70%
+);
 
-    opacity:0;
-
-    background:
-    radial-gradient(
-        circle,
-        rgba(180,100,255,.35),
-        rgba(123,46,255,.08),
-        transparent 70%
-    );
-
-    filter:blur(4px);
+filter:blur(5px);
 }
 
 
 /* =========================
-   PROGRESSO
+   ÁREA DE PROGRESSO
 ========================= */
 
-.progress{
-    width:min(360px,92vw);
-
-    margin-top:18px;
-
-    text-align:center;
+.progress-area{
+width:min(390px,90vw);
+margin-top:22px;
+text-align:center;
 }
 
-#progress-text{
-    font-size:12px;
+.progress-bar{
+width:100%;
+height:8px;
 
-    color:
-    rgba(255,255,255,.6);
+border-radius:20px;
 
-    margin-bottom:8px;
-}
+overflow:hidden;
 
-.bar{
-    width:100%;
-    height:7px;
+background:
+rgba(255,255,255,.09);
 
-    border-radius:20px;
+border:
+1px solid
+rgba(255,255,255,.12);
 
-    overflow:hidden;
-
-    background:
-    rgba(255,255,255,.08);
-
-    border:
-    1px solid
-    rgba(255,255,255,.1);
+box-shadow:
+0 0 15px
+rgba(123,46,255,.2);
 }
 
 #fill{
-    width:0%;
-    height:100%;
+width:0%;
+height:100%;
 
-    border-radius:20px;
+border-radius:20px;
 
-    background:
-    linear-gradient(
-        90deg,
-        #7B2EFF,
-        #c05cff,
-        #2D8CFF
-    );
+background:
+linear-gradient(
+90deg,
+#7B2EFF,
+#b84cff,
+#2D8CFF
+);
 
-    box-shadow:
-    0 0 14px #7B2EFF;
+box-shadow:
+0 0 15px #7B2EFF,
+0 0 25px #2D8CFF;
 
-    transition:
-    width .25s ease;
+transition:
+width .18s ease;
+}
+
+#progress-text{
+display:block;
+margin-top:9px;
+
+font-size:12px;
+font-weight:600;
+
+color:
+rgba(255,255,255,.62);
+
+min-height:18px;
 }
 
 
@@ -394,61 +375,94 @@ main{
    MENSAGEM FINAL
 ========================= */
 
-.message{
-    width:min(380px,100%);
+#message{
+width:min(390px,92vw);
 
-    margin-top:27px;
+margin-top:28px;
 
-    padding:25px 20px;
+padding:25px 20px;
 
-    text-align:center;
+border-radius:27px;
 
-    border-radius:24px;
+background:
+linear-gradient(
+135deg,
+rgba(123,46,255,.14),
+rgba(45,140,255,.10)
+);
 
-    background:
-    linear-gradient(
-        145deg,
-        rgba(123,46,255,.15),
-        rgba(45,140,255,.08)
-    );
+border:
+1px solid
+rgba(255,255,255,.12);
 
-    border:
-    1px solid
-    rgba(255,255,255,.12);
+box-shadow:
+0 20px 50px
+rgba(0,0,0,.55),
+inset 0 0 30px
+rgba(123,46,255,.06);
 
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.5);
+text-align:center;
 
-    opacity:0;
+opacity:0;
+transform:
+translateY(25px)
+scale(.96);
 
-    transform:
-    translateY(20px);
+pointer-events:none;
 
-    pointer-events:none;
-
-    transition:
-    opacity .8s ease,
-    transform .8s ease;
+transition:
+opacity .8s ease,
+transform .8s ease;
 }
 
-.message.show{
-    opacity:1;
+#message.show{
+opacity:1;
 
-    transform:
-    translateY(0);
+transform:
+translateY(0)
+scale(1);
 
-    pointer-events:auto;
+pointer-events:auto;
 }
 
-.message h2{
-    font-size:22px;
-    margin-bottom:12px;
+.message-heart{
+font-size:35px;
+
+display:block;
+margin-bottom:8px;
+
+filter:
+drop-shadow(
+0 0 12px #7B2EFF
+);
 }
 
-.message p{
-    font-size:13px;
-    line-height:1.7;
-    color:rgba(255,255,255,.7);
+#message h2{
+font-size:22px;
+line-height:1.25;
+margin-bottom:15px;
+}
+
+#message h2 span{
+color:#c68cff;
+
+text-shadow:
+0 0 12px #7B2EFF;
+}
+
+#message p{
+font-size:14px;
+line-height:1.65;
+
+color:
+rgba(255,255,255,.72);
+
+margin-top:13px;
+}
+
+.highlight{
+color:#fff;
+font-weight:700;
 }
 
 
@@ -456,45 +470,45 @@ main{
    BOTÃO
 ========================= */
 
-.next{
-    display:inline-flex;
+.next-button{
+display:inline-block;
 
-    align-items:center;
-    justify-content:center;
+margin-top:22px;
 
-    min-width:220px;
+padding:14px 28px;
 
-    padding:14px 23px;
+border-radius:30px;
 
-    margin-top:22px;
+background:
+linear-gradient(
+90deg,
+#7B2EFF,
+#6930ff,
+#2D8CFF
+);
 
-    border-radius:50px;
+color:#fff;
 
-    background:
-    linear-gradient(
-        90deg,
-        #7B2EFF,
-        #6438ff
-    );
+text-decoration:none;
 
-    color:#fff;
+font-size:14px;
+font-weight:800;
 
-    text-decoration:none;
+box-shadow:
+0 0 18px
+rgba(123,46,255,.55);
 
-    font-size:14px;
-    font-weight:700;
-
-    box-shadow:
-    0 0 25px
-    rgba(123,46,255,.45);
-
-    border:
-    1px solid
-    rgba(255,255,255,.2);
+transition:
+transform .2s ease,
+box-shadow .2s ease;
 }
 
-.next:active{
-    transform:scale(.95);
+.next-button:active{
+transform:scale(.95);
+
+box-shadow:
+0 0 28px
+rgba(45,140,255,.7);
 }
 
 
@@ -502,19 +516,62 @@ main{
    CELULARES PEQUENOS
 ========================= */
 
-@media(max-height:700px){
+@media(max-width:360px){
 
-    main{
-        padding-top:15px;
-    }
+.page{
+padding-top:25px;
+}
 
-    .header{
-        margin-bottom:14px;
-    }
+.emoji-title{
+font-size:34px;
+}
 
-    .paint-box{
-        width:min(82vw,320px);
-    }
+.title{
+font-size:23px;
+}
+
+.subtitle{
+font-size:13px;
+}
+
+.paint-box{
+margin-top:22px;
+}
+
+#message{
+padding:20px 16px;
+}
+
+}
+
+
+/* =========================
+   CELULARES GRANDES
+========================= */
+
+@media(min-width:500px){
+
+.page{
+padding-top:50px;
+}
+
+.paint-box{
+width:390px;
+}
+
+}
+
+
+/* =========================
+   REDUZIR MOVIMENTO
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+*{
+animation:none !important;
+transition:none !important;
+}
 
 }
 
@@ -526,131 +583,133 @@ main{
 <body>
 
 
-<!-- FUNDO -->
+<!-- =========================
+     FUNDO
+========================= -->
 
 <div class="background"></div>
+
+
+<!-- =========================
+     CHUVA
+========================= -->
 
 <div id="falling"></div>
 
 
-<main>
+<!-- =========================
+     PÁGINA
+========================= -->
+
+<main class="page">
+
+
+<!-- TÍTULO -->
+
+<div class="emoji-title">
+🎨
+</div>
+
+<h1 class="title">
+Uma obra de arte...
+</h1>
+
+<p class="subtitle">
+Passe o dedo pela tela e descubra
+o que está escondido por trás da tinta. ❤️
+</p>
 
 
 <!-- =========================
-     TÍTULO
+     PINTURA
 ========================= -->
 
-<header class="header">
+<div class="paint-box"
+id="paintArea">
 
-    <div class="paint-icon">
-        🎨
-    </div>
+<img
+class="paint-photo"
+src="Fotos/foto12.jpg"
+alt="Uma memória especial">
 
-    <h1>
-        Uma obra de arte...
-    </h1>
+<canvas
+id="paintCanvas">
+</canvas>
 
-    <p>
-        Passe o dedo pela tela e descubra
-        o que está escondido por trás da tinta. ❤️
-    </p>
+<div id="brushGlow"></div>
 
-</header>
-
-
-<!-- =========================
-     QUADRO
-========================= -->
-
-<section class="paint-box">
-
-    <div
-    id="canvasArea"
-    class="canvas-area">
-
-        <img
-        id="photo"
-        src="Fotos/foto12.jpg"
-        alt="Uma memória especial">
-
-        <canvas
-        id="paintCanvas">
-        </canvas>
-
-        <div
-        id="brushGlow"
-        class="brush-glow">
-        </div>
-
-    </div>
-
-</section>
+</div>
 
 
 <!-- =========================
      PROGRESSO
 ========================= -->
 
-<div class="progress">
+<div class="progress-area">
 
-    <p id="progress-text">
-        Passe o dedo pela tela para começar... 🎨
-    </p>
+<div class="progress-bar">
 
-    <div class="bar">
+<div id="fill"></div>
 
-        <div id="fill"></div>
+</div>
 
-    </div>
+<span id="progress-text">
+Passe o dedo pela tela para começar... 🎨
+</span>
 
 </div>
 
 
 <!-- =========================
-     MENSAGEM
+     MENSAGEM FINAL
 ========================= -->
 
-<section
-id="message"
-class="message">
+<section id="message">
 
-    <h2>
-        Você revelou uma obra de arte. ❤️
-    </h2>
+<span class="message-heart">
+❤️
+</span>
 
-    <p>
+<h2>
 
-        Mas pensando bem...
+Você acabou de revelar
+uma obra de arte.
 
-        <br><br>
+<span>❤️</span>
 
-        Talvez a verdadeira obra de arte
-        nunca tenha sido a fotografia.
+</h2>
 
-        <br><br>
+<p>
+Mas pensando bem...
+</p>
 
-        São seus olhos,
-        seu sorriso,
-        seu cabelo,
-        suas curvas
-        e toda a beleza que existe em você.
+<p>
+Talvez a verdadeira obra de arte
+nunca tenha sido a fotografia.
+</p>
 
-        <br><br>
+<p>
+São seus <span class="highlight">olhos</span>,
+seu <span class="highlight">sorriso</span>,
+seu <span class="highlight">cabelo</span>,
+suas <span class="highlight">curvas</span>
+e toda a <span class="highlight">beleza</span>
+que existe em você.
+</p>
 
-        Algumas pinturas precisam de tinta.
+<p>
+Algumas pinturas precisam de tinta.
+Você só precisa existir
+para deixar tudo mais bonito. 💜
+</p>
 
-        Você só precisa existir
-        para deixar tudo mais bonito. 💜
+<a
+class="next-button"
+href="memoria.html">
 
-    </p>
+Próxima surpresa ❤️
 
-    <a
-    href="memoria.html"
-    class="next">
-
-        Próxima surpresa ❤️
-
-    </a>
+</a>
 
 </section>
 
@@ -665,7 +724,7 @@ class="message">
 ========================= */
 
 const area =
-document.getElementById("canvasArea");
+document.getElementById("paintArea");
 
 const canvas =
 document.getElementById("paintCanvas");
@@ -687,119 +746,138 @@ document.getElementById("brushGlow");
 
 
 /* =========================
+   CONFIGURAÇÃO
+========================= */
+
+const GRID_W = 50;
+const GRID_H = 67;
+
+let painted;
+
+let painting = false;
+
+let lastX = null;
+let lastY = null;
+
+let completed = false;
+
+
+/* =========================
+   GRID
+========================= */
+
+function resetGrid(){
+
+painted =
+Array.from(
+{length:GRID_H},
+() => new Uint8Array(GRID_W)
+);
+
+}
+
+
+/* =========================
    TAMANHO DO CANVAS
 ========================= */
 
 function resizeCanvas(){
 
-    const rect =
-    area.getBoundingClientRect();
+const rect =
+area.getBoundingClientRect();
 
-    const ratio =
-    Math.min(
-        window.devicePixelRatio || 1,
-        1.5
-    );
+const ratio =
+Math.min(
+window.devicePixelRatio || 1,
+1.5
+);
 
-    canvas.width =
-    rect.width * ratio;
+canvas.width =
+rect.width * ratio;
 
-    canvas.height =
-    rect.height * ratio;
+canvas.height =
+rect.height * ratio;
 
-    canvas.style.width =
-    rect.width+"px";
+canvas.style.width =
+rect.width + "px";
 
-    canvas.style.height =
-    rect.height+"px";
+canvas.style.height =
+rect.height + "px";
 
-    ctx.setTransform(
-        ratio,
-        0,
-        0,
-        ratio,
-        0,
-        0
-    );
+ctx.setTransform(
+ratio,
+0,
+0,
+ratio,
+0,
+0
+);
 
-    paintLayer();
+createPaint();
 
 }
-
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
 
 
 /* =========================
    CAMADA DE TINTA
 ========================= */
 
-function paintLayer(){
+function createPaint(){
 
-    const w =
-    area.clientWidth;
+const w =
+area.clientWidth - 14;
 
-    const h =
-    area.clientHeight;
+const h =
+area.clientHeight - 14;
 
-    /*
-       Tinta escura e elegante.
-    */
 
-    const gradient =
-    ctx.createLinearGradient(
-        0,
-        0,
-        w,
-        h
-    );
+/* fundo */
 
-    gradient.addColorStop(
-        0,
-        "#171020"
-    );
+const gradient =
+ctx.createLinearGradient(
+0,0,w,h
+);
 
-    gradient.addColorStop(
-        .5,
-        "#08070d"
-    );
+gradient.addColorStop(
+0,
+"#160b28"
+);
 
-    gradient.addColorStop(
-        1,
-        "#111020"
-    );
+gradient.addColorStop(
+.45,
+"#09070f"
+);
 
-    ctx.globalCompositeOperation=
-    "source-over";
+gradient.addColorStop(
+1,
+"#111020"
+);
 
-    ctx.fillStyle=
-    gradient;
+ctx.globalCompositeOperation =
+"source-over";
 
-    ctx.fillRect(
-        0,
-        0,
-        w,
-        h
-    );
+ctx.fillStyle =
+gradient;
+
+ctx.fillRect(
+0,
+0,
+w,
+h
+);
+
+resetGrid();
+
+completed=false;
+
+fill.style.width="0%";
+
+progressText.textContent =
+"Passe o dedo pela tela para começar... 🎨";
+
+message.classList.remove("show");
 
 }
-
-
-/* =========================
-   ESTADO
-========================= */
-
-let painting=false;
-
-let lastX=0;
-
-let lastY=0;
-
-let revealed=0;
-
-let completed=false;
 
 
 /* =========================
@@ -808,25 +886,188 @@ let completed=false;
 
 function position(e){
 
-    const rect =
-    area.getBoundingClientRect();
+const rect =
+area.getBoundingClientRect();
 
-    const point =
-    e.touches
-    ? e.touches[0]
-    : e;
+const point =
+e.touches ?
+e.touches[0] :
+e;
 
-    return{
+return {
 
-        x:
-        point.clientX -
-        rect.left,
+x:
+point.clientX -
+rect.left -
+7,
 
-        y:
-        point.clientY -
-        rect.top
+y:
+point.clientY -
+rect.top -
+7
 
-    };
+};
+
+}
+
+
+/* =========================
+   REGISTRAR ÁREA
+========================= */
+
+function markPainted(x,y){
+
+const w =
+area.clientWidth - 14;
+
+const h =
+area.clientHeight - 14;
+
+const gx =
+Math.floor(
+x / w * GRID_W
+);
+
+const gy =
+Math.floor(
+y / h * GRID_H
+);
+
+const radius=3;
+
+for(
+let yy=gy-radius;
+yy<=gy+radius;
+yy++
+){
+
+for(
+let xx=gx-radius;
+xx<=gx+radius;
+xx++
+){
+
+if(
+xx<0 ||
+yy<0 ||
+xx>=GRID_W ||
+yy>=GRID_H
+) continue;
+
+const dx=xx-gx;
+const dy=yy-gy;
+
+if(
+dx*dx+
+dy*dy<=
+radius*radius
+){
+
+painted[yy][xx]=1;
+
+}
+
+}
+
+}
+
+}
+
+
+/* =========================
+   PROGRESSO
+========================= */
+
+function getProgress(){
+
+let total=0;
+
+for(
+let y=0;
+y<GRID_H;
+y++
+){
+
+for(
+let x=0;
+x<GRID_W;
+x++
+){
+
+if(
+painted[y][x]
+) total++;
+
+}
+
+}
+
+return total /
+(GRID_W*GRID_H) *
+100;
+
+}
+
+
+/* =========================
+   ATUALIZAR
+========================= */
+
+function updateProgress(){
+
+const progress =
+getProgress();
+
+const value =
+Math.min(
+progress,
+100
+);
+
+fill.style.width =
+value.toFixed(1)+"%";
+
+
+if(value<5){
+
+progressText.textContent =
+"Passe o dedo pela tela para começar... 🎨";
+
+}
+
+else if(value<25){
+
+progressText.textContent =
+"A tinta está começando a desaparecer... ✨";
+
+}
+
+else if(value<50){
+
+progressText.textContent =
+"Continue... já dá para ver alguns detalhes. ❤️";
+
+}
+
+else if(value<75){
+
+progressText.textContent =
+"Está ficando linda... 💜";
+
+}
+
+else if(value<92){
+
+progressText.textContent =
+"Está quase revelada... ❤️";
+
+}
+
+else{
+
+finish();
+
+}
 
 }
 
@@ -837,210 +1078,157 @@ function position(e){
 
 function brush(x,y){
 
-    const radius=32;
+const radius=31;
 
-    /*
-       Apaga a tinta.
-       Isso revela a foto
-       que está por baixo.
-    */
-
-    ctx.globalCompositeOperation=
-    "destination-out";
-
-    ctx.beginPath();
-
-    ctx.arc(
-        x,
-        y,
-        radius,
-        0,
-        Math.PI*2
-    );
-
-    ctx.fill();
+ctx.globalCompositeOperation =
+"destination-out";
 
 
-    /*
-       Pequenas variações
-       deixam a borda
-       menos perfeita.
-    */
+/* pincel principal */
 
-    for(let i=0;i<3;i++){
+ctx.beginPath();
 
-        const angle=
-        Math.random()*Math.PI*2;
+ctx.arc(
+x,
+y,
+radius,
+0,
+Math.PI*2
+);
 
-        const distance=
-        20+Math.random()*18;
-
-        const px=
-        x+
-        Math.cos(angle)*
-        distance;
-
-        const py=
-        y+
-        Math.sin(angle)*
-        distance;
-
-        const size=
-        4+Math.random()*7;
-
-        ctx.beginPath();
-
-        ctx.arc(
-            px,
-            py,
-            size,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fill();
-
-    }
+ctx.fill();
 
 
-    /*
-       Linha entre o ponto
-       anterior e o atual.
-       Evita falhas durante
-       movimentos rápidos.
-    */
+/* pequenas gotas */
 
-    if(lastX!==null){
+for(
+let i=0;
+i<2;
+i++
+){
 
-        ctx.beginPath();
+const angle =
+Math.random() *
+Math.PI*2;
 
-        ctx.moveTo(
-            lastX,
-            lastY
-        );
+const distance =
+18+
+Math.random()*22;
 
-        ctx.lineTo(
-            x,
-            y
-        );
+const px =
+x+
+Math.cos(angle)*
+distance;
 
-        ctx.lineWidth=
-        radius*2;
+const py =
+y+
+Math.sin(angle)*
+distance;
 
-        ctx.lineCap=
-        "round";
+const size =
+4+
+Math.random()*7;
 
-        ctx.stroke();
+ctx.beginPath();
 
-    }
+ctx.arc(
+px,
+py,
+size,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+
+}
 
 
-    lastX=x;
-    lastY=y;
+/* conexão */
+
+if(
+lastX!==null &&
+lastY!==null
+){
+
+ctx.beginPath();
+
+ctx.moveTo(
+lastX,
+lastY
+);
+
+ctx.lineTo(
+x,
+y
+);
+
+ctx.lineWidth =
+radius*2;
+
+ctx.lineCap =
+"round";
+
+ctx.stroke();
+
+}
 
 
-    updateProgress();
+lastX=x;
+lastY=y;
+
+markPainted(
+x,
+y
+);
+
+updateProgress();
+
+showBrush(
+x,
+y
+);
 
 }
 
 
 /* =========================
-   PROGRESSO
+   BRILHO
 ========================= */
 
-let strokeDistance=0;
+function showBrush(x,y){
 
-function updateProgress(){
+glow.style.left =
+(x+7)+"px";
 
-    /*
-       Cada movimento aumenta
-       um pouco o progresso.
+glow.style.top =
+(y+7)+"px";
 
-       Agora um simples toque
-       NÃO completa a página.
-    */
-
-    strokeDistance+=18;
-
-    const total=
-    area.clientWidth*
-    area.clientHeight;
-
-    revealed=
-    Math.min(
-        (strokeDistance/total)*100,
-        100
-    );
-
-
-    fill.style.width=
-    revealed+"%";
-
-
-    if(revealed<5){
-
-        progressText.textContent=
-        "Passe o dedo pela tela para começar... 🎨";
-
-    }
-    else if(revealed<30){
-
-        progressText.textContent=
-        "A tinta está começando a desaparecer... ✨";
-
-    }
-    else if(revealed<60){
-
-        progressText.textContent=
-        "Continue... já dá para ver alguns detalhes. ❤️";
-
-    }
-    else if(revealed<85){
-
-        progressText.textContent=
-        "Está ficando linda... 💜";
-
-    }
-    else if(revealed<98){
-
-        progressText.textContent=
-        "Está quase revelada... ❤️";
-
-    }
-    else{
-
-        finish();
-
-    }
+glow.style.opacity=".8";
 
 }
 
 
 /* =========================
-   INÍCIO
+   COMEÇAR
 ========================= */
 
-function start(e){
+function startPainting(e){
 
-    e.preventDefault();
+e.preventDefault();
 
-    painting=true;
+painting=true;
 
-    const p=
-    position(e);
+const p =
+position(e);
 
-    lastX=p.x;
-    lastY=p.y;
+lastX=p.x;
+lastY=p.y;
 
-    brush(
-        p.x,
-        p.y
-    );
-
-    showGlow(
-        p.x,
-        p.y
-    );
+brush(
+p.x,
+p.y
+);
 
 }
 
@@ -1049,59 +1237,35 @@ function start(e){
    MOVIMENTO
 ========================= */
 
-function move(e){
+function movePainting(e){
 
-    if(!painting)
-        return;
+if(!painting)return;
 
-    e.preventDefault();
+e.preventDefault();
 
-    const p=
-    position(e);
+const p =
+position(e);
 
-    brush(
-        p.x,
-        p.y
-    );
-
-    showGlow(
-        p.x,
-        p.y
-    );
+brush(
+p.x,
+p.y
+);
 
 }
 
 
 /* =========================
-   FIM
+   PARAR
 ========================= */
 
-function stop(){
+function stopPainting(){
 
-    painting=false;
+painting=false;
 
-    lastX=null;
-    lastY=null;
+lastX=null;
+lastY=null;
 
-    glow.style.opacity="0";
-
-}
-
-
-/* =========================
-   BRILHO DO PINCEL
-========================= */
-
-function showGlow(x,y){
-
-    glow.style.left=
-    x+"px";
-
-    glow.style.top=
-    y+"px";
-
-    glow.style.opacity=
-    ".8";
+glow.style.opacity="0";
 
 }
 
@@ -1111,20 +1275,20 @@ function showGlow(x,y){
 ========================= */
 
 area.addEventListener(
-    "touchstart",
-    start,
-    {passive:false}
+"touchstart",
+startPainting,
+{passive:false}
 );
 
 area.addEventListener(
-    "touchmove",
-    move,
-    {passive:false}
+"touchmove",
+movePainting,
+{passive:false}
 );
 
 area.addEventListener(
-    "touchend",
-    stop
+"touchend",
+stopPainting
 );
 
 
@@ -1133,18 +1297,18 @@ area.addEventListener(
 ========================= */
 
 area.addEventListener(
-    "mousedown",
-    start
+"mousedown",
+startPainting
 );
 
 area.addEventListener(
-    "mousemove",
-    move
+"mousemove",
+movePainting
 );
 
 window.addEventListener(
-    "mouseup",
-    stop
+"mouseup",
+stopPainting
 );
 
 
@@ -1154,129 +1318,168 @@ window.addEventListener(
 
 function finish(){
 
-    if(completed)
-        return;
+if(completed)return;
 
-    completed=true;
+completed=true;
 
-    progressText.textContent=
-    "Você revelou tudo! ❤️";
+fill.style.width="100%";
 
-    fill.style.width=
-    "100%";
+progressText.textContent =
+"Você revelou tudo! ❤️";
 
-    message.classList.add(
-        "show"
-    );
+setTimeout(
+function(){
+
+message.classList.add(
+"show"
+);
+
+},
+500
+);
 
 }
 
 
 /* =========================
-   CHUVA
+   CHUVA DE ELOGIOS
 ========================= */
 
-const falling=
+const falling =
 document.getElementById(
-    "falling"
+"falling"
 );
 
 const words=[
-    "meu bem",
-    "amor",
-    "vida",
-    "linda",
-    "princesa",
-    "benzinho",
-    "mozão",
-    "amorzin",
-    "meu amor",
-    "mor"
+"meu bem",
+"amor",
+"vida",
+"linda",
+"princesa",
+"benzinho",
+"mozão",
+"amorzin",
+"meu amor",
+"mor"
 ];
 
 const emojis=[
-    "❤️",
-    "💜",
-    "💙",
-    "🤍",
-    "💕",
-    "✨"
+"❤️",
+"💜",
+"💙",
+"🤍",
+"💕",
+"✨"
 ];
+
 
 function createFalling(){
 
-    const item=
-    document.createElement("span");
+const item =
+document.createElement(
+"span"
+);
 
-    item.className=
-    "falling-item";
+item.className =
+"falling-item";
 
-    const isEmoji=
-    Math.random()<.5;
+const emoji =
+Math.random()<.5;
 
-    item.textContent=
-    isEmoji
-    ?
-    emojis[
-        Math.floor(
-            Math.random()*
-            emojis.length
-        )
-    ]
-    :
-    words[
-        Math.floor(
-            Math.random()*
-            words.length
-        )
-    ];
+item.textContent =
+emoji
+?
+emojis[
+Math.floor(
+Math.random()*
+emojis.length
+)
+]
+:
+words[
+Math.floor(
+Math.random()*
+words.length
+)
+];
 
-    item.style.left=
-    Math.random()*90+5+"%";
 
-    item.style.fontSize=
-    (
-        isEmoji
-        ?20+Math.random()*9
-        :12+Math.random()*7
-    )+"px";
+item.style.left =
+(
+Math.random()*90+5
+)+"%";
 
-    item.style.animationDuration=
-    5+Math.random()*5+"s";
 
-    item.style.setProperty(
-        "--side",
-        (-60+Math.random()*120)+"px"
-    );
+item.style.fontSize =
+(
+emoji
+?
+20+
+Math.random()*9
+:
+12+
+Math.random()*7
+)+"px";
 
-    item.style.setProperty(
-        "--rotation",
-        (-40+Math.random()*80)+"deg"
-    );
 
-    falling.appendChild(item);
+item.style.animationDuration =
+(
+5+
+Math.random()*5
+)+"s";
 
-    setTimeout(
-        ()=>item.remove(),
-        10000
-    );
+
+item.style.setProperty(
+"--side",
+(
+-60+
+Math.random()*120
+)+"px"
+);
+
+
+item.style.setProperty(
+"--rotation",
+(
+-40+
+Math.random()*80
+)+"deg"
+);
+
+
+falling.appendChild(
+item
+);
+
+
+setTimeout(
+function(){
+item.remove();
+},
+10000
+);
 
 }
 
+
 setInterval(
-    createFalling,
-    500
+createFalling,
+500
 );
 
 
 /* =========================
-   INICIAR CANVAS
+   INICIALIZAÇÃO
 ========================= */
+
+window.addEventListener(
+"resize",
+resizeCanvas
+);
 
 resizeCanvas();
 
 </script>
 
 </body>
-
    </html>
