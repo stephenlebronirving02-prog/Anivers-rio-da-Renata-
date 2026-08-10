@@ -1,976 +1,378 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0,
-maximum-scale=1.0,
-user-scalable=no">
-
-<title>Para você, Renata ❤️</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Para Renata ❤️</title>
 <meta name="theme-color" content="#030308">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-/* =========================
-RESET
-========================= */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html,
-body{
+html,body{
 width:100%;
 min-height:100%;
 background:#030308;
-color:#fff;
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-Roboto,
-sans-serif;
+color:white;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+overflow-x:hidden
 }
 
 body{
-overflow-x:hidden;
+background:
+radial-gradient(circle at 50% 35%,#1b0b38 0%,#080411 45%,#030308 85%);
 }
 
-
-/* =========================
-FUNDO
-========================= */
-
-.background{
+.bg{
 position:fixed;
 inset:0;
 z-index:0;
-overflow:hidden;
-
-background:
-radial-gradient(
-circle at 50% 35%,
-#170b32 0%,
-#080414 42%,
-#030308 80%
-);
-}
-
-.background::before{
-content:"";
-position:absolute;
-
-width:420px;
-height:420px;
-
-left:-180px;
-top:-100px;
-
-border-radius:50%;
-
-background:#7B2EFF;
-
-filter:blur(130px);
-
-opacity:.30;
-
-animation:glow 8s ease-in-out infinite alternate;
-}
-
-.background::after{
-content:"";
-position:absolute;
-
-width:380px;
-height:380px;
-
-right:-170px;
-bottom:-100px;
-
-border-radius:50%;
-
-background:#2D8CFF;
-
-filter:blur(130px);
-
-opacity:.25;
-
-animation:glow 9s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes glow{
-
-from{
-transform:scale(1);
-}
-
-to{
-transform:scale(1.18);
-}
-
-}
-
-
-/* =========================
-ESTRELAS
-========================= */
-
-.stars{
-position:fixed;
-inset:0;
-z-index:1;
 pointer-events:none;
-
-background-image:
-radial-gradient(
-circle,
-rgba(255,255,255,.7) 1px,
-transparent 1px
-);
-
-background-size:75px 75px;
-
-opacity:.18;
+overflow:hidden
 }
 
+.bg:before,.bg:after{
+content:"";
+position:absolute;
+width:350px;
+height:350px;
+border-radius:50%;
+filter:blur(120px)
+}
 
-/* =========================
-CHUVA
-========================= */
+.bg:before{
+left:-150px;
+top:-100px;
+background:#7B2EFF;
+opacity:.35
+}
+
+.bg:after{
+right:-150px;
+bottom:-100px;
+background:#2D8CFF;
+opacity:.25
+}
 
 #falling{
 position:fixed;
 inset:0;
-
-z-index:2;
-
+z-index:1;
 pointer-events:none;
-
-overflow:hidden;
+overflow:hidden
 }
 
-.falling-item{
+.fall{
 position:absolute;
-top:-60px;
-
-white-space:nowrap;
-
-font-size:13px;
-font-weight:700;
-
-color:rgba(255,255,255,.48);
-
-text-shadow:
-0 0 10px rgba(255,255,255,.35),
-0 0 20px #7B2EFF;
-
-animation:
-fall linear forwards;
+top:-50px;
+font-weight:bold;
+color:rgba(255,255,255,.45);
+text-shadow:0 0 15px #7B2EFF;
+animation:drop linear forwards
 }
 
-@keyframes fall{
-
-0%{
-transform:
-translateY(-60px)
-rotate(0deg);
-
-opacity:0;
+@keyframes drop{
+from{transform:translateY(-50px);opacity:0}
+15%{opacity:.7}
+to{transform:translate(var(--x),110vh) rotate(var(--r));opacity:0}
 }
 
-15%{
-opacity:.65;
-}
-
-80%{
-opacity:.4;
-}
-
-100%{
-transform:
-translate(
-var(--side),
-110vh
-)
-rotate(var(--rotate));
-
-opacity:0;
-}
-
-}
-
-
-/* =========================
-CONTEÚDO
-========================= */
-
-.page{
+main{
 position:relative;
 z-index:5;
-
-width:100%;
 min-height:100vh;
-
+padding:45px 18px 70px;
+text-align:center;
 display:flex;
 flex-direction:column;
-align-items:center;
-
-padding:
-45px 18px 70px;
-
-text-align:center;
+align-items:center
 }
 
-
-/* =========================
-INTRODUÇÃO
-========================= */
-
-.small{
+.top{
 font-size:12px;
-
 letter-spacing:2px;
-
 text-transform:uppercase;
-
-color:
-rgba(255,255,255,.48);
-
-margin-bottom:8px;
+color:rgba(255,255,255,.5);
+margin-bottom:10px
 }
 
-.title{
+h1{
 font-size:28px;
-
-line-height:1.15;
-
-font-weight:800;
-
-text-shadow:
-0 0 20px
-rgba(123,46,255,.7);
+line-height:1.2;
+text-shadow:0 0 20px rgba(123,46,255,.8)
 }
 
-.title span{
-color:#c89cff;
-}
-
-
-/* =========================
-CORAÇÃO
-========================= */
+h1 span{color:#c99cff}
 
 .heart-area{
+width:300px;
+height:300px;
+max-width:88vw;
+max-height:88vw;
+margin:30px auto 10px;
 position:relative;
-
-width:310px;
-height:310px;
-
-max-width:85vw;
-max-height:85vw;
-
-margin-top:35px;
-
 display:flex;
 align-items:center;
-justify-content:center;
+justify-content:center
 }
 
-
-/* brilho atrás */
-
-.heart-glow{
+.glow{
 position:absolute;
-
-width:210px;
-height:210px;
-
+width:200px;
+height:200px;
 border-radius:50%;
-
-background:
-#7B2EFF;
-
+background:#7B2EFF;
 filter:blur(70px);
-
-opacity:.30;
-
-animation:
-heartGlow 2.5s ease-in-out infinite alternate;
+opacity:.35;
+animation:pulse 2s infinite alternate
 }
 
-@keyframes heartGlow{
-
-from{
-transform:scale(.85);
-opacity:.22;
+@keyframes pulse{
+from{transform:scale(.8);opacity:.2}
+to{transform:scale(1.15);opacity:.45}
 }
-
-to{
-transform:scale(1.15);
-opacity:.42;
-}
-
-}
-
-
-/* coração clicável */
 
 #heart{
 position:relative;
-
 width:250px;
 height:250px;
-
 border:0;
-
 background:none;
-
-cursor:pointer;
-
--webkit-tap-highlight-color:
-transparent;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-transform:scale(1);
-
-transition:
-transform .18s ease;
-
-z-index:3;
-}
-
-#heart:active{
-transform:scale(.92);
-}
-
-
-/*
-O próprio símbolo cria
-o formato do coração.
-*/
-
-.heart-shape{
-position:absolute;
-
+color:#913cff;
 font-size:245px;
-
 line-height:1;
-
-color:#8c38ff;
-
+z-index:3;
+cursor:pointer;
+-webkit-tap-highlight-color:transparent;
 filter:
-drop-shadow(
-0 0 10px #7B2EFF
-)
-drop-shadow(
-0 0 28px #7B2EFF
-)
-drop-shadow(
-0 0 60px rgba(45,140,255,.5)
-);
-
-animation:
-heartbeat 1.8s ease-in-out infinite;
+drop-shadow(0 0 10px #7B2EFF)
+drop-shadow(0 0 30px #7B2EFF);
+animation:beat 1.7s infinite
 }
 
-@keyframes heartbeat{
-
-0%,100%{
-transform:scale(1);
+@keyframes beat{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.06)}
 }
 
-50%{
-transform:scale(1.055);
-}
-
-}
-
-
-/* texto dentro do coração */
-
-.heart-text{
-position:relative;
-
-z-index:4;
-
-width:150px;
-
-font-size:15px;
-
-font-weight:800;
-
-line-height:1.35;
-
-color:#fff;
-
-text-shadow:
-0 2px 10px #24004d;
-
-pointer-events:none;
-
-margin-top:5px;
-}
-
-
-/* contador de cliques */
-
-#click-count{
+.inside{
 position:absolute;
-
-bottom:2px;
-
-font-size:12px;
-
-color:
-rgba(255,255,255,.52);
-
-z-index:5;
+z-index:4;
+width:150px;
+font-size:14px;
+font-weight:800;
+line-height:1.35;
+pointer-events:none;
+color:white;
+text-shadow:0 2px 8px #28004e
 }
 
-
-/* =========================
-EXPLOSÃO
-========================= */
+#count{
+font-size:11px;
+color:rgba(255,255,255,.5);
+position:absolute;
+bottom:0
+}
 
 #explosion{
 position:absolute;
-
 inset:0;
-
-pointer-events:none;
-
 z-index:10;
+pointer-events:none
 }
 
-.particle{
+.p{
 position:absolute;
-
 left:50%;
 top:50%;
-
-width:8px;
-height:8px;
-
+width:7px;
+height:7px;
 border-radius:50%;
-
-background:#fff;
-
-box-shadow:
-0 0 10px #fff,
-0 0 20px #7B2EFF;
-
-animation:
-explode .9s ease-out forwards;
+background:white;
+box-shadow:0 0 10px white,0 0 20px #7B2EFF;
+animation:explode .9s forwards
 }
 
 @keyframes explode{
-
-0%{
-transform:
-translate(-50%,-50%)
-scale(1);
-
-opacity:1;
+to{
+transform:translate(var(--x),var(--y)) scale(0);
+opacity:0
+}
 }
 
-100%{
-transform:
-translate(
-var(--x),
-var(--y)
-)
-scale(0);
-
+#content{
+width:min(390px,94vw);
 opacity:0;
+transform:translateY(20px);
+transition:1s
 }
 
-}
-
-
-/* =========================
-TEXTO FINAL
-========================= */
-
-#story{
-width:min(390px,92vw);
-
-margin-top:15px;
-
-opacity:0;
-
-transform:
-translateY(25px);
-
-pointer-events:none;
-
-transition:
-opacity 1s ease,
-transform 1s ease;
-}
-
-#story.show{
+#content.show{
 opacity:1;
-
-transform:
-translateY(0);
-
-pointer-events:auto;
+transform:translateY(0)
 }
 
-
-/* indicador */
-
-.story-line{
+.line{
 width:45px;
 height:3px;
-
-margin:
-0 auto 22px;
-
-border-radius:20px;
-
-background:
-linear-gradient(
-90deg,
-#7B2EFF,
-#2D8CFF
-);
-
-box-shadow:
-0 0 12px #7B2EFF;
+border-radius:10px;
+margin:0 auto 22px;
+background:linear-gradient(90deg,#7B2EFF,#2D8CFF);
+box-shadow:0 0 12px #7B2EFF
 }
 
-
-/* texto sendo digitado */
-
-#typed-text{
-font-size:16px;
-
+#text{
+font-size:15px;
 line-height:1.8;
-
-color:
-rgba(255,255,255,.82);
-
-min-height:300px;
-
+color:rgba(255,255,255,.82);
 white-space:pre-line;
+min-height:280px
 }
-
-
-/* =========================
-FRASES DESTACADAS
-========================= */
-
-.highlight{
-color:#d5b4ff;
-
-font-weight:700;
-
-text-shadow:
-0 0 12px
-rgba(123,46,255,.5);
-}
-
-
-/* =========================
-CONTADOR
-========================= */
 
 #life{
-margin-top:28px;
-
-width:min(390px,92vw);
-
-padding:23px 14px;
-
-border-radius:25px;
-
-background:
-linear-gradient(
-135deg,
-rgba(123,46,255,.10),
-rgba(45,140,255,.07)
-);
-
-border:
-1px solid
-rgba(255,255,255,.10);
-
-box-shadow:
-inset 0 0 25px
-rgba(123,46,255,.04),
-0 20px 50px
-rgba(0,0,0,.4);
-
+margin-top:25px;
+padding:20px 12px;
+border-radius:24px;
+width:100%;
+background:rgba(123,46,255,.08);
+border:1px solid rgba(255,255,255,.1);
 opacity:0;
-
-transform:translateY(20px);
-
-transition:
-opacity 1s ease .5s,
-transform 1s ease .5s;
+transition:1s
 }
 
 #life.show{
-opacity:1;
-
-transform:translateY(0);
+opacity:1
 }
 
 .life-title{
-font-size:14px;
-
-font-weight:700;
-
-color:
-rgba(255,255,255,.65);
-
-margin-bottom:17px;
+font-size:13px;
+color:rgba(255,255,255,.6);
+margin-bottom:15px
 }
 
 .timer{
 display:grid;
-
-grid-template-columns:
-repeat(4,1fr);
-
-gap:8px;
+grid-template-columns:repeat(4,1fr);
+gap:6px
 }
 
-.time-box{
-padding:10px 3px;
-
-border-radius:15px;
-
-background:
-rgba(255,255,255,.045);
+.box{
+padding:10px 2px;
+border-radius:14px;
+background:rgba(255,255,255,.04)
 }
 
-.time-number{
+.num{
 display:block;
-
-font-size:21px;
-
-font-weight:800;
-
-color:#fff;
-
-text-shadow:
-0 0 10px
-rgba(123,46,255,.7);
+font-size:19px;
+font-weight:800
 }
 
-.time-label{
+.label{
 display:block;
-
+font-size:8px;
+color:rgba(255,255,255,.4);
 margin-top:4px;
-
-font-size:9px;
-
-text-transform:uppercase;
-
-letter-spacing:.7px;
-
-color:
-rgba(255,255,255,.42);
+text-transform:uppercase
 }
 
-
-/* =========================
-EU TE AMO
-========================= */
-
-#final-love{
-margin-top:45px;
-
+#love{
+margin-top:42px;
 opacity:0;
-
-transform:
-scale(.8);
-
-transition:
-opacity 1.2s ease,
-transform 1.2s ease;
+transform:scale(.8);
+transition:1s
 }
 
-#final-love.show{
+#love.show{
 opacity:1;
-
-transform:scale(1);
+transform:scale(1)
 }
 
 .love-small{
-font-size:12px;
-
-letter-spacing:3px;
-
-text-transform:uppercase;
-
-color:
-rgba(255,255,255,.5);
-
-margin-bottom:7px;
+font-size:11px;
+letter-spacing:2px;
+color:rgba(255,255,255,.45);
+margin-bottom:8px
 }
 
 .love-big{
-font-size:
-clamp(42px,14vw,65px);
-
+font-size:clamp(42px,13vw,62px);
 font-weight:900;
-
-line-height:1;
-
-background:
-linear-gradient(
-90deg,
-#fff,
-#d8b7ff,
-#fff
-);
-
+background:linear-gradient(90deg,#fff,#d3aaff,#fff);
 -webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
-text-shadow:
-0 0 25px
-rgba(255,255,255,.15);
+-webkit-text-fill-color:transparent
 }
 
 .white-heart{
 display:block;
-
-margin-top:16px;
-
-font-size:43px;
-
-filter:
-drop-shadow(
-0 0 15px #fff
-)
-drop-shadow(
-0 0 30px #7B2EFF
-);
-
-animation:
-whiteHeart 2s ease-in-out infinite;
+font-size:45px;
+margin-top:12px;
+filter:drop-shadow(0 0 15px white);
+animation:beat 2s infinite
 }
 
-@keyframes whiteHeart{
-
-0%,100%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(1.13);
-}
-
-}
-
-
-/* =========================
-BOTÃO FINAL
-========================= */
-
-.restart{
-display:inline-block;
-
-margin-top:38px;
-
-padding:13px 25px;
-
-border-radius:30px;
-
-border:
-1px solid
-rgba(255,255,255,.15);
-
-background:
-rgba(255,255,255,.05);
-
-color:
-rgba(255,255,255,.7);
-
+#restart{
+display:block;
+margin-top:35px;
+padding:12px 24px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,.15);
+background:rgba(255,255,255,.05);
+color:rgba(255,255,255,.7);
 text-decoration:none;
-
 font-size:12px;
-
-font-weight:700;
-
 opacity:0;
-
-transition:
-opacity 1s ease,
-background .2s ease;
+transition:1s
 }
 
-.restart.show{
-opacity:1;
-}
-
-.restart:active{
-background:
-rgba(123,46,255,.25);
-}
-
-
-/* =========================
-CELULARES MENORES
-========================= */
+#restart.show{opacity:1}
 
 @media(max-width:360px){
-
-.page{
-padding-top:30px;
+main{padding-top:30px}
+h1{font-size:24px}
+#heart{font-size:210px}
+.heart-area{height:260px}
+#text{font-size:14px}
 }
-
-.title{
-font-size:24px;
-}
-
-.heart-area{
-margin-top:22px;
-}
-
-#heart{
-width:220px;
-height:220px;
-}
-
-.heart-shape{
-font-size:215px;
-}
-
-.heart-text{
-font-size:13px;
-width:130px;
-}
-
-#typed-text{
-font-size:14px;
-line-height:1.7;
-}
-
-.timer{
-gap:5px;
-}
-
-.time-number{
-font-size:18px;
-}
-
-}
-
-
-/* =========================
-REDUZIR MOVIMENTO
-========================= */
-
-@media(prefers-reduced-motion:reduce){
-
-*{
-animation:none !important;
-transition:none !important;
-}
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-FUNDO
-========================= -->
-
-<div class="background"></div>
-
-<div class="stars"></div>
-
+<div class="bg"></div>
 <div id="falling"></div>
 
+<main>
 
-<!-- =========================
-PÁGINA
-========================= -->
+<p class="top">O último capítulo...</p>
 
-<main class="page">
-
-
-<p class="small">
-E chegamos ao último capítulo...
-</p>
-
-
-<h1 class="title">
-Agora é só você e
+<h1>
+Agora é só você e<br>
 <span>o que eu sinto. ❤️</span>
 </h1>
 
-
-<!-- =========================
-CORAÇÃO
-========================= -->
-
 <div class="heart-area">
 
-<div class="heart-glow"></div>
+<div class="glow"></div>
 
-<button
-id="heart"
-aria-label="Clique no coração">
+<button id="heart">♥</button>
 
-<span class="heart-shape">
-♥
-</span>
-
-<span class="heart-text">
+<div class="inside">
 Clique em mim<br>
 até eu não aguentar mais... ❤️
-</span>
-
-</button>
+</div>
 
 <div id="explosion"></div>
 
-<span id="click-count">
-0 / 7
-</span>
+<div id="count">0 / 7</div>
 
 </div>
 
+<section id="content">
 
-<!-- =========================
-HISTÓRIA
-========================= -->
+<div class="line"></div>
 
-<section id="story">
-
-<div class="story-line"></div>
-
-<div id="typed-text"></div>
-
-
-<!-- =========================
-TEMPO DE VIDA
-========================= -->
+<div id="text"></div>
 
 <div id="life">
 
@@ -978,82 +380,37 @@ TEMPO DE VIDA
 E enquanto o tempo continua passando...
 </p>
 
-
 <div class="timer">
 
-<div class="time-box">
-<span
-class="time-number"
-id="years">
-0
-</span>
-
-<span class="time-label">
-anos
-</span>
+<div class="box">
+<span class="num" id="years">0</span>
+<span class="label">anos</span>
 </div>
 
-
-<div class="time-box">
-<span
-class="time-number"
-id="days">
-0
-</span>
-
-<span class="time-label">
-dias
-</span>
+<div class="box">
+<span class="num" id="days">0</span>
+<span class="label">dias</span>
 </div>
 
-
-<div class="time-box">
-<span
-class="time-number"
-id="hours">
-0
-</span>
-
-<span class="time-label">
-horas
-</span>
+<div class="box">
+<span class="num" id="hours">0</span>
+<span class="label">horas</span>
 </div>
 
-
-<div class="time-box">
-<span
-class="time-number"
-id="minutes">
-0
-</span>
-
-<span class="time-label">
-minutos
-</span>
+<div class="box">
+<span class="num" id="minutes">0</span>
+<span class="label">minutos</span>
 </div>
 
 </div>
 
-
-<p
-style="
-margin-top:15px;
-font-size:10px;
-color:rgba(255,255,255,.38);
-">
-
+<p style="margin-top:14px;font-size:9px;color:rgba(255,255,255,.35)">
 Desde 16 de agosto de 2010 ❤️
-
 </p>
 
 </div>
 
-
-<!-- =========================
-EU TE AMO
-========================= -->
-
-<div id="final-love">
+<div id="love">
 
 <p class="love-small">
 Se existe uma última coisa que eu queria que você soubesse...
@@ -1063,245 +420,84 @@ Se existe uma última coisa que eu queria que você soubesse...
 EU TE AMO
 </div>
 
-<span class="white-heart">
-♡
-</span>
+<span class="white-heart">♡</span>
 
 </div>
 
-
-<a
-href="index.html"
-class="restart"
-id="restart">
-
+<a href="index.html" id="restart">
 Voltar ao começo ❤️
-
 </a>
-
 
 </section>
 
-
 </main>
-
 
 <script>
 
-/* =========================
-ELEMENTOS
-========================= */
+const heart=document.getElementById("heart");
+const count=document.getElementById("count");
+const explosion=document.getElementById("explosion");
+const content=document.getElementById("content");
+const textBox=document.getElementById("text");
+const life=document.getElementById("life");
+const love=document.getElementById("love");
+const restart=document.getElementById("restart");
 
-const heart =
-document.getElementById("heart");
+let clicks=0;
+let finished=false;
 
-const counter =
-document.getElementById("click-count");
+heart.onclick=function(){
 
-const explosion =
-document.getElementById("explosion");
-
-const story =
-document.getElementById("story");
-
-const typedText =
-document.getElementById("typed-text");
-
-const life =
-document.getElementById("life");
-
-const finalLove =
-document.getElementById("final-love");
-
-const restart =
-document.getElementById("restart");
-
-
-/* =========================
-CONFIGURAÇÃO
-========================= */
-
-const MAX_CLICKS = 7;
-
-let clicks = 0;
-
-let exploded = false;
-
-
-/* =========================
-CLIQUE NO CORAÇÃO
-========================= */
-
-heart.addEventListener(
-"click",
-function(){
-
-if(exploded)return;
+if(finished)return;
 
 clicks++;
 
-counter.textContent =
-clicks +
-" / " +
-MAX_CLICKS;
+count.textContent=clicks+" / 7";
 
+heart.style.transform="scale(.88)";
 
-/* reação */
+setTimeout(function(){
+heart.style.transform="";
+},120);
 
-heart.style.transform =
-"scale(.88)";
-
-setTimeout(
-function(){
-
-heart.style.transform =
-"scale(1)";
-
-},
-130
-);
-
-
-/* último clique */
-
-if(clicks >= MAX_CLICKS){
-
-explodeHeart();
-
+if(clicks>=7){
+finish();
 }
 
-});
+};
 
+function finish(){
 
-/* =========================
-EXPLOSÃO
-========================= */
+finished=true;
 
-function explodeHeart(){
+for(let i=0;i<70;i++){
 
-exploded=true;
+const p=document.createElement("span");
+p.className="p";
 
+const angle=Math.random()*Math.PI*2;
+const distance=80+Math.random()*230;
 
-/* cria partículas */
+p.style.setProperty("--x",
+Math.cos(angle)*distance+"px");
 
-const total=65;
+p.style.setProperty("--y",
+Math.sin(angle)*distance+"px");
 
-for(
-let i=0;
-i<total;
-i++
-){
-
-const particle =
-document.createElement("span");
-
-particle.className =
-"particle";
-
-
-const angle =
-Math.random() *
-Math.PI *
-2;
-
-const distance =
-80 +
-Math.random()*230;
-
-const x =
-Math.cos(angle) *
-distance;
-
-const y =
-Math.sin(angle) *
-distance;
-
-
-particle.style.setProperty(
-"--x",
-x+"px"
-);
-
-particle.style.setProperty(
-"--y",
-y+"px"
-);
-
-
-const size =
-4 +
-Math.random()*8;
-
-particle.style.width =
-size+"px";
-
-particle.style.height =
-size+"px";
-
-
-/* algumas partículas são corações */
-
-if(Math.random()<.22){
-
-particle.textContent="♥";
-
-particle.style.background=
-"transparent";
-
-particle.style.color=
-"#fff";
-
-particle.style.fontSize=
-"18px";
-
-particle.style.boxShadow=
-"0 0 15px #7B2EFF";
-
+explosion.appendChild(p);
 }
-
-explosion.appendChild(
-particle
-);
-
-}
-
-
-/* coração desaparece */
-
-heart.style.transition =
-"transform .5s ease, opacity .5s ease";
-
-heart.style.transform =
-"scale(1.4)";
 
 heart.style.opacity="0";
+count.style.opacity="0";
 
-counter.style.opacity="0";
-
-
-/* começa história */
-
-setTimeout(
-function(){
-
-story.classList.add("show");
-
-startTyping();
-
-},
-850
-);
+setTimeout(function(){
+content.classList.add("show");
+typeText();
+},800);
 
 }
 
-
-/* =========================
-TEXTO
-========================= */
-
-const text =
-
-`Renata,
+const message=`Renata,
 
 se você chegou até aqui, então agora não existe mais surpresa escondida.
 
@@ -1309,315 +505,127 @@ Só existe uma coisa que eu queria deixar registrada.
 
 Obrigado por todos os momentos que fizeram parte dessa história.
 
-Pelos dias comuns que acabaram se tornando especiais, pelas conversas que ficaram na memória e por todas aquelas pequenas coisas que talvez parecessem simples, mas que ganharam um significado enorme.
+Pelas conversas, pelas risadas, pelas brincadeiras e por todas aquelas pequenas coisas que talvez parecessem simples, mas que acabaram ficando guardadas na memória.
 
-Você tem uma maneira única de ocupar um espaço na vida de alguém. Não é apenas pela sua beleza ou pela forma como você chama atenção.
+Você tem uma maneira única de tornar os momentos mais especiais.
 
-É pela sua essência.
+E talvez essa seja uma das coisas que mais admiro em você.
 
-Pelo seu jeito de ser, pela sua personalidade, pela energia que você coloca nos lugares e pela pessoa que você continua se tornando a cada ano.
+Espero que esse novo capítulo traga experiências incríveis, pessoas que reconheçam o seu valor e sonhos que façam você continuar acreditando em tudo aquilo que deseja conquistar.
 
-Espero que esse novo capítulo da sua vida traga experiências que façam seu coração acelerar, pessoas que realmente valorizem quem você é e sonhos que façam você olhar para trás e perceber o quanto cresceu.
+Que você nunca perca sua essência.
 
-Que nunca faltem motivos para você acreditar em si mesma.
+Que continue sendo essa pessoa que consegue deixar uma marca bonita por onde passa.
 
-E, principalmente, que você nunca esqueça o quanto é importante.
+E que, quando olhar para trás daqui a alguns anos, possa sentir orgulho da pessoa que escolheu se tornar.
 
 Feliz aniversário, Renata.
 
-Que seus 16 anos sejam apenas o começo de uma história ainda maior.
+Que seus 16 anos sejam apenas o começo de uma história enorme.
 
-E se algum dia você esquecer o quanto é especial...
+E se algum dia você esquecer o quanto é importante...
 
-volte para este pequeno presente.
+lembre-se deste pequeno presente.
 
-Porque ele sempre vai guardar um pedacinho do carinho que eu coloquei nele.`;
+Ele foi feito especialmente para você. ❤️`;
 
+let position=0;
 
-/* =========================
-DIGITAÇÃO
-========================= */
+function typeText(){
 
-let index=0;
+if(position<message.length){
 
-function startTyping(){
+textBox.textContent+=message[position];
 
-typedText.innerHTML="";
-
-index=0;
-
-typeCharacter();
-
-}
-
-
-/*
-Velocidade propositalmente
-calma para ficar cinematográfica.
-*/
-
-function typeCharacter(){
-
-if(index >= text.length){
-
-finishTyping();
-
-return;
-
-}
-
-
-typedText.textContent +=
-text.charAt(index);
-
-index++;
-
-
-/*
-Pequenas pausas extras
-em pontuações.
-*/
+position++;
 
 let delay=24;
 
-const current =
-text.charAt(index-1);
-
-if(
-current==="." ||
-current==="!" ||
-current==="?"
-){
-
-delay=300;
-
+if(message[position-1]==="."){
+delay=280;
 }
 
-else if(
-current===","
-){
-
-delay=120;
-
+if(message[position-1]===","){
+delay=100;
 }
 
-setTimeout(
-typeCharacter,
-delay
-);
+setTimeout(typeText,delay);
 
-}
+}else{
 
-
-/* =========================
-FINAL DO TEXTO
-========================= */
-
-function finishTyping(){
-
-setTimeout(
-function(){
-
+setTimeout(function(){
 life.classList.add("show");
+},500);
 
-},
-500
-);
+setTimeout(function(){
+love.classList.add("show");
+},1700);
 
-setTimeout(
-function(){
-
-finalLove.classList.add("show");
-
-},
-1700
-);
-
-setTimeout(
-function(){
-
+setTimeout(function(){
 restart.classList.add("show");
+},2700);
 
-},
-2700
-);
+}
 
 }
 
 
-/* =========================
-CONTADOR DE VIDA
-========================= */
+/* CONTADOR DESDE 16/08/2010 */
 
-const birth =
-new Date(
-2010,
-7,
-16,
-0,
-0,
-0
-);
+const birth=new Date(2010,7,16,0,0,0);
 
+function updateTimer(){
 
-/*
-O mês 7 representa agosto
-porque JavaScript começa
-os meses em 0.
-*/
+const now=new Date();
 
-function updateLife(){
+let years=now.getFullYear()-birth.getFullYear();
 
-const now =
-new Date();
-
-
-/*
-Calcula anos completos.
-*/
-
-let years =
-now.getFullYear() -
-birth.getFullYear();
-
-
-const birthdayThisYear =
-new Date(
+const birthday=new Date(
 now.getFullYear(),
 7,
-16,
-0,
-0,
-0
+16
 );
 
-
-if(now < birthdayThisYear){
-
+if(now<birthday){
 years--;
-
 }
 
-
-/*
-Data do último aniversário.
-*/
-
-const lastBirthday =
-new Date(
+const lastBirthday=new Date(
 birth.getFullYear()+years,
 7,
-16,
-0,
-0,
-0
+16
 );
 
+let ms=now-lastBirthday;
 
-let difference =
-now -
-lastBirthday;
+const day=24*60*60*1000;
+const hour=60*60*1000;
+const minute=60*1000;
 
+const days=Math.floor(ms/day);
+ms-=days*day;
 
-/*
-Conversões.
-*/
+const hours=Math.floor(ms/hour);
+ms-=hours*hour;
 
-const dayMS =
-1000*60*60*24;
+const minutes=Math.floor(ms/minute);
 
-const hourMS =
-1000*60*60;
-
-const minuteMS =
-1000*60;
-
-
-/*
-Dias completos restantes.
-*/
-
-const days =
-Math.floor(
-difference/dayMS
-);
-
-difference %=
-dayMS;
-
-
-/*
-Horas.
-*/
-
-const hours =
-Math.floor(
-difference/hourMS
-);
-
-difference %=
-hourMS;
-
-
-/*
-Minutos.
-*/
-
-const minutes =
-Math.floor(
-difference/minuteMS
-);
-
-
-/* =========================
-MOSTRAR
-========================= */
-
-document.getElementById(
-"years"
-).textContent =
-years;
-
-document.getElementById(
-"days"
-).textContent =
-days;
-
-document.getElementById(
-"hours"
-).textContent =
-hours;
-
-document.getElementById(
-"minutes"
-).textContent =
-minutes;
+document.getElementById("years").textContent=years;
+document.getElementById("days").textContent=days;
+document.getElementById("hours").textContent=hours;
+document.getElementById("minutes").textContent=minutes;
 
 }
 
-
-/* atualiza a cada segundo */
-
-updateLife();
-
-setInterval(
-updateLife,
-1000
-);
+updateTimer();
+setInterval(updateTimer,1000);
 
 
-/* =========================
-CHUVA
-========================= */
+/* CHUVA */
 
-const falling =
-document.getElementById(
-"falling"
-);
-
+const falling=document.getElementById("falling");
 
 const words=[
-
 "meu bem",
 "amor",
 "vida",
@@ -1628,133 +636,51 @@ const words=[
 "amorzin",
 "meu amor",
 "mor"
-
 ];
 
+const emojis=["❤️","💜","💙","🤍","💕","✨"];
 
-const emojis=[
+function makeFall(){
 
-"❤️",
-"💜",
-"💙",
-"🤍",
-"💕",
-"✨"
+const item=document.createElement("span");
 
-];
+item.className="fall";
 
+const emoji=Math.random()<.5;
 
-function createFalling(){
+item.textContent=emoji
+?emojis[Math.floor(Math.random()*emojis.length)]
+:words[Math.floor(Math.random()*words.length)];
 
-const item =
-document.createElement(
-"span"
-);
+item.style.left=(Math.random()*90+5)+"%";
 
-item.className =
-"falling-item";
+item.style.fontSize=(emoji
+?20+Math.random()*8
+:11+Math.random()*6)+"px";
 
-
-const emoji =
-Math.random()<.48;
-
-
-if(emoji){
-
-item.textContent =
-emojis[
-Math.floor(
-Math.random()*
-emojis.length
-)
-];
-
-}
-else{
-
-item.textContent =
-words[
-Math.floor(
-Math.random()*
-words.length
-)
-];
-
-}
-
-
-item.style.left =
-(
-Math.random()*90+5
-)+"%";
-
-
-item.style.fontSize =
-(
-emoji
-?
-18+
-Math.random()*9
-:
-11+
-Math.random()*6
-)+"px";
-
-
-item.style.animationDuration =
-(
-6+
-Math.random()*5
-)+"s";
-
+item.style.animationDuration=(6+Math.random()*4)+"s";
 
 item.style.setProperty(
-"--side",
-(
--70+
-Math.random()*140
-)+"px"
+"--x",
+(-60+Math.random()*120)+"px"
 );
-
 
 item.style.setProperty(
-"--rotate",
-(
--35+
-Math.random()*70
-)+"deg"
+"--r",
+(-40+Math.random()*80)+"deg"
 );
 
+falling.appendChild(item);
 
-falling.appendChild(
-item
-);
-
-
-setTimeout(
-function(){
-
+setTimeout(function(){
 item.remove();
-
-},
-12000
-);
+},11000);
 
 }
 
-
-/*
-Poucos elementos para
-não atrapalhar o texto.
-*/
-
-setInterval(
-createFalling,
-650
-);
+setInterval(makeFall,650);
 
 </script>
 
 </body>
-
   </html>
