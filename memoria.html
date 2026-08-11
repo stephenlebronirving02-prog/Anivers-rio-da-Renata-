@@ -1,1 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+<title>Memórias ❤️</title>
+
+<meta name="theme-color" content="#030308">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+width:100%;
+min-height:100%;
+background:#030308;
+color:#fff;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+overflow-x:hidden;
+}
+
+body{
+background:
+radial-gradient(circle at 50% 30%,#18092d 0%,#08040f 50%,#030308 100%);
+}
+
+/* FUNDO */
+
+.background{
+position:fixed;
+inset:0;
+z-index:0;
+overflow:hidden;
+pointer-events:none;
+}
+
+.background:before,
+.background:after{
+content:"";
+position:absolute;
+width:340px;
+height:340px;
+border-radius:50%;
+filter:blur(120px);
+}
+
+.background:before{
+top:-120px;
+left:-160px;
+background:#7B2EFF;
+opacity:.35;
+}
+
+.background:after{
+right:-160px;
+bottom:-120px;
+background:#2D8CFF;
+opacity:.25;
+}
+
+/* CHUVA */
+
+#falling{
+position:fixed;
+inset:0;
+z-index:1;
+pointer-events:none;
+overflow:hidden;
+}
+
+.fall{
+position:absolute;
+top:-50px;
+font-weight:700;
+color:rgba(255,255,255,.38);
+text-shadow:0 0 14px #7B2EFF;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-50px);
+opacity:0;
+}
+
+15%{
+opacity:.6;
+}
+
+100%{
+transform:translate(var(--x),110vh) rotate(var(--r));
+opacity:0;
+}
+
+}
+
+/* CONTEÚDO */
+
+main{
+position:relative;
+z-index:5;
+width:100%;
+min-height:100vh;
+padding:35px 15px 55px;
+text-align:center;
+}
+
+.subtitle{
+font-size:10px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:rgba(255,255,255,.45);
+margin-bottom:9px;
+}
+
+h1{
+font-size:28px;
+line-height:1.2;
+text-shadow:0 0 20px rgba(123,46,255,.8);
+}
+
+h1 span{
+color:#c89aff;
+}
+
+/* EXPLICAÇÃO */
+
+.instructions{
+width:min(350px,92vw);
+margin:15px auto 18px;
+font-size:12px;
+line-height:1.6;
+color:rgba(255,255,255,.58);
+}
+
+/* CONTADOR */
+
+.score{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.score-box{
+padding:8px 18px;
+border-radius:20px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+font-size:11px;
+color:rgba(255,255,255,.7);
+}
+
+.score-box strong{
+color:#fff;
+font-size:15px;
+}
+
+/* TABULEIRO */
+
+.game{
+width:min(360px,94vw);
+margin:auto;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+perspective:1000px;
+}
+
+/* CARTA */
+
+.card{
+height:145px;
+position:relative;
+cursor:pointer;
+perspective:900px;
+-webkit-tap-highlight-color:transparent;
+}
+
+.card-inner{
+position:absolute;
+inset:0;
+transition:transform .55s ease;
+transform-style:preserve-3d;
+}
+
+.card.flipped .card-inner,
+.card.matched .card-inner{
+transform:rotateY(180deg);
+}
+
+.face{
+position:absolute;
+inset:0;
+border-radius:18px;
+backface-visibility:hidden;
+-webkit-backface-visibility:hidden;
+overflow:hidden;
+}
+
+.back{
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+linear-gradient(145deg,#21103d,#0c0717);
+border:1px solid rgba(255,255,255,.12);
+box-shadow:
+0 8px 25px rgba(0,0,0,.45),
+0 0 18px rgba(123,46,255,.12);
+}
+
+.back-heart{
+font-size:38px;
+filter:drop-shadow(0 0 12px #7B2EFF);
+animation:smallBeat 1.8s infinite;
+}
+
+@keyframes smallBeat{
+
+0%,100%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+}
+
+.front{
+transform:rotateY(180deg);
+background:#08050d;
+border:1px solid rgba(255,255,255,.15);
+}
+
+.front img{
+width:100%;
+height:100%;
+object-fit:cover;
+object-position:center;
+display:block;
+}
+
+/* CARTA ACERTADA */
+
+.card.matched .front{
+box-shadow:
+0 0 15px rgba(123,46,255,.7),
+0 0 35px rgba(45,140,255,.3);
+}
+
+/* CORAÇÕES DO ACERTO */
+
+.heart-pop{
+position:fixed;
+z-index:30;
+pointer-events:none;
+font-size:22px;
+animation:pop 1s ease-out forwards;
+}
+
+@keyframes pop{
+
+0%{
+transform:translate(-50%,-50%) scale(.5);
+opacity:0;
+}
+
+15%{
+opacity:1;
+}
+
+100%{
+transform:
+translate(
+calc(-50% + var(--x)),
+calc(-50% + var(--y))
+)
+scale(.8);
+opacity:0;
+}
+
+}
+
+/* FRASE */
+
+#phrase{
+width:min(350px,92vw);
+min-height:35px;
+margin:18px auto 0;
+font-size:13px;
+font-weight:600;
+color:#d9baff;
+text-shadow:0 0 12px rgba(123,46,255,.6);
+opacity:0;
+transform:translateY(8px);
+transition:.4s;
+}
+
+#phrase.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* FINAL */
+
+#complete{
+display:none;
+width:min(360px,92vw);
+margin:28px auto 0;
+padding:25px 18px;
+border-radius:25px;
+background:rgba(123,46,255,.08);
+border:1px solid rgba(255,255,255,.12);
+box-shadow:0 0 30px rgba(123,46,255,.12);
+animation:appear .8s ease;
+}
+
+@keyframes appear{
+
+from{
+opacity:0;
+transform:translateY(20px) scale(.96);
+}
+
+to{
+opacity:1;
+transform:none;
+}
+
+}
+
+.complete-heart{
+font-size:42px;
+display:block;
+margin-bottom:10px;
+filter:drop-shadow(0 0 15px #7B2EFF);
+}
+
+#complete h2{
+font-size:22px;
+margin-bottom:10px;
+}
+
+#complete p{
+font-size:13px;
+line-height:1.7;
+color:rgba(255,255,255,.7);
+}
+
+.next{
+display:inline-block;
+margin-top:20px;
+padding:13px 25px;
+border-radius:25px;
+background:linear-gradient(90deg,#7B2EFF,#5830b9);
+border:1px solid rgba(255,255,255,.15);
+color:#fff;
+text-decoration:none;
+font-size:12px;
+font-weight:700;
+box-shadow:0 0 20px rgba(123,46,255,.3);
+}
+
+/* CELULARES PEQUENOS */
+
+@media(max-width:360px){
+
+main{
+padding-top:28px;
+}
+
+h1{
+font-size:24px;
+}
+
+.game{
+gap:9px;
+}
+
+.card{
+height:125px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div id="falling"></div>
+
+<main>
+
+<p class="subtitle">
+Uma pequena lembrança...
+</p>
+
+<h1>
+Encontre nossas<br>
+<span>memórias. ❤️</span>
+</h1>
+
+<p class="instructions">
+Existem cinco memórias escondidas aqui.
+Cada uma possui uma cópia.
+Encontre todos os pares para descobrir a última surpresa.
+</p>
+
+<div class="score">
+
+<div class="score-box">
+Pares:
+<strong id="pairs">0</strong>/5
+</div>
+
+<div class="score-box">
+Tentativas:
+<strong id="attempts">0</strong>
+</div>
+
+</div>
+
+<div id="game" class="game"></div>
+
+<div id="phrase"></div>
+
+<section id="complete">
+
+<span class="complete-heart">
+❤️
+</span>
+
+<h2>
+Você encontrou todas! ✨
+</h2>
+
+<p>
+Cinco pares encontrados, mas algumas memórias são
+impossíveis de guardar em uma carta.
+Elas ficam justamente onde nenhuma tela consegue alcançar:
+na lembrança.
+</p>
+
+<a class="next" href="final.html">
+Última surpresa ❤️
+</a>
+
+</section>
+
+</main>
+
+<script>
+
+/* =========================
+   FOTOS
+========================= */
+
+const photos=[
+"Fotos/foto1.jpg",
+"Fotos/foto2.jpg",
+"Fotos/foto3.jpg",
+"Fotos/foto4.jpg",
+"Fotos/foto5.jpg"
+];
+
+/* =========================
+   FRASES
+========================= */
+
+const phrases=[
+"Um sorriso capaz de deixar qualquer momento mais bonito. ✨",
+
+"Tem coisas que a câmera registra, mas só a memória consegue guardar. ❤️",
+
+"Seu jeito transforma momentos simples em lembranças especiais.",
+
+"Algumas memórias ficam bonitas justamente porque aconteceram com você.",
+
+"Entre tantos detalhes, sempre existe alguma coisa sua que chama atenção. 💜"
+];
+
+/* =========================
+   CRIAÇÃO DAS CARTAS
+========================= */
+
+let cards=[...photos,...photos];
+
+cards.sort(()=>{
+return Math.random()-.5;
+});
+
+const game=document.getElementById("game");
+const pairsElement=document.getElementById("pairs");
+const attemptsElement=document.getElementById("attempts");
+const phrase=document.getElementById("phrase");
+const complete=document.getElementById("complete");
+
+let first=null;
+let second=null;
+let locked=false;
+let pairs=0;
+let attempts=0;
+
+cards.forEach(function(src,index){
+
+const card=document.createElement("div");
+
+card.className="card";
+
+card.dataset.image=src;
+
+card.innerHTML=`
+
+<div class="card-inner">
+
+<div class="face back">
+<span class="back-heart">❤️</span>
+</div>
+
+<div class="face front">
+<img src="${src}" alt="Memória ${index+1}">
+</div>
+
+</div>
+
+`;
+
+card.addEventListener("click",function(){
+
+if(
+locked ||
+card===first ||
+card.classList.contains("matched")
+){
+return;
+}
+
+card.classList.add("flipped");
+
+if(!first){
+
+first=card;
+
+return;
+
+}
+
+second=card;
+
+locked=true;
+
+attempts++;
+
+attemptsElement.textContent=attempts;
+
+checkMatch();
+
+});
+
+game.appendChild(card);
+
+});
+
+/* =========================
+   VERIFICAR PAR
+========================= */
+
+function checkMatch(){
+
+const match=first.dataset.image===second.dataset.image;
+
+if(match){
+
+first.classList.add("matched");
+second.classList.add("matched");
+
+pairs++;
+
+pairsElement.textContent=pairs;
+
+showPhrase();
+
+popHearts();
+
+setTimeout(function(){
+
+first=null;
+second=null;
+locked=false;
+
+if(pairs===5){
+finishGame();
+}
+
+},700);
+
+}else{
+
+setTimeout(function(){
+
+first.classList.remove("flipped");
+second.classList.remove("flipped");
+
+first=null;
+second=null;
+locked=false;
+
+},900);
+
+}
+
+}
+
+/* =========================
+   FRASES
+========================= */
+
+function showPhrase(){
+
+phrase.classList.remove("show");
+
+setTimeout(function(){
+
+phrase.textContent=
+phrases[(pairs-1)%phrases.length];
+
+phrase.classList.add("show");
+
+},100);
+
+}
+
+/* =========================
+   CORAÇÕES
+========================= */
+
+function popHearts(){
+
+for(let i=0;i<14;i++){
+
+const heart=document.createElement("span");
+
+heart.className="heart-pop";
+
+heart.textContent=
+["❤️","💜","💙","🤍","💕"][Math.floor(Math.random()*5)];
+
+heart.style.left="50%";
+heart.style.top="45%";
+
+const angle=Math.random()*Math.PI*2;
+const distance=70+Math.random()*160;
+
+heart.style.setProperty(
+"--x",
+Math.cos(angle)*distance+"px"
+);
+
+heart.style.setProperty(
+"--y",
+Math.sin(angle)*distance+"px"
+);
+
+document.body.appendChild(heart);
+
+setTimeout(function(){
+heart.remove();
+},1100);
+
+}
+
+}
+
+/* =========================
+   FINAL DO JOGO
+========================= */
+
+function finishGame(){
+
+setTimeout(function(){
+
+complete.style.display="block";
+
+complete.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+},900);
+
+}
+
+/* =========================
+   CHUVA
+========================= */
+
+const falling=document.getElementById("falling");
+
+const words=[
+"linda",
+"especial",
+"maravilhosa",
+"princesa",
+"meu bem",
+"amor",
+"vida",
+"perfeita",
+"encantadora",
+"brilho"
+];
+
+const emojis=[
+"❤️",
+"💜",
+"💙",
+"🤍",
+"💕",
+"✨"
+];
+
+function createFall(){
+
+const item=document.createElement("span");
+
+item.className="fall";
+
+const emoji=Math.random()<.5;
+
+item.textContent=emoji
+?emojis[Math.floor(Math.random()*emojis.length)]
+:words[Math.floor(Math.random()*words.length)];
+
+item.style.left=
+(4+Math.random()*92)+"%";
+
+item.style.fontSize=
+emoji
+?(18+Math.random()*9)+"px"
+:(10+Math.random()*5)+"px";
+
+item.style.animationDuration=
+(6+Math.random()*4)+"s";
+
+item.style.setProperty(
+"--x",
+(-50+Math.random()*100)+"px"
+);
+
+item.style.setProperty(
+"--r",
+(-35+Math.random()*70)+"deg"
+);
+
+falling.appendChild(item);
+
+setTimeout(function(){
+item.remove();
+},11000);
+
+}
+
+setInterval(createFall,700);
+
+</script>
+
+</body>
+  </html>
