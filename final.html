@@ -1,24 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>Para Renata ❤️</title>
-
 <meta name="theme-color" content="#030308">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 html,body{
 width:100%;
@@ -26,56 +15,52 @@ min-height:100%;
 background:#030308;
 color:#fff;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-overflow-x:hidden;
+overflow-x:hidden
 }
 
 body{
-background:
-radial-gradient(circle at 50% 35%,#19082f 0%,#07030e 48%,#030308 100%);
+background:radial-gradient(circle at 50% 35%,#19082f,#07030e 48%,#030308)
 }
 
 /* FUNDO */
-
 .bg{
 position:fixed;
 inset:0;
 z-index:0;
 overflow:hidden;
-pointer-events:none;
+pointer-events:none
 }
 
-.bg:before,
-.bg:after{
+.bg:before,.bg:after{
 content:"";
 position:absolute;
 width:360px;
 height:360px;
 border-radius:50%;
-filter:blur(120px);
+filter:blur(120px)
 }
 
 .bg:before{
 left:-170px;
 top:-100px;
 background:#7B2EFF;
-opacity:.38;
+opacity:.38
 }
 
 .bg:after{
 right:-170px;
 bottom:-100px;
 background:#2D8CFF;
-opacity:.25;
+opacity:.25
 }
 
 /* CHUVA */
-
 #falling{
 position:fixed;
 inset:0;
 z-index:1;
 pointer-events:none;
-overflow:hidden;
+overflow:hidden
 }
 
 .fall{
@@ -84,29 +69,16 @@ top:-50px;
 font-weight:700;
 color:rgba(255,255,255,.4);
 text-shadow:0 0 14px #7B2EFF;
-animation:fall linear forwards;
+animation:fall linear forwards
 }
 
 @keyframes fall{
-
-0%{
-transform:translateY(-50px);
-opacity:0;
-}
-
-15%{
-opacity:.65;
-}
-
-100%{
-transform:translate(var(--x),110vh) rotate(var(--r));
-opacity:0;
-}
-
+0%{transform:translateY(-50px);opacity:0}
+15%{opacity:.65}
+100%{transform:translate(var(--x),110vh) rotate(var(--r));opacity:0}
 }
 
 /* CONTEÚDO */
-
 main{
 position:relative;
 z-index:5;
@@ -115,7 +87,7 @@ padding:38px 18px 60px;
 display:flex;
 flex-direction:column;
 align-items:center;
-text-align:center;
+text-align:center
 }
 
 .intro{
@@ -123,40 +95,33 @@ font-size:11px;
 letter-spacing:2px;
 text-transform:uppercase;
 color:rgba(255,255,255,.45);
-margin-bottom:10px;
+margin-bottom:10px
 }
 
 h1{
-font-size:28px;
+font-size:30px;
 line-height:1.2;
-text-shadow:0 0 20px rgba(123,46,255,.8);
+text-shadow:0 0 20px rgba(123,46,255,.8)
 }
 
 h1 span{
 color:#c99cff;
+font-size:42px
 }
 
-/* =========================
-   ÁREA DO CORAÇÃO
-========================= */
-
+/* ÁREA DO CORAÇÃO */
 .heart-area{
 position:relative;
-width:290px;
-height:340px;
-max-width:90vw;
-margin:25px auto 0;
+width:300px;
+height:350px;
+max-width:92vw;
+margin:22px auto 0;
 display:flex;
 flex-direction:column;
-align-items:center;
+align-items:center
 }
 
-/* TEXTO ACIMA */
-
 .heart-instruction{
-position:relative;
-z-index:10;
-width:100%;
 height:42px;
 display:flex;
 align-items:center;
@@ -164,150 +129,138 @@ justify-content:center;
 font-size:12px;
 font-weight:700;
 color:rgba(255,255,255,.72);
-text-shadow:0 0 12px rgba(123,46,255,.7);
+text-shadow:0 0 12px rgba(123,46,255,.7)
 }
 
-/* ÁREA VISUAL */
-
+/* ÁREA CENTRAL */
 .heart-visual{
 position:relative;
-width:270px;
-height:260px;
+width:280px;
+height:270px;
 display:flex;
 align-items:center;
-justify-content:center;
+justify-content:center
 }
 
 /* BRILHO */
-
 .glow{
 position:absolute;
-width:170px;
-height:170px;
+width:180px;
+height:180px;
 border-radius:50%;
 background:#7B2EFF;
 filter:blur(70px);
-opacity:.38;
-animation:glow 2s ease-in-out infinite alternate;
+opacity:.4;
+animation:glow 2s ease-in-out infinite alternate
 }
 
 @keyframes glow{
-
-from{
-transform:scale(.82);
-opacity:.25;
+from{transform:scale(.8);opacity:.25}
+to{transform:scale(1.15);opacity:.5}
 }
 
-to{
-transform:scale(1.15);
-opacity:.48;
-}
-
-}
-
-/* CORAÇÃO CSS */
-
+/* CORAÇÃO SVG */
 #heart{
 position:relative;
 z-index:5;
-width:108px;
-height:108px;
+width:190px;
+height:190px;
 border:0;
-background:none;
 padding:0;
+background:transparent;
 cursor:pointer;
 -webkit-tap-highlight-color:transparent;
-transform:rotate(-45deg);
 filter:
 drop-shadow(0 0 8px #7B2EFF)
-drop-shadow(0 0 25px #7B2EFF)
-drop-shadow(0 0 45px rgba(45,140,255,.35));
-animation:heartBeat 1.6s ease-in-out infinite;
+drop-shadow(0 0 22px #7B2EFF)
+drop-shadow(0 0 45px rgba(45,140,255,.4));
+animation:heartBeat 1.5s ease-in-out infinite
 }
 
-/* CORPO */
-
-#heart::before{
-content:"";
-position:absolute;
-width:108px;
-height:108px;
-left:0;
-top:0;
-background:linear-gradient(145deg,#b96cff,#7B2EFF 55%,#5420aa);
-border-radius:12px;
+#heart svg{
+width:100%;
+height:100%;
+display:block
 }
 
-/* CÍRCULOS SUPERIORES */
-
-#heart::after{
-content:"";
-position:absolute;
-width:108px;
-height:108px;
-left:54px;
-top:0;
-background:linear-gradient(145deg,#b96cff,#7B2EFF 55%,#5420aa);
-border-radius:50%;
-box-shadow:-54px 0 0 #7B2EFF;
+.heart-shape{
+fill:url(#heartGradient)
 }
-
-/* ANIMAÇÃO */
 
 @keyframes heartBeat{
-
-0%,100%{
-transform:rotate(-45deg) scale(1);
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.08)}
 }
-
-50%{
-transform:rotate(-45deg) scale(1.07);
-}
-
-}
-
-/* CLIQUE */
 
 #heart.clicked{
-animation:heartClick .22s ease;
+animation:clickBeat .25s ease
 }
 
-@keyframes heartClick{
-
-0%{
-transform:rotate(-45deg) scale(1);
-}
-
-50%{
-transform:rotate(-45deg) scale(.82);
-}
-
-100%{
-transform:rotate(-45deg) scale(1);
-}
-
+@keyframes clickBeat{
+0%{transform:scale(1)}
+45%{transform:scale(.82)}
+100%{transform:scale(1)}
 }
 
 /* CONTADOR */
-
 #count{
 position:absolute;
-bottom:0;
-left:0;
+bottom:2px;
 width:100%;
 font-size:11px;
-font-weight:600;
 letter-spacing:1px;
-color:rgba(255,255,255,.48);
+font-weight:600;
+color:rgba(255,255,255,.48)
+}
+
+/* NOME APÓS EXPLOSÃO */
+#renata-final{
+position:absolute;
+z-index:8;
+display:none;
+align-items:center;
+justify-content:center;
+width:100%;
+height:100%;
+font-size:clamp(58px,19vw,88px);
+font-weight:900;
+letter-spacing:-3px;
+background:linear-gradient(
+90deg,
+#ffffff,
+#d8b1ff,
+#8d4cff,
+#ffffff
+);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 30px rgba(123,46,255,.65);
+animation:nameAppear 1.2s ease forwards
+}
+
+@keyframes nameAppear{
+0%{
+opacity:0;
+transform:scale(.45);
+filter:blur(15px)
+}
+60%{
+opacity:1;
+transform:scale(1.12);
+filter:blur(0)
+}
+100%{
+opacity:1;
+transform:scale(1)
+}
 }
 
 /* EXPLOSÃO */
-
 #explosion{
 position:absolute;
 inset:0;
 z-index:20;
-pointer-events:none;
+pointer-events:none
 }
 
 .particle{
@@ -318,37 +271,28 @@ width:7px;
 height:7px;
 border-radius:50%;
 background:#fff;
-box-shadow:
-0 0 10px #fff,
-0 0 20px #7B2EFF;
-animation:explode .9s ease-out forwards;
+box-shadow:0 0 10px #fff,0 0 22px #7B2EFF;
+animation:explode .95s ease-out forwards
 }
 
 @keyframes explode{
-
 to{
-transform:
-translate(var(--x),var(--y))
-scale(0);
-opacity:0;
+transform:translate(var(--x),var(--y)) scale(0);
+opacity:0
+}
 }
 
-}
-
-/* =========================
-   TEXTO
-========================= */
-
+/* TEXTO */
 #content{
 width:min(390px,94vw);
 opacity:0;
 transform:translateY(25px);
-transition:1.2s ease;
+transition:1.2s ease
 }
 
 #content.show{
 opacity:1;
-transform:translateY(0);
+transform:translateY(0)
 }
 
 .line{
@@ -357,7 +301,7 @@ height:3px;
 margin:0 auto 22px;
 border-radius:10px;
 background:linear-gradient(90deg,#7B2EFF,#2D8CFF);
-box-shadow:0 0 15px #7B2EFF;
+box-shadow:0 0 15px #7B2EFF
 }
 
 #message{
@@ -365,11 +309,10 @@ font-size:15px;
 line-height:1.85;
 color:rgba(255,255,255,.82);
 white-space:pre-line;
-min-height:320px;
+min-height:320px
 }
 
-/* CONTADOR */
-
+/* CONTADOR DE VIDA */
 #life{
 margin-top:22px;
 padding:20px 12px;
@@ -379,36 +322,36 @@ background:rgba(123,46,255,.07);
 border:1px solid rgba(255,255,255,.1);
 opacity:0;
 transform:translateY(15px);
-transition:1s;
+transition:1s
 }
 
 #life.show{
 opacity:1;
-transform:translateY(0);
+transform:translateY(0)
 }
 
 .life-title{
 font-size:12px;
 color:rgba(255,255,255,.55);
-margin-bottom:15px;
+margin-bottom:15px
 }
 
 .timer{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:6px;
+gap:6px
 }
 
 .box{
 padding:11px 2px;
 border-radius:14px;
-background:rgba(255,255,255,.045);
+background:rgba(255,255,255,.045)
 }
 
 .number{
 display:block;
 font-size:19px;
-font-weight:800;
+font-weight:800
 }
 
 .label{
@@ -417,34 +360,33 @@ margin-top:4px;
 font-size:8px;
 letter-spacing:.5px;
 color:rgba(255,255,255,.4);
-text-transform:uppercase;
+text-transform:uppercase
 }
 
 .birth{
 margin-top:13px;
 font-size:9px;
-color:rgba(255,255,255,.3);
+color:rgba(255,255,255,.3)
 }
 
-/* FINAL */
-
+/* EU TE AMO */
 #love{
 margin-top:42px;
 opacity:0;
 transform:scale(.8);
-transition:1.2s ease;
+transition:1.2s ease
 }
 
 #love.show{
 opacity:1;
-transform:scale(1);
+transform:scale(1)
 }
 
 .love-small{
 font-size:10px;
 letter-spacing:1.5px;
 color:rgba(255,255,255,.42);
-margin-bottom:8px;
+margin-bottom:8px
 }
 
 .love-big{
@@ -452,8 +394,7 @@ font-size:clamp(42px,13vw,62px);
 font-weight:900;
 background:linear-gradient(90deg,#fff,#d5a9ff,#fff);
 -webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-text-shadow:0 0 25px rgba(123,46,255,.4);
+-webkit-text-fill-color:transparent
 }
 
 .white-heart{
@@ -462,23 +403,15 @@ margin-top:10px;
 font-size:48px;
 color:#fff;
 filter:drop-shadow(0 0 15px #fff);
-animation:heartBeatWhite 2s infinite;
+animation:whiteBeat 2s infinite
 }
 
-@keyframes heartBeatWhite{
-
-0%,100%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(1.08);
-}
-
+@keyframes whiteBeat{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.08)}
 }
 
 /* BOTÃO */
-
 #back{
 display:inline-block;
 margin-top:32px;
@@ -490,62 +423,51 @@ color:rgba(255,255,255,.65);
 text-decoration:none;
 font-size:11px;
 opacity:0;
-transition:1s;
+transition:1s
 }
 
-#back.show{
-opacity:1;
-}
+#back.show{opacity:1}
 
-/* CELULARES PEQUENOS */
-
+/* PEQUENOS */
 @media(max-width:360px){
 
 main{
-padding-top:28px;
+padding-top:28px
 }
 
 h1{
-font-size:24px;
+font-size:25px
+}
+
+h1 span{
+font-size:38px
 }
 
 .heart-area{
-height:320px;
+height:330px
 }
 
 .heart-visual{
-width:250px;
+width:260px
 }
 
 #heart{
-width:95px;
-height:95px;
-}
-
-#heart::before,
-#heart::after{
-width:95px;
-height:95px;
-}
-
-#heart::after{
-left:47px;
+width:175px;
+height:175px
 }
 
 #message{
-font-size:14px;
+font-size:14px
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="bg"></div>
-
 <div id="falling"></div>
 
 <main>
@@ -569,7 +491,44 @@ Clique no coração até ele não aguentar mais... ❤️
 
 <div class="glow"></div>
 
-<button id="heart" aria-label="Clique no coração"></button>
+<button id="heart" aria-label="Clique no coração">
+
+<svg viewBox="0 0 200 200">
+
+<defs>
+
+<linearGradient
+id="heartGradient"
+x1="0%"
+y1="0%"
+x2="100%"
+y2="100%">
+
+<stop offset="0%" stop-color="#d18aff"/>
+<stop offset="45%" stop-color="#8b35ff"/>
+<stop offset="100%" stop-color="#4b17a8"/>
+
+</linearGradient>
+
+</defs>
+
+<path
+class="heart-shape"
+d="M100 178
+C91 168 24 125 24 69
+C24 42 43 24 68 24
+C83 24 94 31 100 43
+C106 31 117 24 132 24
+C157 24 176 42 176 69
+C176 125 109 168 100 178Z"/>
+
+</svg>
+
+</button>
+
+<div id="renata-final">
+Renata
+</div>
 
 <div id="explosion"></div>
 
@@ -652,6 +611,7 @@ Voltar ao começo ❤️
 const heart=document.getElementById("heart");
 const count=document.getElementById("count");
 const explosion=document.getElementById("explosion");
+const renata=document.getElementById("renata-final");
 
 const content=document.getElementById("content");
 const message=document.getElementById("message");
@@ -688,17 +648,50 @@ function finish(){
 
 finished=true;
 
+heart.style.animation="none";
+
+setTimeout(function(){
+
 heart.style.opacity="0";
 count.style.opacity="0";
 
-for(let i=0;i<75;i++){
+createExplosion();
+
+setTimeout(function(){
+
+heart.style.display="none";
+
+renata.style.display="flex";
+
+},450);
+
+setTimeout(function(){
+
+content.classList.add("show");
+
+typeMessage();
+
+},1000);
+
+},150);
+
+}
+
+/* PARTÍCULAS */
+
+function createExplosion(){
+
+for(let i=0;i<100;i++){
 
 const p=document.createElement("span");
 
 p.className="particle";
 
 const angle=Math.random()*Math.PI*2;
-const distance=70+Math.random()*240;
+
+const distance=
+80+
+Math.random()*250;
 
 p.style.setProperty(
 "--x",
@@ -710,17 +703,18 @@ p.style.setProperty(
 Math.sin(angle)*distance+"px"
 );
 
+p.style.width=
+(4+Math.random()*7)+"px";
+
+p.style.height=p.style.width;
+
 explosion.appendChild(p);
 
-}
-
 setTimeout(function(){
+p.remove();
+},1100);
 
-content.classList.add("show");
-
-typeMessage();
-
-},850);
+}
 
 }
 
@@ -770,13 +764,8 @@ message.textContent+=text[index];
 
 let delay=23;
 
-if(text[index]==="."){
-delay=250;
-}
-
-if(text[index]===","){
-delay=75;
-}
+if(text[index]===".")delay=250;
+if(text[index]===",")delay=75;
 
 index++;
 
@@ -802,14 +791,7 @@ back.classList.add("show");
 
 /* CONTADOR */
 
-const birth=new Date(
-2010,
-7,
-16,
-0,
-0,
-0
-);
+const birth=new Date(2010,7,16,0,0,0);
 
 function updateTimer(){
 
@@ -817,23 +799,18 @@ const now=new Date();
 
 let years=now.getFullYear()-birth.getFullYear();
 
-const birthdayThisYear=new Date(
+const birthday=new Date(
 now.getFullYear(),
 7,
 16
 );
 
-if(now<birthdayThisYear){
-years--;
-}
+if(now<birthday)years--;
 
 const lastBirthday=new Date(
 birth.getFullYear()+years,
 7,
-16,
-0,
-0,
-0
+16
 );
 
 let difference=now-lastBirthday;
@@ -860,7 +837,6 @@ document.getElementById("minutes").textContent=minutes;
 }
 
 updateTimer();
-
 setInterval(updateTimer,1000);
 
 /* CHUVA */
@@ -881,12 +857,7 @@ const words=[
 ];
 
 const emojis=[
-"❤️",
-"💜",
-"💙",
-"🤍",
-"💕",
-"✨"
+"❤️","💜","💙","🤍","💕","✨"
 ];
 
 function createFall(){
@@ -895,19 +866,22 @@ const item=document.createElement("span");
 
 item.className="fall";
 
-const isEmoji=Math.random()<.5;
+const emoji=Math.random()<.5;
 
-item.textContent=isEmoji
+item.textContent=emoji
 ?emojis[Math.floor(Math.random()*emojis.length)]
 :words[Math.floor(Math.random()*words.length)];
 
-item.style.left=(Math.random()*90+5)+"%";
+item.style.left=
+(Math.random()*90+5)+"%";
 
-item.style.fontSize=isEmoji
+item.style.fontSize=
+emoji
 ?(20+Math.random()*8)+"px"
 :(11+Math.random()*6)+"px";
 
-item.style.animationDuration=(6+Math.random()*4)+"s";
+item.style.animationDuration=
+(6+Math.random()*4)+"s";
 
 item.style.setProperty(
 "--x",
