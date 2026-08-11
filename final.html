@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
 <title>Para Renata ❤️</title>
+
 <meta name="theme-color" content="#030308">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
 html,body{
 width:100%;
@@ -15,42 +26,46 @@ min-height:100%;
 background:#030308;
 color:#fff;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-overflow-x:hidden
+overflow-x:hidden;
 }
 
 body{
-background:radial-gradient(circle at 50% 35%,#19082f 0%,#07030e 48%,#030308 100%)
+background:
+radial-gradient(circle at 50% 35%,#19082f 0%,#07030e 48%,#030308 100%);
 }
+
+/* FUNDO */
 
 .bg{
 position:fixed;
 inset:0;
 z-index:0;
 overflow:hidden;
-pointer-events:none
+pointer-events:none;
 }
 
-.bg:before,.bg:after{
+.bg:before,
+.bg:after{
 content:"";
 position:absolute;
 width:360px;
 height:360px;
 border-radius:50%;
-filter:blur(120px)
+filter:blur(120px);
 }
 
 .bg:before{
 left:-170px;
 top:-100px;
 background:#7B2EFF;
-opacity:.38
+opacity:.38;
 }
 
 .bg:after{
 right:-170px;
 bottom:-100px;
 background:#2D8CFF;
-opacity:.25
+opacity:.25;
 }
 
 /* CHUVA */
@@ -60,23 +75,34 @@ position:fixed;
 inset:0;
 z-index:1;
 pointer-events:none;
-overflow:hidden
+overflow:hidden;
 }
 
 .fall{
 position:absolute;
 top:-50px;
 font-weight:700;
-color:rgba(255,255,255,.45);
+color:rgba(255,255,255,.4);
 text-shadow:0 0 14px #7B2EFF;
-animation:fall linear forwards
+animation:fall linear forwards;
 }
 
 @keyframes fall{
-0%{transform:translateY(-50px);opacity:0}
-15%{opacity:.65}
-85%{opacity:.5}
-100%{transform:translate(var(--x),110vh) rotate(var(--r));opacity:0}
+
+0%{
+transform:translateY(-50px);
+opacity:0;
+}
+
+15%{
+opacity:.65;
+}
+
+100%{
+transform:translate(var(--x),110vh) rotate(var(--r));
+opacity:0;
+}
+
 }
 
 /* CONTEÚDO */
@@ -89,7 +115,7 @@ padding:38px 18px 60px;
 display:flex;
 flex-direction:column;
 align-items:center;
-text-align:center
+text-align:center;
 }
 
 .intro{
@@ -97,89 +123,182 @@ font-size:11px;
 letter-spacing:2px;
 text-transform:uppercase;
 color:rgba(255,255,255,.45);
-margin-bottom:10px
+margin-bottom:10px;
 }
 
 h1{
 font-size:28px;
 line-height:1.2;
-text-shadow:0 0 20px rgba(123,46,255,.8)
+text-shadow:0 0 20px rgba(123,46,255,.8);
 }
 
 h1 span{
-color:#c99cff
+color:#c99cff;
 }
 
-/* CORAÇÃO */
+/* =========================
+   ÁREA DO CORAÇÃO
+========================= */
 
 .heart-area{
 position:relative;
-width:300px;
-height:300px;
-max-width:88vw;
-max-height:88vw;
-margin:22px auto 8px;
+width:290px;
+height:340px;
+max-width:90vw;
+margin:25px auto 0;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* TEXTO ACIMA */
+
+.heart-instruction{
+position:relative;
+z-index:10;
+width:100%;
+height:42px;
 display:flex;
 align-items:center;
-justify-content:center
+justify-content:center;
+font-size:12px;
+font-weight:700;
+color:rgba(255,255,255,.72);
+text-shadow:0 0 12px rgba(123,46,255,.7);
 }
+
+/* ÁREA VISUAL */
+
+.heart-visual{
+position:relative;
+width:270px;
+height:260px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* BRILHO */
 
 .glow{
 position:absolute;
-width:210px;
-height:210px;
+width:170px;
+height:170px;
 border-radius:50%;
 background:#7B2EFF;
-filter:blur(75px);
-opacity:.35;
-animation:glow 2.2s ease-in-out infinite alternate
+filter:blur(70px);
+opacity:.38;
+animation:glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes glow{
-from{transform:scale(.8);opacity:.22}
-to{transform:scale(1.15);opacity:.45}
+
+from{
+transform:scale(.82);
+opacity:.25;
 }
+
+to{
+transform:scale(1.15);
+opacity:.48;
+}
+
+}
+
+/* CORAÇÃO CSS */
 
 #heart{
 position:relative;
-z-index:3;
-width:250px;
-height:250px;
+z-index:5;
+width:108px;
+height:108px;
 border:0;
 background:none;
-color:#963dff;
-font-size:245px;
-line-height:1;
+padding:0;
 cursor:pointer;
 -webkit-tap-highlight-color:transparent;
+transform:rotate(-45deg);
 filter:
 drop-shadow(0 0 8px #7B2EFF)
-drop-shadow(0 0 28px #7B2EFF)
-drop-shadow(0 0 55px rgba(45,140,255,.35));
-animation:beat 1.6s ease-in-out infinite
+drop-shadow(0 0 25px #7B2EFF)
+drop-shadow(0 0 45px rgba(45,140,255,.35));
+animation:heartBeat 1.6s ease-in-out infinite;
 }
 
-@keyframes beat{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.06)}
-}
+/* CORPO */
 
-.inside{
+#heart::before{
+content:"";
 position:absolute;
-z-index:4;
-width:145px;
-font-size:13px;
-font-weight:800;
-line-height:1.4;
-pointer-events:none;
-text-shadow:0 2px 8px #260047
+width:108px;
+height:108px;
+left:0;
+top:0;
+background:linear-gradient(145deg,#b96cff,#7B2EFF 55%,#5420aa);
+border-radius:12px;
 }
+
+/* CÍRCULOS SUPERIORES */
+
+#heart::after{
+content:"";
+position:absolute;
+width:108px;
+height:108px;
+left:54px;
+top:0;
+background:linear-gradient(145deg,#b96cff,#7B2EFF 55%,#5420aa);
+border-radius:50%;
+box-shadow:-54px 0 0 #7B2EFF;
+}
+
+/* ANIMAÇÃO */
+
+@keyframes heartBeat{
+
+0%,100%{
+transform:rotate(-45deg) scale(1);
+}
+
+50%{
+transform:rotate(-45deg) scale(1.07);
+}
+
+}
+
+/* CLIQUE */
+
+#heart.clicked{
+animation:heartClick .22s ease;
+}
+
+@keyframes heartClick{
+
+0%{
+transform:rotate(-45deg) scale(1);
+}
+
+50%{
+transform:rotate(-45deg) scale(.82);
+}
+
+100%{
+transform:rotate(-45deg) scale(1);
+}
+
+}
+
+/* CONTADOR */
 
 #count{
 position:absolute;
 bottom:0;
-font-size:10px;
-color:rgba(255,255,255,.45)
+left:0;
+width:100%;
+font-size:11px;
+font-weight:600;
+letter-spacing:1px;
+color:rgba(255,255,255,.48);
 }
 
 /* EXPLOSÃO */
@@ -187,41 +306,49 @@ color:rgba(255,255,255,.45)
 #explosion{
 position:absolute;
 inset:0;
-z-index:10;
-pointer-events:none
+z-index:20;
+pointer-events:none;
 }
 
 .particle{
 position:absolute;
 left:50%;
-top:50%;
+top:48%;
 width:7px;
 height:7px;
 border-radius:50%;
 background:#fff;
-box-shadow:0 0 10px #fff,0 0 22px #7B2EFF;
-animation:explode .9s ease-out forwards
+box-shadow:
+0 0 10px #fff,
+0 0 20px #7B2EFF;
+animation:explode .9s ease-out forwards;
 }
 
 @keyframes explode{
+
 to{
-transform:translate(var(--x),var(--y)) scale(0);
-opacity:0
-}
+transform:
+translate(var(--x),var(--y))
+scale(0);
+opacity:0;
 }
 
-/* TEXTO */
+}
+
+/* =========================
+   TEXTO
+========================= */
 
 #content{
 width:min(390px,94vw);
 opacity:0;
 transform:translateY(25px);
-transition:1.2s ease
+transition:1.2s ease;
 }
 
 #content.show{
 opacity:1;
-transform:translateY(0)
+transform:translateY(0);
 }
 
 .line{
@@ -230,7 +357,7 @@ height:3px;
 margin:0 auto 22px;
 border-radius:10px;
 background:linear-gradient(90deg,#7B2EFF,#2D8CFF);
-box-shadow:0 0 15px #7B2EFF
+box-shadow:0 0 15px #7B2EFF;
 }
 
 #message{
@@ -238,7 +365,7 @@ font-size:15px;
 line-height:1.85;
 color:rgba(255,255,255,.82);
 white-space:pre-line;
-min-height:320px
+min-height:320px;
 }
 
 /* CONTADOR */
@@ -252,36 +379,36 @@ background:rgba(123,46,255,.07);
 border:1px solid rgba(255,255,255,.1);
 opacity:0;
 transform:translateY(15px);
-transition:1s
+transition:1s;
 }
 
 #life.show{
 opacity:1;
-transform:translateY(0)
+transform:translateY(0);
 }
 
 .life-title{
 font-size:12px;
 color:rgba(255,255,255,.55);
-margin-bottom:15px
+margin-bottom:15px;
 }
 
 .timer{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:6px
+gap:6px;
 }
 
 .box{
 padding:11px 2px;
 border-radius:14px;
-background:rgba(255,255,255,.045)
+background:rgba(255,255,255,.045);
 }
 
 .number{
 display:block;
 font-size:19px;
-font-weight:800
+font-weight:800;
 }
 
 .label{
@@ -290,13 +417,13 @@ margin-top:4px;
 font-size:8px;
 letter-spacing:.5px;
 color:rgba(255,255,255,.4);
-text-transform:uppercase
+text-transform:uppercase;
 }
 
 .birth{
 margin-top:13px;
 font-size:9px;
-color:rgba(255,255,255,.3)
+color:rgba(255,255,255,.3);
 }
 
 /* FINAL */
@@ -305,19 +432,19 @@ color:rgba(255,255,255,.3)
 margin-top:42px;
 opacity:0;
 transform:scale(.8);
-transition:1.2s ease
+transition:1.2s ease;
 }
 
 #love.show{
 opacity:1;
-transform:scale(1)
+transform:scale(1);
 }
 
 .love-small{
 font-size:10px;
 letter-spacing:1.5px;
 color:rgba(255,255,255,.42);
-margin-bottom:8px
+margin-bottom:8px;
 }
 
 .love-big{
@@ -326,7 +453,7 @@ font-weight:900;
 background:linear-gradient(90deg,#fff,#d5a9ff,#fff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-text-shadow:0 0 25px rgba(123,46,255,.4)
+text-shadow:0 0 25px rgba(123,46,255,.4);
 }
 
 .white-heart{
@@ -335,7 +462,19 @@ margin-top:10px;
 font-size:48px;
 color:#fff;
 filter:drop-shadow(0 0 15px #fff);
-animation:beat 2s infinite
+animation:heartBeatWhite 2s infinite;
+}
+
+@keyframes heartBeatWhite{
+
+0%,100%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
 }
 
 /* BOTÃO */
@@ -351,47 +490,69 @@ color:rgba(255,255,255,.65);
 text-decoration:none;
 font-size:11px;
 opacity:0;
-transition:1s
+transition:1s;
 }
 
 #back.show{
-opacity:1
+opacity:1;
 }
+
+/* CELULARES PEQUENOS */
 
 @media(max-width:360px){
 
 main{
-padding-top:28px
+padding-top:28px;
 }
 
 h1{
-font-size:24px
+font-size:24px;
 }
 
 .heart-area{
-height:260px
+height:320px;
+}
+
+.heart-visual{
+width:250px;
 }
 
 #heart{
-font-size:210px
+width:95px;
+height:95px;
+}
+
+#heart::before,
+#heart::after{
+width:95px;
+height:95px;
+}
+
+#heart::after{
+left:47px;
 }
 
 #message{
-font-size:14px
+font-size:14px;
 }
 
 }
+
 </style>
+
 </head>
 
 <body>
 
 <div class="bg"></div>
+
 <div id="falling"></div>
 
 <main>
 
-<p class="intro">O último capítulo...</p>
+<p class="intro">
+O último capítulo...
+</p>
 
 <h1>
 Agora é só você e<br>
@@ -400,20 +561,23 @@ Agora é só você e<br>
 
 <div class="heart-area">
 
+<div class="heart-instruction">
+Clique no coração até ele não aguentar mais... ❤️
+</div>
+
+<div class="heart-visual">
+
 <div class="glow"></div>
 
-<button id="heart" aria-label="Clique no coração">
-♥
-</button>
-
-<div class="inside">
-Clique em mim<br>
-até eu não aguentar mais... ❤️
-</div>
+<button id="heart" aria-label="Clique no coração"></button>
 
 <div id="explosion"></div>
 
-<div id="count">0 / 7</div>
+</div>
+
+<div id="count">
+0 / 7
+</div>
 
 </div>
 
@@ -483,9 +647,7 @@ Voltar ao começo ❤️
 
 <script>
 
-/* =========================
-   CORAÇÃO
-========================= */
+/* CORAÇÃO */
 
 const heart=document.getElementById("heart");
 const count=document.getElementById("count");
@@ -508,11 +670,11 @@ clicks++;
 
 count.textContent=clicks+" / 7";
 
-heart.style.transform="scale(.88)";
+heart.classList.remove("clicked");
 
-setTimeout(function(){
-heart.style.transform="";
-},120);
+void heart.offsetWidth;
+
+heart.classList.add("clicked");
 
 if(clicks>=7){
 finish();
@@ -520,9 +682,7 @@ finish();
 
 });
 
-/* =========================
-   EXPLOSÃO
-========================= */
+/* EXPLOSÃO */
 
 function finish(){
 
@@ -555,15 +715,16 @@ explosion.appendChild(p);
 }
 
 setTimeout(function(){
+
 content.classList.add("show");
+
 typeMessage();
+
 },850);
 
 }
 
-/* =========================
-   TEXTO
-========================= */
+/* TEXTO */
 
 const text=`Renata,
 
@@ -639,11 +800,7 @@ back.classList.add("show");
 
 }
 
-/* =========================
-   CONTADOR
-   NASCIMENTO:
-   16/08/2010
-========================= */
+/* CONTADOR */
 
 const birth=new Date(
 2010,
@@ -703,11 +860,10 @@ document.getElementById("minutes").textContent=minutes;
 }
 
 updateTimer();
+
 setInterval(updateTimer,1000);
 
-/* =========================
-   CHUVA
-========================= */
+/* CHUVA */
 
 const falling=document.getElementById("falling");
 
@@ -776,4 +932,4 @@ setInterval(createFall,650);
 </script>
 
 </body>
-    </html>
+   </html>
